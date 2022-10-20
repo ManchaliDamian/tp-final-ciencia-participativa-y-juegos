@@ -13,6 +13,9 @@ public class Proyecto {
 	public Proyecto(String nombre, String descripción) {
 		this.nombre = nombre;
 		this.descripción = descripción; 
+		new ArrayList<Muestra>();
+		new ArrayList<Categoria>();
+		new ArrayList<Usuario>();
 	}
 	
 	public void agregarMuestra(Muestra unaMuestra) {

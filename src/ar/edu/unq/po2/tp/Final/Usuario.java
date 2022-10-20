@@ -32,4 +32,6 @@ public class Usuario {
 	public void setDesafios(List<DesafioDeUsuario> desafios) {
 		this.desafios = desafios;
 	}
+	
+	
 }
