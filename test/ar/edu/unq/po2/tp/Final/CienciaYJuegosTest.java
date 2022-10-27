@@ -55,15 +55,6 @@ class CienciaYJuegosTest {
 		 assertEquals(75 , radioDelArea); // CORREGIR ! 
 	 }
 	 
-	 @Test
-	 void testProyectoConoceASusParticipantes() {
-		 proyecto.agregarParticipante(usuario1);
-		 assertTrue(proyecto.getUsuarios().contains(usuario1)); 
-	 }
-	 
-	 @Test
-	 void testProyectoConoceLasMuestrasQuePosee() {
-		 
-	 }
+	
 
 }

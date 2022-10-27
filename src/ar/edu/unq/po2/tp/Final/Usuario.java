@@ -20,10 +20,14 @@ public class Usuario {
 	public void setPreferencia(Preferencia preferencia) {
 		this.preferencia = preferencia;
 	}
-
-	public int cantidadMuestras() {
-		return preferencia.getCantidadDeMuestras();
-	}
+	
+	
+	
+	
+	
+	
+	
+	
 
 	public List<DesafioDeUsuario> getDesafios() {
 		return desafios;
