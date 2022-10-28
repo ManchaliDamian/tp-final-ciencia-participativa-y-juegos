@@ -34,7 +34,10 @@ public class RestriccionFecha extends Restricciones {
     
 	
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 154b7b74123081a7c56f829157473bfa6f5f32a2
 	
 }
 >>>>>>> 154b7b74123081a7c56f829157473bfa6f5f32a2
