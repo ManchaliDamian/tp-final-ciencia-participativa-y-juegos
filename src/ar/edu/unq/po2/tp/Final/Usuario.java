@@ -20,29 +20,7 @@ public class Usuario {
 	public void setPreferencia(Preferencia preferencia) {
 		this.preferencia = preferencia;
 	}
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 154b7b74123081a7c56f829157473bfa6f5f32a2
-=======
->>>>>>> 154b7b74123081a7c56f829157473bfa6f5f32a2
 	
-	
-	
-	
-	
-	
-	
-	
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> 154b7b74123081a7c56f829157473bfa6f5f32a2
-=======
->>>>>>> 154b7b74123081a7c56f829157473bfa6f5f32a2
-=======
->>>>>>> 154b7b74123081a7c56f829157473bfa6f5f32a2
 
 	public List<DesafioDeUsuario> getDesafios() {
 		return desafios;
