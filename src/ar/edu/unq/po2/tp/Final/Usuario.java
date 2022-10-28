@@ -21,10 +21,6 @@ public class Usuario {
 		this.preferencia = preferencia;
 	}
 
-	public int cantidadMuestras() {
-		return preferencia.getCantidadDeMuestras();
-	}
-
 	public List<DesafioDeUsuario> getDesafios() {
 		return desafios;
 	}
@@ -32,6 +28,33 @@ public class Usuario {
 	public void setDesafios(List<DesafioDeUsuario> desafios) {
 		this.desafios = desafios;
 	}
+
+	public void agregarMuestra(Muestra muestra, Proyecto proyecto) {
+		proyecto.agregarMuestra(muestra);
+
+	}
+
+	public void aceptarDesafiosPendientes() {
+		for (DesafioDeUsuario desafioDeUsuario : desafios) {
+			desafioDeUsuario.aceptarDesafio();
+			{
+
+			}
+		}
+	}
+
+	public int cantidadDeDesafiosCompletados() {
+		int desafiosCompletadosHastaAhora = 0;
+		for (DesafioDeUsuario desafioDeUsuario : desafios) {
+			if (desafioDeUsuario.getEstado() == new EstadoCompleto()) {
+				desafiosCompletadosHastaAhora += 1;
+			}
+		}
+		return desafiosCompletadosHastaAhora;
+	}
 	
-	
+	public Integer porcentajeDeCompletitud(DesafioDeUsuario desafio) {
+		  return (desafio.cantidadDeMuestrasRecolectadas() * desafio.muestrasNecesariasParaCompletarDesafio()) / 100; 
+	}
+
 }

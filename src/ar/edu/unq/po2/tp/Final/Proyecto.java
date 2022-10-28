@@ -6,9 +6,9 @@ import java.util.List;
 public class Proyecto {
 	private String nombre;
 	private String descripción;
-	List<Muestra> muestras = new ArrayList<Muestra>();
-	List<Categoria> categorias = new ArrayList<Categoria>();
-	List<Usuario> participantesActivos = new ArrayList<Usuario>();
+	private List<Muestra> muestras = new ArrayList<Muestra>();
+	private List<Categoria> categorias = new ArrayList<Categoria>();
+	private List<Usuario> participantesActivos = new ArrayList<Usuario>();
 	
 	public Proyecto(String nombre, String descripción) {
 		this.nombre = nombre;
@@ -19,7 +19,10 @@ public class Proyecto {
 	}
 	
 	public void agregarMuestra(Muestra unaMuestra) {
-		muestras.add(unaMuestra); 
+		if(participantesActivos.contains(unaMuestra.getUsuario())) {
+			muestras.add(unaMuestra); 
+		}
+		
 	}
 	
 	public void agregarCategoria(Categoria unaCategoria) {
@@ -36,9 +39,11 @@ public class Proyecto {
 	public List<Categoria> getCategorias() {
 		return categorias;
 	}
-	public List<Usuario> getUsuarios() {
+	
+	public List<Usuario> getParticipantesActivos() {
 		return participantesActivos;
 	}
+
 	public String getNombre() {
 		return nombre;
 	}
@@ -51,5 +56,22 @@ public class Proyecto {
 	public void setDescripción(String descripción) {
 		this.descripción = descripción;
 	}
+
+	public void eliminarParticipante(Usuario participante) {
+		participantesActivos.remove(participante); 
+		
+	}
+
+	public void eliminarCategoria(Categoria categoria) {
+		categorias.remove(categoria); 
+		
+	}
+
+	public void eliminarMuestra(Muestra muestra) {
+		muestras.remove(muestra); 
+		
+	}
+	
+	
 
 }
