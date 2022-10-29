@@ -9,37 +9,38 @@ public class Proyecto {
 	private List<Muestra> muestras = new ArrayList<Muestra>();
 	private List<Categoria> categorias = new ArrayList<Categoria>();
 	private List<Usuario> participantesActivos = new ArrayList<Usuario>();
-	
+
 	public Proyecto(String nombre, String descripción) {
 		this.nombre = nombre;
-		this.descripción = descripción; 
+		this.descripción = descripción;
 		new ArrayList<Muestra>();
 		new ArrayList<Categoria>();
 		new ArrayList<Usuario>();
 	}
-	
+
 	public void agregarMuestra(Muestra unaMuestra) {
-		if(participantesActivos.contains(unaMuestra.getUsuario())) {
-			muestras.add(unaMuestra); 
+		if (participantesActivos.contains(unaMuestra.getUsuario())) {
+			muestras.add(unaMuestra);
 		}
-		
+
 	}
-	
+
 	public void agregarCategoria(Categoria unaCategoria) {
 		categorias.add(unaCategoria);
 	}
-	
+
 	public void agregarParticipante(Usuario unParticipante) {
-		participantesActivos.add(unParticipante);  
+		participantesActivos.add(unParticipante);
 	}
-	
+
 	public List<Muestra> getMuestras() {
 		return muestras;
 	}
+
 	public List<Categoria> getCategorias() {
 		return categorias;
 	}
-	
+
 	public List<Usuario> getParticipantesActivos() {
 		return participantesActivos;
 	}
@@ -47,27 +48,30 @@ public class Proyecto {
 	public String getNombre() {
 		return nombre;
 	}
+
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
+
 	public String getDescripción() {
 		return descripción;
 	}
+
 	public void setDescripción(String descripción) {
 		this.descripción = descripción;
 	}
 
 	public void eliminarParticipante(Usuario participante) {
-		participantesActivos.remove(participante); 
-		
+		participantesActivos.remove(participante);
+
 	}
 
 	public void eliminarCategoria(Categoria categoria) {
-		categorias.remove(categoria); 
-		
+		categorias.remove(categoria);
+
 	}
 
 	public void eliminarMuestra(Muestra muestra) {
-		muestras.remove(muestra); 
-		
+		muestras.remove(muestra);
 	}
+}

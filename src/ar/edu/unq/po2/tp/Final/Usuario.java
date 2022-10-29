@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Usuario {
+	
+	// FALTA asignarle desafios (strategy) 
+	// FALTA falta que cuando agrege una muestra compruebe las restricciones
+	// FALTA saber si es necesario que el usuario conozca los proyectos en los que esta
 
 	private Preferencia preferencia;
 
@@ -56,6 +60,10 @@ public class Usuario {
 	
 	public Integer porcentajeDeCompletitud(DesafioDeUsuario desafio) {
 		  return (desafio.cantidadDeMuestrasRecolectadas() * desafio.muestrasNecesariasParaCompletarDesafio()) / 100; 
+	}
+	
+	public void agregarDesafio(DesafioDeUsuario desafio) {
+		 this.desafios.add(desafio); 
 	}
 
 }

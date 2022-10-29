@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DesafioDeUsuario {
+	//  FALTA comparar las muestras
+	// FALTA testear los estados si funcionan (no pude implementarlos)
+	
 	private int puntuacion;
 	private Desafio desafio;
 	private List<Muestra> muestrasObtenidas = new ArrayList<Muestra>();
@@ -12,7 +15,6 @@ public class DesafioDeUsuario {
 	public DesafioDeUsuario(int puntuacion, Desafio desafio) {
 		setPuntuacion(puntuacion);
 		setEstado(new EstadoPendiente());
-		setEstado(estado);
 		muestrasObtenidas = new ArrayList<Muestra>();
 	}
 

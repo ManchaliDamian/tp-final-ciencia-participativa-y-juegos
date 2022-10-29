@@ -8,23 +8,23 @@ import org.junit.jupiter.api.Test;
 
 class UsuarioTestCase {
 	Usuario usuario;
-	Preferencia preferencia; 
-	
+	Preferencia preferencia;
+
 	@BeforeEach
-	public void setUp() throws Exception{
-		preferencia = mock(Preferencia.class); 
-		usuario = new Usuario(preferencia); 
+	public void setUp() throws Exception {
+		preferencia = mock(Preferencia.class);
+		usuario = new Usuario(preferencia);
 	}
 
 	@Test
 	void testUnUsuarioTieneUnaPreferenciaDeDesafío() {
 		
 	}
-	
+
 	@Test
 	void testUnUsuarioTieneUnaPreferenciaEnRecompesa() {
+
 		when(preferencia.getRecompensa()).thenReturn(20);
-		
 		assertEquals(20, usuario.getPreferencia().getRecompensa());
 	}
 
