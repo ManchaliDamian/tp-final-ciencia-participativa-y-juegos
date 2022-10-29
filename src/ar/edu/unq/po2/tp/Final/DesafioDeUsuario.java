@@ -4,8 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DesafioDeUsuario {
-	//  FALTA comparar las muestras
-	// FALTA testear los estados si funcionan (no pude implementarlos)
+	 //  FALTA comparar las muestras
 	
 	private int puntuacion;
 	private Desafio desafio;
@@ -43,12 +42,7 @@ public class DesafioDeUsuario {
 	}
 
 	public void aceptarDesafio() {
-		if (this.getEstado() == new EstadoPendiente()) { //no funciona :(
-			this.setEstado(new EstadoAceptado());
-		} else
-			this.getEstado();
-		
-		//Lo que haría es this.getEstado().actualizar(); 
+		estado.actualizarEstado(this); 
 
 	}
 
@@ -66,11 +60,11 @@ public class DesafioDeUsuario {
 		this.muestrasObtenidas = muestrasObtenidas;
 	}
 
-	public Integer cantidadDeMuestrasRecolectadas() {
+	public int cantidadDeMuestrasRecolectadas() {
 		return getMuestrasObtenidas().size();
 	}
 	
-	public Integer muestrasNecesariasParaCompletarDesafio() {
+	public int muestrasNecesariasParaCompletarDesafio() {
 		return getDesafio().getCantMuestras(); 
 	}
 

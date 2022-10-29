@@ -2,8 +2,14 @@ package ar.edu.unq.po2.tp.Final;
 
 public class EstadoCompleto extends Estado {
 
-	public boolean estáCompletado() {
-		return true;
+	@Override
+	public int porcentajeDeCompletitud(DesafioDeUsuario desafioDeUsuario) {
+		return 100; 
+	}
+
+	@Override
+	protected void actualizarEstado(DesafioDeUsuario desafioDeUsuario) {
+		
 	}
 
 }
