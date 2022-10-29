@@ -43,10 +43,12 @@ public class DesafioDeUsuario {
 	}
 
 	public void aceptarDesafio() {
-		if (this.getEstado() == new EstadoPendiente()) {
+		if (this.getEstado() == new EstadoPendiente()) { //no funciona :(
 			this.setEstado(new EstadoAceptado());
 		} else
 			this.getEstado();
+		
+		//Lo que haría es this.getEstado().actualizar(); 
 
 	}
 
