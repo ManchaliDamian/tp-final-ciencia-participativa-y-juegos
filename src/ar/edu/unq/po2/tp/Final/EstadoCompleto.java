@@ -23,5 +23,9 @@ public class EstadoCompleto extends Estado {
 		// TODO Auto-generated method stub
 		return false;
 	}
+	
+	public boolean estaCompleto() {
+		return true; 
+	}
 
 }

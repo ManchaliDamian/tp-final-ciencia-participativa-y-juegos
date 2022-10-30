@@ -24,5 +24,10 @@ public class EstadoPendiente extends Estado {
 		// TODO Auto-generated method stub
 		return false;
 	}
+	
+	public boolean estaCompleto() {
+		return false; 
+	}
+
 
 }

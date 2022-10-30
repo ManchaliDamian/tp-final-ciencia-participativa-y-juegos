@@ -29,6 +29,9 @@ public class EstadoAceptado extends Estado {
 	}
 
 	
-	
+	public boolean estaCompleto() {
+		return false; 
+	}
+
  
 }

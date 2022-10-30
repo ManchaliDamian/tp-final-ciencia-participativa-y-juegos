@@ -74,5 +74,9 @@ public class DesafioDeUsuario {
 		}
 	} 
 	
+	public boolean esDesafioTerminado() {
+		return estado.estaCompleto(); 
+	}
+	
 
 }
