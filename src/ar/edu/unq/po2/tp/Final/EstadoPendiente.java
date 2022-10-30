@@ -2,7 +2,7 @@ package ar.edu.unq.po2.tp.Final;
 
 public class EstadoPendiente extends Estado {
 
-
+ 
 	@Override
 	public void actualizarEstado(DesafioDeUsuario desafioDeUsuario) {
 		desafioDeUsuario.setEstado(new EstadoAceptado()); 
@@ -17,6 +17,12 @@ public class EstadoPendiente extends Estado {
 	public boolean esEstadoPendiente() {
 		// TODO Auto-generated method stub
 		return true;
+	}
+
+	@Override
+	public boolean estaAceptado() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

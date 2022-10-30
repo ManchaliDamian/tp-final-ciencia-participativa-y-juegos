@@ -8,21 +8,23 @@ import org.junit.jupiter.api.Test;
 
 class DesafioDeUsuarioTest {
 	DesafioDeUsuario desafioDeUsuario;
-	Estado estado;
+	Estado estadoAceptado;
+	Estado estadoPendiente; 
+	Estado estadoCompleto; 
 	Desafio desafio;
 	Muestra muestra1;
 	Muestra muestra2; 
 	
 	@BeforeEach
 	public void setUp() throws Exception {
-		estado = mock(EstadoAceptado.class);
+		estadoAceptado = mock(EstadoAceptado.class);
+		estadoPendiente = mock(EstadoPendiente.class); 
+		estadoCompleto = mock(EstadoCompleto.class); 
 		desafio = mock(Desafio.class);
 		muestra1 = mock(Muestra.class); 
 		muestra2 = mock(Muestra.class); 
 		desafioDeUsuario = new DesafioDeUsuario(5, desafio);
-		
-		desafioDeUsuario.setEstado(estado);
-		
+		 		
 		when(desafio.cumpleConRestriccion(muestra1)).thenReturn(true);
 		when(desafio.cumpleConRestriccion(muestra2)).thenReturn(false); 
 		
@@ -64,12 +66,47 @@ class DesafioDeUsuarioTest {
 	 }
 	 
 	 @Test
+	 void testCuandoUnDesafioDeUsuarioEstaEnEstadoAceptadoYCumpleConLaRestricciónSeAgregaLaMuestra() {
+		 desafioDeUsuario.setEstado(estadoAceptado);
+		 when(estadoAceptado.estaAceptado()).thenReturn(true);
+		 
+		 desafioDeUsuario.agregarMuestraSiCorresponde(muestra1);
+		 int cantMuestras = desafioDeUsuario.cantidadDeMuestrasRecolectadas();
+		 
+		 assertEquals(1, cantMuestras);
+	 }
+	 @Test
+	 void testCuandoUnDesafioDeUsuarioEstaEnEstadoPendienteNoSeAgregaLaMuestra() {
+		 desafioDeUsuario.setEstado(estadoPendiente);
+		 when(estadoPendiente.estaAceptado()).thenReturn(false);
+		 
+		 desafioDeUsuario.agregarMuestraSiCorresponde(muestra1);
+		 int cantMuestras = desafioDeUsuario.cantidadDeMuestrasRecolectadas();
+		 
+		 assertEquals(0, cantMuestras);
+	 }
+	 
+	 @Test
+	 void testCuandoUnDesafioDeUsuarioEstaEnEstadoCompletoNoSeAgregaLaMuestra() {
+		 desafioDeUsuario.setEstado(estadoCompleto);
+		 when(estadoPendiente.estaAceptado()).thenReturn(false);
+		 
+		 desafioDeUsuario.agregarMuestraSiCorresponde(muestra1);
+		 int cantMuestras = desafioDeUsuario.cantidadDeMuestrasRecolectadas();
+		 
+		 assertEquals(0, cantMuestras);
+	 }
+	 
+	 
+	 
+	 @Test
 	 void testCuandoUnDesafioDeUsuarioEsCompletadoSeActualizaAEstadoCompleto() {
 		 when(desafio.getCantMuestras()).thenReturn(1); 
+		 desafioDeUsuario.setEstado(estadoAceptado);
 		 
 		 desafioDeUsuario.agregarSiCumpleRestriccion(muestra1); //cada vez que se agrega una muestra se verifica si completo el desafio
 			
-		 verify(estado,times(1)).actualizarEstado(desafioDeUsuario);
+		 verify(estadoAceptado,times(1)).actualizarEstado(desafioDeUsuario);
 		 
 		 
 	 }
@@ -77,10 +114,11 @@ class DesafioDeUsuarioTest {
 	 @Test
 	 void testCuandoUnDesafioDeUsuarioNoEsCompletadoNoSeActualizaAEstadoCompleto() {
 		 when(desafio.getCantMuestras()).thenReturn(2);
+		 desafioDeUsuario.setEstado(estadoAceptado);
 		 
 		 desafioDeUsuario.agregarSiCumpleRestriccion(muestra1);
 		 
-		 verify(estado, never()).actualizarEstado(desafioDeUsuario);
+		 verify(estadoAceptado, never()).actualizarEstado(desafioDeUsuario);
 	 }
 	 
 	 

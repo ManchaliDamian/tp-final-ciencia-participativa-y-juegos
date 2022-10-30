@@ -46,10 +46,6 @@ public class DesafioDeUsuario {
 		return muestrasObtenidas;
 	}
 
-	public void setMuestrasObtenidas(List<Muestra> muestrasObtenidas) {
-		this.muestrasObtenidas = muestrasObtenidas;
-	}
-	
 	public void aceptarDesafio() {
 		estado.actualizarEstado(this); 
 
@@ -69,11 +65,18 @@ public class DesafioDeUsuario {
 		}
 	}
 
+	public void agregarMuestraSiCorresponde(Muestra muestra) {
+		if (estado.estaAceptado()) {
+			this.agregarSiCumpleRestriccion(muestra);
+		}
+	}
+	
 	public void agregarSiCumpleRestriccion(Muestra muestra) {
 		if (desafio.cumpleConRestriccion(muestra)) {
 			this.muestrasObtenidas.add(muestra); 
 			this.verificarSiEsDesafioCompleto(); 
 		}
 	}
+	
 
 }

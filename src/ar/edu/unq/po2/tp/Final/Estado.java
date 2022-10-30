@@ -11,5 +11,7 @@ public abstract class Estado {
 
 	public abstract boolean esEstadoPendiente();
 
+	public abstract boolean estaAceptado();
+
 
 }

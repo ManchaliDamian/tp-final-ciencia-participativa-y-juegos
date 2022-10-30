@@ -23,7 +23,7 @@ public class Desafio {
 		this.restriccionesTemp = restriccionesTemp;
 	}
 
-	public int getCantMuestras() {
+	public int getCantMuestras() { 
 		return cantMuestras;
 	}
 

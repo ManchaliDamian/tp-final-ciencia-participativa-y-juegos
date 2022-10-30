@@ -49,7 +49,7 @@ class UsuarioTest {
 	@Test
 	void testCuandoUnUsuarioAgregaUnNuevoDesafíoLoContieneEntreSusDesafíos() {
 		int cant = usuario.getDesafios().size();
-		assertEquals(2, cant);
+		assertEquals(3, cant);
 	}
 
 	@Test

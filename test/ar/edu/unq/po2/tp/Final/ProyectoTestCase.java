@@ -65,7 +65,7 @@ class ProyectoTestCase {
 		proyecto.agregarMuestra(muestra);
 		
 		assertTrue(proyecto.getMuestras().contains(muestra)); 
-	}
+	} 
 	
 	@Test
 	void testUnProyectoEliminaUnaMuestra() {

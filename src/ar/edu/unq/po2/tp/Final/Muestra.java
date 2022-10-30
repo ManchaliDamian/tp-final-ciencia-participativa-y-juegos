@@ -9,7 +9,7 @@ public class Muestra {
 	private LocalDate fecha;
 	private ChronoLocalDate hora; 
 	private Dia dia; 
-	
+	 
 	public Muestra(Coordenada cord, Usuario unUsuario, LocalDate fecha, ChronoLocalDate hora, Dia dia) {
 		this.cordGeografica = cord;
 		this.usuario = unUsuario;

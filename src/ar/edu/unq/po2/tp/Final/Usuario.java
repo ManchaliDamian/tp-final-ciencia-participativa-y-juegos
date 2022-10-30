@@ -41,7 +41,7 @@ public class Usuario {
 	public void agregarMuestra(Muestra muestra, Proyecto proyecto) {
 		proyecto.agregarMuestra(muestra);
 		for(DesafioDeUsuario d : desafios) {
-			d.agregarSiCumpleRestriccion(muestra); 
+			d.agregarMuestraSiCorresponde(muestra); 
 		}
 
 	}
