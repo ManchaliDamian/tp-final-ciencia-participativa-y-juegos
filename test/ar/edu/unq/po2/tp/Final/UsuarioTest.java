@@ -51,7 +51,7 @@ class UsuarioTest {
 		int cant = usuario.getDesafios().size();
 		assertEquals(3, cant);
 	}
-
+	
 	@Test
 	void testUnUsuarioAceptaLosDesafíosQueTienePendientes() {
 		usuario.aceptarDesafiosPendientes();
