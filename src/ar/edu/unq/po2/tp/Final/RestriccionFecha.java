@@ -5,10 +5,10 @@ import java.time.LocalDate;
 public class RestriccionFecha extends Restricciones {
 	  private LocalDate fechaInicio;
 	    private LocalDate fechaFin;
-	
-	@Override
-	public Boolean validarMuestra(Muestra muestra, Desafio desafio) {
-		   muestra.getFecha() ; 
+	    
+	public RestriccionFecha(LocalDate unaFechaInicio, LocalDate unaFechaFin) {
+		this.fechaInicio = unaFechaInicio; 
+		this.fechaFin = unaFechaFin; 
 	}
 
 	public LocalDate getFechaInicio() {
@@ -25,6 +25,18 @@ public class RestriccionFecha extends Restricciones {
 
 	public void setFechaFin(LocalDate fechaFin) {
 		this.fechaFin = fechaFin;
+	}
+	
+	@Override
+	public boolean isMuestraValida(Muestra muestra) {
+		   return fechaInicio.isBefore(muestra.getFecha()) && fechaFin.isAfter(muestra.getFecha()); 
+	}
+
+	@Override
+	public void agregarRestriccion(Restricciones restricción) {
+		RestriccionDiaYFecha  r = new RestriccionDiaYFecha();
+		r.agregarRestriccion(restricción);
+		
 	} 
 		
 	

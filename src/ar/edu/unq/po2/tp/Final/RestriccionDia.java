@@ -2,6 +2,11 @@ package ar.edu.unq.po2.tp.Final;
 
 public class RestriccionDia extends Restricciones{
 	private Dia dia;
+	
+	public RestriccionDia(Dia unDia) {
+		this.dia = unDia; 
+		
+	}
 
 	public Dia getDia() {
 		return dia;
@@ -12,17 +17,23 @@ public class RestriccionDia extends Restricciones{
 	}
 
 	@Override
-	public Boolean validarMuestra(Muestra muestra, Desafio desafio) {
+	public boolean isMuestraValida(Muestra muestra) {
+		return muestra.getDia() == this.dia;
+	}
+
+	@Override
+	public void agregarRestriccion(Restricciones restricción) {
+		RestriccionDiaYFecha  r = new RestriccionDiaYFecha();
+		r.agregarRestriccion(restricción);
 		
-		return null;
 	} 
 	
 	
 		
-	}
+}
 	
 	
 	
     
 
-}
+
