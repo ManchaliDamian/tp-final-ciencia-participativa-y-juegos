@@ -1,8 +1,7 @@
 package ar.edu.unq.po2.tp.Final;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -17,7 +16,6 @@ class UsuarioTest {
 	Estado estadoAceptado; 
 	Estado estadoPendiente; 
 	
-	//FALTA test de complejidad y de aceptar desafios
 	//tambien el de agregarMuestra hacer uno o dos de como 
 	//afecta al mock de Desafio de usuario
 
@@ -27,13 +25,11 @@ class UsuarioTest {
 		usuario = new Usuario(preferencia);
 		
 		estadoCompleto = mock(EstadoCompleto.class);
-		when(estadoCompleto.estáCompletado()).thenReturn(true);
-		
-		estadoAceptado = mock(EstadoAceptado.class); 
-		when(estadoAceptado.estáCompletado()).thenReturn(false); 
-		
+		estadoAceptado = mock(EstadoAceptado.class);  
 		estadoPendiente = mock(EstadoPendiente.class);
-		when(estadoPendiente.estáCompletado()).thenReturn(false); 
+		
+		when(estadoPendiente.esEstadoPendiente()).thenReturn(true); 
+		
 		
 		desafio1 = mock(DesafioDeUsuario.class);
 		when(desafio1.getEstado()).thenReturn(estadoCompleto); 
@@ -57,17 +53,18 @@ class UsuarioTest {
 	}
 
 	@Test
-	void testElUsuarioConoceSusDesafiosCompletos() {
-		int cant = usuario.cantidadDeDesafiosCompletados();
-		assertEquals(1, cant);
-
+	void testUnUsuarioAceptaLosDesafíosQueTienePendientes() {
+		usuario.aceptarDesafiosPendientes();
+		
+		verify(desafio3, times(1)).aceptarDesafio();
 	}
 	
 	@Test
-	void testUnUsuarioAceptaLosDesafíosQueTienePendientes() {
+	void testLosDesafiosDeUnUsuarioQueNoSeEncuentranPendientesNoSeActualizan() {
 		usuario.aceptarDesafiosPendientes();
-		int cant = 0; // arreglar
-		assertEquals(3, cant);
+		
+		verify(desafio2, never()).aceptarDesafio();
+		verify(desafio1, never()).aceptarDesafio();
 	}
 
 }

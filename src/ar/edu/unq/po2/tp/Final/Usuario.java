@@ -7,15 +7,15 @@ public class Usuario {
 	
 	// FALTA asignarle desafios (strategy) 
 	// FALTA falta que cuando agregue una muestra compruebe las restricciones
-	// FALTA saber si es necesario que el usuario conozca los proyectos en los que esta
-	//Falta arreglar desafiosPendientes 
 
 	private Preferencia preferencia;
 	
 	private List<DesafioDeUsuario> desafios = new ArrayList<DesafioDeUsuario>();
+	private List<Proyecto> proyectos = new ArrayList<Proyecto>(); 
 
 	public Usuario(Preferencia unaPreferencia) {
 		this.preferencia = unaPreferencia;
+		
 	}
 
 	public Preferencia getPreferencia() {
@@ -47,21 +47,18 @@ public class Usuario {
 	}
 
 	public void aceptarDesafiosPendientes() {
-		//List <DesafioDeUsuario>desafíosPendientes = desafios.stream().filter(d -> d.getEstado().esEstadoPendiente()).toList();
-		for (DesafioDeUsuario desafioDeUsuario : desafios) {
-			desafioDeUsuario.aceptarDesafio();
+		List<DesafioDeUsuario> desafiosPendientes = desafios.stream().filter(d -> d.getEstado().esEstadoPendiente()).toList();
+		for (DesafioDeUsuario d : desafiosPendientes) {
+			d.aceptarDesafio();
 		}
 	}
 
-	public int cantidadDeDesafiosCompletados() {
-		List <DesafioDeUsuario>desafíosCompletados = desafios.stream().filter(d -> d.getEstado().estáCompletado()).toList(); 
-		return desafíosCompletados.size();
+	public List<Proyecto> getProyectos() {
+		return proyectos;
 	}
-	
-	public int porcentajeDeCompletitud(DesafioDeUsuario desafio) {
-		  return (desafio.cantidadDeMuestrasRecolectadas() * desafio.muestrasNecesariasParaCompletarDesafio()) / 100; 
+
+	public void setProyectos(List<Proyecto> proyectos) {
+		this.proyectos = proyectos;
 	}
-	
-	
 
 }

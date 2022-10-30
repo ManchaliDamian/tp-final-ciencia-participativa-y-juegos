@@ -4,8 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DesafioDeUsuario {
-	//  FALTA comparar las muestras
-	// FALTA testear los estados si funcionan (no pude implementarlos)
+	 //  FALTA comparar las muestras
 	
 	private int puntuacion;
 	private Desafio desafio;
@@ -13,9 +12,10 @@ public class DesafioDeUsuario {
 	private Estado estado;
 
 	public DesafioDeUsuario(int puntuacion, Desafio desafio) {
-		setPuntuacion(puntuacion);
+		this.puntuacion= puntuacion;
+		this.desafio = desafio; 
 		setEstado(new EstadoPendiente());
-		muestrasObtenidas = new ArrayList<Muestra>();
+		
 	}
 
 	public int getPuntuacion() {
@@ -41,23 +41,7 @@ public class DesafioDeUsuario {
 	public void setEstado(Estado estado) {
 		this.estado = estado;
 	}
-
-	public void aceptarDesafio() {
-		if (this.getEstado() == new EstadoPendiente()) { //no funciona :(
-			this.setEstado(new EstadoAceptado());
-		} else
-			this.getEstado();
-		
-		//Lo que haría es this.getEstado().actualizar(); 
-
-	}
-
-	public void desafioCompletado() {
-		if (muestrasObtenidas.size() == this.desafio.getCantMuestras()) {
-			this.setEstado(new EstadoCompleto());
-		}
-	}
-
+	
 	public List<Muestra> getMuestrasObtenidas() {
 		return muestrasObtenidas;
 	}
@@ -65,18 +49,31 @@ public class DesafioDeUsuario {
 	public void setMuestrasObtenidas(List<Muestra> muestrasObtenidas) {
 		this.muestrasObtenidas = muestrasObtenidas;
 	}
+	
+	public void aceptarDesafio() {
+		estado.actualizarEstado(this); 
 
-	public Integer cantidadDeMuestrasRecolectadas() {
+	}
+	
+	public int cantidadDeMuestrasRecolectadas() {
 		return getMuestrasObtenidas().size();
 	}
 	
-	public Integer muestrasNecesariasParaCompletarDesafio() {
+	public int cantMuestrasParaCumplirDesafio() {
 		return getDesafio().getCantMuestras(); 
 	}
 
+	public void verificarSiEsDesafioCompleto() {
+		if (muestrasObtenidas.size() >= desafio.getCantMuestras()) {
+			estado.actualizarEstado(this);
+		}
+	}
+
 	public void agregarSiCumpleRestriccion(Muestra muestra) {
-		getDesafio().getRestriccionesTemp().validarMuestra(muestra, this.desafio); 
-		
+		if (desafio.cumpleConRestriccion(muestra)) {
+			this.muestrasObtenidas.add(muestra); 
+			this.verificarSiEsDesafioCompleto(); 
+		}
 	}
 
 }
