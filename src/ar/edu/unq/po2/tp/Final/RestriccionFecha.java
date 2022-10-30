@@ -8,7 +8,7 @@ public class RestriccionFecha extends Restricciones {
 	
 	@Override
 	public Boolean validarMuestra(Muestra muestra, Desafio desafio) {
-		   muestra.getFecha() 
+		   muestra.getFecha() ; 
 	}
 
 	public LocalDate getFechaInicio() {

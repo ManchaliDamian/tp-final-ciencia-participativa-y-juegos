@@ -46,6 +46,7 @@ class UsuarioTest {
 		
 		usuario.agregarDesafio(desafio1);
 		usuario.agregarDesafio(desafio2);
+		usuario.agregarDesafio(desafio3);
 		
 	}
 	

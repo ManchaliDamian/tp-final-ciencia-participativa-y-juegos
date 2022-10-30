@@ -74,4 +74,9 @@ public class DesafioDeUsuario {
 		return getDesafio().getCantMuestras(); 
 	}
 
+	public void agregarSiCumpleRestriccion(Muestra muestra) {
+		getDesafio().getRestriccionesTemp().validarMuestra(muestra, this.desafio); 
+		
+	}
+
 }

@@ -8,12 +8,14 @@ public class Muestra {
 	private Usuario usuario;
 	private LocalDate fecha;
 	private ChronoLocalDate hora; 
+	private Dia dia; 
 	
-	public Muestra(Coordenada cord, Usuario unUsuario, LocalDate fecha, ChronoLocalDate hora) {
+	public Muestra(Coordenada cord, Usuario unUsuario, LocalDate fecha, ChronoLocalDate hora, Dia dia) {
 		this.cordGeografica = cord;
 		this.usuario = unUsuario;
 		this.fecha = fecha;
 		this.hora = hora; 
+		this.dia = dia; 
 	}
 	
 	public Coordenada getCordGeografica() {
@@ -40,5 +42,15 @@ public class Muestra {
 	public void setHora(ChronoLocalDate hora) {
 		this.hora = hora;
 	}
+
+	public Dia getDia() {
+		return dia;
+	}
+
+	public void setDia(Dia dia) {
+		this.dia = dia;
+	}
+	
+	
 
 }
