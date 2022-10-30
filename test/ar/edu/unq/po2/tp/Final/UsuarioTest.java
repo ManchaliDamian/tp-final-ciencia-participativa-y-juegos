@@ -52,7 +52,7 @@ class UsuarioTest {
 		assertEquals(3, cant);
 	}
 	
-	@Test
+	@Test 
 	void testUnUsuarioAceptaLosDesafíosQueTienePendientes() {
 		usuario.aceptarDesafiosPendientes();
 		

@@ -59,13 +59,9 @@ public class DesafioDeUsuario {
 		return getDesafio().getCantMuestras(); 
 	}
 
-	public void verificarSiEsDesafioCompleto() {
-		if (muestrasObtenidas.size() >= desafio.getCantMuestras()) {
-			estado.actualizarEstado(this);
-		}
-	}
+	
 
-	public void agregarMuestraSiCorresponde(Muestra muestra) {
+	public void agregarMuestra(Muestra muestra) {
 		if (estado.estaAceptado()) {
 			this.agregarSiCumpleRestriccion(muestra);
 		}
@@ -74,9 +70,9 @@ public class DesafioDeUsuario {
 	public void agregarSiCumpleRestriccion(Muestra muestra) {
 		if (desafio.cumpleConRestriccion(muestra)) {
 			this.muestrasObtenidas.add(muestra); 
-			this.verificarSiEsDesafioCompleto(); 
+			this.estado.actualizarEstado(this);
 		}
-	}
+	} 
 	
 
 }

@@ -23,16 +23,14 @@ class DesafioDeUsuarioTest {
 		desafio = mock(Desafio.class);
 		muestra1 = mock(Muestra.class); 
 		muestra2 = mock(Muestra.class); 
-		desafioDeUsuario = new DesafioDeUsuario(5, desafio);
-		 		
-		when(desafio.cumpleConRestriccion(muestra1)).thenReturn(true);
-		when(desafio.cumpleConRestriccion(muestra2)).thenReturn(false); 
-		
+		desafioDeUsuario = new DesafioDeUsuario(5, desafio); 
+		 
 		
 	}
 	 @Test 
 	  void testDesafioDeUsuarioAgregaUnaMuestraQueCumpleConLasRestricciones() {
-		desafioDeUsuario.agregarSiCumpleRestriccion(muestra1);
+		 when(desafio.cumpleConRestriccion(muestra1)).thenReturn(true);
+		 desafioDeUsuario.agregarSiCumpleRestriccion(muestra1);
 		 
 		assertEquals(1, desafioDeUsuario.cantidadDeMuestrasRecolectadas());
 		 		 
@@ -40,6 +38,7 @@ class DesafioDeUsuarioTest {
 	 
 	 @Test
 	 void testDesafioDeUnUsuarioNoAgregaUnaMuestraQueNoCumpleConLasRestricciones() {
+		 when(desafio.cumpleConRestriccion(muestra2)).thenReturn(false);
 		 desafioDeUsuario.agregarSiCumpleRestriccion(muestra2);
 		 
 		 assertEquals(0, desafioDeUsuario.cantidadDeMuestrasRecolectadas());
@@ -65,65 +64,41 @@ class DesafioDeUsuarioTest {
 		 assertEquals(2, cant);
 	 }
 	 
-	 @Test
-	 void testCuandoUnDesafioDeUsuarioEstaEnEstadoAceptadoYCumpleConLaRestricciónSeAgregaLaMuestra() {
-		 desafioDeUsuario.setEstado(estadoAceptado);
-		 when(estadoAceptado.estaAceptado()).thenReturn(true);
-		 
-		 desafioDeUsuario.agregarMuestraSiCorresponde(muestra1);
-		 int cantMuestras = desafioDeUsuario.cantidadDeMuestrasRecolectadas();
-		 
-		 assertEquals(1, cantMuestras);
-	 }
-	 @Test
-	 void testCuandoUnDesafioDeUsuarioEstaEnEstadoPendienteNoSeAgregaLaMuestra() {
-		 desafioDeUsuario.setEstado(estadoPendiente);
-		 when(estadoPendiente.estaAceptado()).thenReturn(false);
-		 
-		 desafioDeUsuario.agregarMuestraSiCorresponde(muestra1);
-		 int cantMuestras = desafioDeUsuario.cantidadDeMuestrasRecolectadas();
-		 
-		 assertEquals(0, cantMuestras);
-	 }
-	 
-	 @Test
-	 void testCuandoUnDesafioDeUsuarioEstaEnEstadoCompletoNoSeAgregaLaMuestra() {
-		 desafioDeUsuario.setEstado(estadoCompleto);
-		 when(estadoPendiente.estaAceptado()).thenReturn(false);
-		 
-		 desafioDeUsuario.agregarMuestraSiCorresponde(muestra1);
-		 int cantMuestras = desafioDeUsuario.cantidadDeMuestrasRecolectadas();
-		 
-		 assertEquals(0, cantMuestras);
-	 }
-	 
-	 
-	 
-	 @Test
-	 void testCuandoUnDesafioDeUsuarioEsCompletadoSeActualizaAEstadoCompleto() {
-		 when(desafio.getCantMuestras()).thenReturn(1); 
-		 desafioDeUsuario.setEstado(estadoAceptado);
-		 
-		 desafioDeUsuario.agregarSiCumpleRestriccion(muestra1); //cada vez que se agrega una muestra se verifica si completo el desafio
-			
-		 verify(estadoAceptado,times(1)).actualizarEstado(desafioDeUsuario);
-		 
-		 
-	 }
-	 
-	 @Test
-	 void testCuandoUnDesafioDeUsuarioNoEsCompletadoNoSeActualizaAEstadoCompleto() {
-		 when(desafio.getCantMuestras()).thenReturn(2);
-		 desafioDeUsuario.setEstado(estadoAceptado);
-		 
-		 desafioDeUsuario.agregarSiCumpleRestriccion(muestra1);
-		 
-		 verify(estadoAceptado, never()).actualizarEstado(desafioDeUsuario);
-	 }
-	 
-	 
-	
+	@Test 
+	void testSeAgregaUnaMuestraPeroElDesafioNoEstaAceptado() {
+		when(desafio.cumpleConRestriccion(muestra1)).thenReturn(true);
 		
+		desafioDeUsuario.agregarMuestra(muestra1);
+		int cant = desafioDeUsuario.cantidadDeMuestrasRecolectadas();
+		
+		assertEquals(0, cant);
 	}
+	
+	@Test
+	void testSeAgregaUnaMuestraADesafioAceptado() {
+		when(desafio.cumpleConRestriccion(muestra1)).thenReturn(true);
+		desafioDeUsuario.aceptarDesafio();
+		
+		desafioDeUsuario.agregarMuestra(muestra1);
+		int cant = desafioDeUsuario.cantidadDeMuestrasRecolectadas();
+		
+		assertEquals(1, cant);
+	}
+	
+	@Test
+	void testSeAgregaLaUltimaMuestraParaCompletar() {
+		when(desafio.cumpleConRestriccion(muestra1)).thenReturn(true);
+		when(desafio.cumpleConRestriccion(muestra2)).thenReturn(true);
+		when(desafio.getCantMuestras()).thenReturn(1);
+		desafioDeUsuario.aceptarDesafio();
+		
+		desafioDeUsuario.agregarMuestra(muestra1);
+		desafioDeUsuario.agregarMuestra(muestra2);
+		int cant = desafioDeUsuario.cantidadDeMuestrasRecolectadas();
+		
+		assertEquals(1, cant);
+	}
+		
+}
 
 

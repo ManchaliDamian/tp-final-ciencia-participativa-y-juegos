@@ -19,7 +19,7 @@ public class RestriccionDia extends Restricciones{
 	@Override
 	public boolean isMuestraValida(Muestra muestra) {
 		return muestra.getDia() == this.dia;
-	}
+	} 
 
 	@Override
 	public void agregarRestriccion(Restricciones restricción) {

@@ -5,7 +5,7 @@ public class EstadoAceptado extends Estado {
  
 	@Override
 	public int porcentajeDeCompletitud(DesafioDeUsuario desafioDeUsuario) {
-		  return (desafioDeUsuario.cantidadDeMuestrasRecolectadas() * desafioDeUsuario.cantMuestrasParaCumplirDesafio()) / 100; 
+		  return (desafioDeUsuario.cantidadDeMuestrasRecolectadas() * 100) / desafioDeUsuario.cantMuestrasParaCumplirDesafio(); 
 
 	}
 
@@ -30,5 +30,5 @@ public class EstadoAceptado extends Estado {
 
 	
 	
-
+ 
 }

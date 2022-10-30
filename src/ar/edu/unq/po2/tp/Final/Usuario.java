@@ -16,7 +16,7 @@ public class Usuario {
 	public Usuario(Preferencia unaPreferencia) {
 		this.preferencia = unaPreferencia;
 		
-	}
+	} 
 
 	public Preferencia getPreferencia() {
 		return preferencia;
@@ -47,8 +47,7 @@ public class Usuario {
 	}
 
 	public void aceptarDesafiosPendientes() {
-		List<DesafioDeUsuario> desafiosPendientes = desafios.stream().filter(d -> d.getEstado().esEstadoPendiente()).toList();
-		for (DesafioDeUsuario d : desafiosPendientes) {
+		for (DesafioDeUsuario d : desafios) {
 			d.aceptarDesafio();
 		}
 	}

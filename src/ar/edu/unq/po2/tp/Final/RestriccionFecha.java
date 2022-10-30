@@ -9,7 +9,7 @@ public class RestriccionFecha extends Restricciones {
 	public RestriccionFecha(LocalDate unaFechaInicio, LocalDate unaFechaFin) {
 		this.fechaInicio = unaFechaInicio; 
 		this.fechaFin = unaFechaFin; 
-	}
+	} 
 
 	public LocalDate getFechaInicio() {
 		return fechaInicio;
@@ -29,7 +29,7 @@ public class RestriccionFecha extends Restricciones {
 	
 	@Override
 	public boolean isMuestraValida(Muestra muestra) {
-		   return fechaInicio.isBefore(muestra.getFecha()) && fechaFin.isAfter(muestra.getFecha()); 
+		   return fechaInicio.isAfter(muestra.getFecha()) && fechaFin.isBefore(muestra.getFecha()); 
 	}
 
 	@Override
