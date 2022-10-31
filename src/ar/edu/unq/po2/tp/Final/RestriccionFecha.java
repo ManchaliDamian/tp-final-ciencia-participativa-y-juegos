@@ -29,7 +29,7 @@ public class RestriccionFecha extends Restricciones {
 	
 	@Override
 	public boolean isMuestraValida(Muestra muestra) {
-		   return fechaInicio.isAfter(muestra.getFecha()) && fechaFin.isBefore(muestra.getFecha()); 
+		   return fechaInicio.isBefore(muestra.getFecha()) && fechaFin.isAfter(muestra.getFecha()); 
 	}
 
 	@Override

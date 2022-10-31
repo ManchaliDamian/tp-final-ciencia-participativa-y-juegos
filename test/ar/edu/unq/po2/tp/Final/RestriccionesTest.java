@@ -84,6 +84,17 @@ class RestriccionesTest {
 		restriccionDiaYFecha.agregarRestriccion(restriccionDia);
 		restriccionDiaYFecha.agregarRestriccion(restriccionFecha);
 	
+		assertFalse(restriccionDiaYFecha.isMuestraValida(muestra)); 
+	}
+	
+	@Test
+	void testUnaMuestraSeRealizaEnFechaPeroNoEnDia() {
+		LocalDate fechaMuestra = LocalDate.of(2022, 10, 22);
+		when(muestra.getFecha()).thenReturn(fechaMuestra);
+		when(muestra.getDia()).thenReturn(Dia.Jueves);
+		
+		restriccionDiaYFecha.agregarRestriccion(restriccionDia);
+		restriccionDiaYFecha.agregarRestriccion(restriccionFecha);
 		
 		assertFalse(restriccionDiaYFecha.isMuestraValida(muestra)); 
 	}
