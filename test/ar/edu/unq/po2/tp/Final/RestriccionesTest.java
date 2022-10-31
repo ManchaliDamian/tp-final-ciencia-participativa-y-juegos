@@ -25,9 +25,9 @@ class RestriccionesTest {
 		restriccionDiaYFecha = new RestriccionDiaYFecha(); 
 		muestra = mock(Muestra.class); 
 		
-	}
+	} 
 
-	@Test
+	@Test 
 	void testUnaMuestraSeRealizaElMismoDiaQueLaRestriccionDiaEsValida() {
 		when(muestra.getDia()).thenReturn(Dia.Martes);
 		
