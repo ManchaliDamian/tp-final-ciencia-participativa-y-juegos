@@ -16,7 +16,7 @@ public class FiltroCompuesto extends Filtro {
 	}
 
 	public void setFiltros(List<Filtro> filtros) {
-		this.filtros = filtros;
+		this.filtros = filtros; 
 	}
 
 }

@@ -58,15 +58,7 @@ public class Usuario {
 	public void setProyectos(List<Proyecto> proyectos) {
 		this.proyectos = proyectos;
 	}
-
-	public Integer cantidadDeDesafiosCompletados() {
-		Integer cantidadDeDesafios = 0;
-		for (DesafioDeUsuario d : desafios) {
-			if (d.esDesafioTerminado()) {
-				cantidadDeDesafios = cantidadDeDesafios + 1;
-			}
-		}
-		return cantidadDeDesafios;
-	}
+	
+	
 
 }

@@ -4,18 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DesafioDeUsuario {
-	 //  FALTA comparar las muestras
-	
+
 	private int puntuacion;
 	private Desafio desafio;
 	private List<Muestra> muestrasObtenidas = new ArrayList<Muestra>();
 	private Estado estado;
 
 	public DesafioDeUsuario(int puntuacion, Desafio desafio) {
-		this.puntuacion= puntuacion;
-		this.desafio = desafio; 
+		this.puntuacion = puntuacion;
+		this.desafio = desafio;
 		setEstado(new EstadoPendiente());
-		
+
 	}
 
 	public int getPuntuacion() {
@@ -41,42 +40,38 @@ public class DesafioDeUsuario {
 	public void setEstado(Estado estado) {
 		this.estado = estado;
 	}
-	
+
 	public List<Muestra> getMuestrasObtenidas() {
 		return muestrasObtenidas;
 	}
 
 	public void aceptarDesafio() {
-		estado.actualizarEstado(this); 
+		estado.actualizarEstado(this);
 
 	}
-	
+
 	public int cantidadDeMuestrasRecolectadas() {
 		return getMuestrasObtenidas().size();
 	}
-	
-	public int cantMuestrasParaCumplirDesafio() {
-		return getDesafio().getCantMuestras(); 
-	}
 
-	
+	public int cantMuestrasParaCumplirDesafio() {
+		return getDesafio().getCantMuestras();
+	}
 
 	public void agregarMuestra(Muestra muestra) {
 		if (estado.estaAceptado()) {
 			this.agregarSiCumpleRestriccion(muestra);
 		}
 	}
-	
+
 	public void agregarSiCumpleRestriccion(Muestra muestra) {
 		if (desafio.cumpleConRestriccion(muestra)) {
-			this.muestrasObtenidas.add(muestra); 
+			this.muestrasObtenidas.add(muestra);
 			this.estado.actualizarEstado(this);
 		}
-	} 
-	
-	public boolean esDesafioTerminado() {
-		return estado.estaCompleto(); 
 	}
 	
-
+	public boolean esDesafioCompleto() {
+		return getEstado().estaCompleto(); 
+	}
 }

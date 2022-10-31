@@ -19,6 +19,7 @@ class UsuarioTest {
 	Estado estadoPendiente;
 	Muestra muestra;
 	Proyecto proyecto;
+	Restricciones restriccion; 
 
 	// tambien el de agregarMuestra hacer uno o dos de como
 	// afecta al mock de Desafio de usuario
@@ -34,7 +35,10 @@ class UsuarioTest {
 		estadoPendiente = mock(EstadoPendiente.class);
 
 		desafio1 = mock(DesafioDeUsuario.class);
-
+		
+		LocalDate unaFechaDeIncio = LocalDate.of(2022, 10, 20);
+		LocalDate unaFechaDeFin = LocalDate.of(2022, 10, 30); 
+		restriccion = new RestriccionFecha(unaFechaDeIncio, unaFechaDeFin);
 	}
 
 	@Test
@@ -65,6 +69,13 @@ class UsuarioTest {
 		usuario.aceptarDesafiosPendientes();
 
 		verify(desafio3, times(1)).aceptarDesafio();
+	}
+	
+	@Test 
+	void testUnUsuarioCompletaUnDesafio() {
+		
+		
+		
 	}
 
 }
