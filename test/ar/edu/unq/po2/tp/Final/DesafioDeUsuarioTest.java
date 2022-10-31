@@ -55,7 +55,7 @@ class DesafioDeUsuarioTest {
 		verify(estadoAceptado, times(1)).actualizarEstado(desafioDeUsuario);
 		assertTrue(desafioDeUsuario.getEstado().estaCompleto());
 	} 
-
+ 
 	@Test
 	void testDesafioDeUsuarioAgregaUnaMuestraSiElDesafioEstaAceptado() {
 		desafioDeUsuario.setEstado(estadoAceptado);
@@ -115,7 +115,7 @@ class DesafioDeUsuarioTest {
 		int cant = desafioDeUsuario.cantidadDeMuestrasRecolectadas();
 
 		assertEquals(0, cant);
-	}
+	} 
 	
 	@Test
 	void testUnDesafioDeUsuarioTieneUnaCantDeMuestrasParaCompletarElDesafio() {

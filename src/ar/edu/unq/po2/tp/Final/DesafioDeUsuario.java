@@ -28,7 +28,7 @@ public class DesafioDeUsuario {
 	public void setDesafio(Desafio desafio) {
 		this.desafio = desafio;
 	}
-
+ 
 	public Desafio getDesafio() {
 		return desafio;
 	}
@@ -62,7 +62,7 @@ public class DesafioDeUsuario {
 		if (estado.estaAceptado()) {
 			this.agregarSiCumpleRestriccion(muestra);
 		}
-	}
+	} 
 
 	public void agregarSiCumpleRestriccion(Muestra muestra) {
 		if (desafio.cumpleConRestriccion(muestra)) {

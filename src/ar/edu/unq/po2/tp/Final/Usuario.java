@@ -28,6 +28,11 @@ public class Usuario {
 	public void agregarDesafio(DesafioDeUsuario desafio) {
 		this.desafios.add(desafio);
 	}
+	
+	public void eliminarDesafio(DesafioDeUsuario desafio1) {
+		desafios.remove(desafio1);
+		
+	}
 
 	public List<DesafioDeUsuario> getDesafios() {
 		return desafios;
@@ -36,10 +41,26 @@ public class Usuario {
 	public void setDesafios(List<DesafioDeUsuario> desafios) {
 		this.desafios = desafios;
 	}
+	
+	public List<Proyecto> getProyectos() {
+		return proyectos;
+	}
+
+	public void setProyectos(List<Proyecto> proyectos) {
+		this.proyectos = proyectos;
+	}
+	
+	public void agregarProyecto(Proyecto p) {
+		this.proyectos.add(p);
+	}
+	
+	public void eliminarProyecto(Proyecto proyecto) {
+		proyectos.remove(proyecto);
+		
+	}
 
 	public void agregarMuestra(Muestra muestra, Proyecto proyecto) {
 		proyecto.agregarMuestra(muestra);
-
 		for (DesafioDeUsuario d : desafios) {
 			d.agregarMuestra(muestra);
 		}
@@ -52,12 +73,36 @@ public class Usuario {
 		}
 	}
 
-	public List<Proyecto> getProyectos() {
-		return proyectos;
+	public List<DesafioDeUsuario> desafiosPendientes() {
+		List<DesafioDeUsuario> desafiosPendientes = new ArrayList<DesafioDeUsuario>();
+		for (DesafioDeUsuario d : desafios) {
+			if(d.getEstado().esEstadoPendiente()) {
+				desafiosPendientes.add(d); 
+			}
+	
+		}
+		return desafiosPendientes;
 	}
 
-	public void setProyectos(List<Proyecto> proyectos) {
-		this.proyectos = proyectos;
+	public List<DesafioDeUsuario> desafiosCompletos() {
+		List<DesafioDeUsuario> desafiosCompletos = new ArrayList<DesafioDeUsuario>();
+		for (DesafioDeUsuario d : desafios) {
+			if(d.getEstado().estaCompleto()) {
+				desafiosCompletos.add(d);
+			}
+		}
+		return desafiosCompletos;
 	}
+
+	public double getPorcentajeDeCompletitud(DesafioDeUsuario desafioDeUsuario1) {
+		double comp = desafioDeUsuario1.getEstado().porcentajeDeCompletitud(desafioDeUsuario1);
+		return comp;
+	}
+
+	
+	
+ 
+	
+
 
 }
