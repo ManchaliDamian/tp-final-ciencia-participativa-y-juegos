@@ -47,7 +47,7 @@ public class Desafio {
 		this.recompensa = recompensa;
 	}
 
-	public boolean cumpleConRestriccion(Muestra muestra) {
+	public boolean cumpleConRestriccion(Muestra muestra) { 
 		return getRestriccionesTemp().isMuestraValida(muestra);
 	} 
 

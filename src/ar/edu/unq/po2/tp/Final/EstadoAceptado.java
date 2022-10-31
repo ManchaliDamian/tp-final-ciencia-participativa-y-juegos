@@ -13,7 +13,7 @@ public class EstadoAceptado extends Estado {
 	public void actualizarEstado(DesafioDeUsuario desafioDeUsuario) {
 		if (this.porcentajeDeCompletitud(desafioDeUsuario) == 100) {
 			desafioDeUsuario.setEstado(new EstadoCompleto());
-		}
+		} 
 	}
 
 	@Override
@@ -29,6 +29,9 @@ public class EstadoAceptado extends Estado {
 	}
 
 	
-	
+	public boolean estaCompleto() {
+		return false; 
+	}
+
  
 }

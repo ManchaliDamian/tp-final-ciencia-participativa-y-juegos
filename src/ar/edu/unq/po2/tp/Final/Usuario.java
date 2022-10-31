@@ -4,19 +4,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Usuario {
-	
-	// FALTA asignarle desafios (strategy) 
-	// FALTA falta que cuando agregue una muestra compruebe las restricciones
+
+	// FALTA asignarle desafios (strategy)
 
 	private Preferencia preferencia;
-	
+
 	private List<DesafioDeUsuario> desafios = new ArrayList<DesafioDeUsuario>();
-	private List<Proyecto> proyectos = new ArrayList<Proyecto>(); 
+	private List<Proyecto> proyectos = new ArrayList<Proyecto>();
 
 	public Usuario(Preferencia unaPreferencia) {
 		this.preferencia = unaPreferencia;
-		
-	} 
+
+	}
 
 	public Preferencia getPreferencia() {
 		return preferencia;
@@ -25,11 +24,11 @@ public class Usuario {
 	public void setPreferencia(Preferencia preferencia) {
 		this.preferencia = preferencia;
 	}
-	
+
 	public void agregarDesafio(DesafioDeUsuario desafio) {
-		 this.desafios.add(desafio); 
+		this.desafios.add(desafio);
 	}
-	
+
 	public List<DesafioDeUsuario> getDesafios() {
 		return desafios;
 	}
@@ -40,8 +39,9 @@ public class Usuario {
 
 	public void agregarMuestra(Muestra muestra, Proyecto proyecto) {
 		proyecto.agregarMuestra(muestra);
-		for(DesafioDeUsuario d : desafios) {
-			d.agregarMuestra(muestra); 
+
+		for (DesafioDeUsuario d : desafios) {
+			d.agregarMuestra(muestra);
 		}
 
 	}
