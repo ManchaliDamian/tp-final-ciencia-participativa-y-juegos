@@ -8,7 +8,8 @@ public class Usuario {
 	// FALTA asignarle desafios (strategy)
 
 	private Preferencia preferencia;
-
+    private EstrategiaDeSeleccion estrategia; 
+    
 	private List<DesafioDeUsuario> desafios = new ArrayList<DesafioDeUsuario>();
 	private List<Proyecto> proyectos = new ArrayList<Proyecto>();
 
@@ -99,8 +100,25 @@ public class Usuario {
 		return comp;
 	}
 
+	public void desafiosDeInteres(List<Desafio> desafios) { 
+		 this.estrategia.desafiosParaElUsuario(desafios , this);
+	}
+
+
 	
-	
+	public void puntuarDesafio(DesafioDeUsuario desafio, int puntuacion) {
+		desafio.setPuntuacion(puntuacion);
+		System.out.print("la puntuacion es" + " " + puntuacion);
+
+	}
+
+	public EstrategiaDeSeleccion getEstrategia() {
+		return estrategia;
+	}
+
+	public void setEstrategia(EstrategiaDeSeleccion estrategia) {
+		this.estrategia = estrategia;
+	}
  
 	
 

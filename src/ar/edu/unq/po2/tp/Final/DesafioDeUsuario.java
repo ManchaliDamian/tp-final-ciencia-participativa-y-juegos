@@ -10,8 +10,8 @@ public class DesafioDeUsuario {
 	private List<Muestra> muestrasObtenidas = new ArrayList<Muestra>();
 	private Estado estado;
 
-	public DesafioDeUsuario(int puntuacion, Desafio desafio) {
-		this.puntuacion = puntuacion;
+	public DesafioDeUsuario (Desafio desafio) {
+		this.puntuacion = 0;
 		this.desafio = desafio;
 		setEstado(new EstadoPendiente());
 
