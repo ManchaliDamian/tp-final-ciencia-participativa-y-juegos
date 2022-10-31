@@ -17,6 +17,7 @@ class EstadosTest {
 
 	@BeforeEach
 	public void setUp() throws Exception {
+
 		estadoCompleto = new EstadoCompleto();
 		estadoAceptado =new EstadoAceptado();
 		estadoPendiente = new EstadoPendiente();
@@ -24,12 +25,12 @@ class EstadosTest {
 		desafio1 = mock(DesafioDeUsuario.class);
 
 	}
-
+ 
 	@Test
-	void testElEstadoCambiaCuandoElusuarioAceptaElDesafio() {
-		when(desafio1.getEstado()).thenReturn(estadoPendiente); 
-        //desafio1.aceptarDesafio();
-		estadoPendiente.actualizarEstado(desafio1);
+	void testElEstadoActualizaSuEstado() {
+		when(desafio1.getEstado()).thenReturn(estadoAceptado); 
+        
+		estadoAceptado.actualizarEstado(desafio1);
 		
 		assertTrue(desafio1.getEstado().estaAceptado());
 		

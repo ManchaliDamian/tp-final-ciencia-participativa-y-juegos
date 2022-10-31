@@ -13,7 +13,7 @@ public class FiltroCategoria extends Filtro {
 		List<Proyecto> proyectosConCategorias = new ArrayList<Proyecto>(); 
 		for (Categoria c : categoriasDeseadas) {
 			for(Proyecto p : proyectos) {
-				if(p.getCategorias().contains(c) && p.getCategorias().) {
+				if(p.getCategorias().contains(c) && p.getCategorias()) {
 					proyectosConCategorias.add(p); 
 				}
 			}
@@ -23,6 +23,6 @@ public class FiltroCategoria extends Filtro {
 
 	}
 
-	
+	 
 }
 

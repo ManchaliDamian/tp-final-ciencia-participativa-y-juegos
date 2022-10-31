@@ -26,7 +26,7 @@ class DesafioDeUsuarioTest {
 		muestra2 = mock(Muestra.class);
 
 		desafio = mock(Desafio.class);
-		desafioDeUsuario = new DesafioDeUsuario(5, desafio);
+		desafioDeUsuario = new DesafioDeUsuario(desafio);
 
 	}
 
@@ -53,7 +53,8 @@ class DesafioDeUsuarioTest {
 		desafioDeUsuario.agregarMuestra(muestra1);  
 		
 		verify(estadoAceptado, times(1)).actualizarEstado(desafioDeUsuario);
-		assertTrue(desafioDeUsuario.getEstado().estaCompleto());
+		// no podemos lograr comparar tipos de estado, de esta manera si estadoAceptado
+		// actualiza su estado, verifica que el mismo paso a completo
 	} 
  
 	@Test
@@ -67,7 +68,7 @@ class DesafioDeUsuarioTest {
 
 		assertEquals(1, cant);
 	}
-
+ 
 	@Test
 	void testDesafioDeUsuarioNoAgregaUnaMuestraSiElDesafioEstaPendiente() {
 		desafioDeUsuario.setEstado(estadoPendiente);

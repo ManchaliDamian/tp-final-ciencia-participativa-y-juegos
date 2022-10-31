@@ -1,6 +1,7 @@
 package ar.edu.unq.po2.tp.Final;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class PreferenciasDeJuego extends EstrategiaDeSeleccion {
@@ -18,14 +19,15 @@ public class PreferenciasDeJuego extends EstrategiaDeSeleccion {
 		return desafiosRecomendados.stream().limit(5).toList(); 
 		
 		
-	} 
+	}  
 	
 	public List<Integer> losResultados(List<Desafio> desafios2, Usuario usuario) {
 		 List<Integer> losResultadosHastaAhora = new ArrayList<Integer>(); 
 		 for (Desafio d : desafios2) {
 			 losResultadosHastaAhora.add(coincidenciaDeDesafioYUsuario(d , usuario));
 		}
-		 return  losResultadosHastaAhora; 
+		 Collections.sort(losResultadosHastaAhora); 
+		 return  losResultadosHastaAhora ; 
 	} 
 	 
 }

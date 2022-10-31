@@ -17,6 +17,9 @@ class UsuarioTest {
 	Desafio desafio1;
 	Desafio desafio2;
 	Desafio desafio3;
+	Desafio desafio4;
+	Desafio desafio5;
+	Desafio desafio6;
 	DesafioDeUsuario desafioDeUsuario1;
 	DesafioDeUsuario desafioDeUsuario2;
 	DesafioDeUsuario desafioDeUsuario3;
@@ -26,7 +29,7 @@ class UsuarioTest {
 	Muestra muestra;
 	Proyecto proyecto;
 	Restricciones restriccion;
-	EstrategiaDeSeleccion estrategia; 
+	EstrategiaDeSeleccion estrategia;
 
 	// tambien el de agregarMuestra hacer uno o dos de como
 	// afecta al mock de Desafio de usuario
@@ -43,20 +46,23 @@ class UsuarioTest {
 		desafioDeUsuario1 = mock(DesafioDeUsuario.class);
 		desafioDeUsuario2 = mock(DesafioDeUsuario.class);
 		desafioDeUsuario3 = mock(DesafioDeUsuario.class);
+		
 
 		muestra = mock(Muestra.class);
 		proyecto = mock(Proyecto.class);
-		
+
 		desafio1 = mock(Desafio.class);
 		desafio2 = mock(Desafio.class);
 		desafio3 = mock(Desafio.class);
-
+		desafio4 = mock(Desafio.class);
+		desafio5 = mock(Desafio.class);
+		desafio6 = mock(Desafio.class);
 
 		List<Desafio> desafios = new ArrayList<Desafio>();
 		desafios.add(desafio1);
 		desafios.add(desafio2);
 		desafios.add(desafio3);
-		
+
 		LocalDate unaFechaDeIncio = LocalDate.of(2022, 10, 20);
 		LocalDate unaFechaDeFin = LocalDate.of(2022, 10, 30);
 		restriccion = new RestriccionFecha(unaFechaDeIncio, unaFechaDeFin);
@@ -129,6 +135,27 @@ class UsuarioTest {
 		assertEquals(1, cantP);
 
 	}
+	
+	@Test 
+	void testElUsuarioDebeAceptarLosTestParaSumarMuestras() {
+		usuario.agregarDesafio(desafioDeUsuario1);
+		usuario.agregarMuestra(muestra, proyecto);
+		
+		verify(desafioDeUsuario1, times(0)).agregarSiCumpleRestriccion(muestra);
+		// el desafio nunca recibe el mensaje
+	}
+	
+	@Test 
+	void testElUsuarioAceptaElDesafiotParaSumarMuestras() {
+		usuario.agregarDesafio(desafioDeUsuario1);
+		usuario.aceptarDesafiosPendientes();
+		usuario.agregarMuestra(muestra, proyecto); 
+		
+		verify(desafioDeUsuario1, times(1)).agregarMuestra(muestra);
+		
+		//hay algo mal entre agregar muestra y agregarSiCumpleRestriccion, seguro problemas con el estado
+	
+	}
 
 	@Test
 	void testUnUsuarioEliminaUnProyecto() {
@@ -174,7 +201,7 @@ class UsuarioTest {
 
 	@Test
 	void testUnUsuarioCuandoAgregaUnaMuestraSeAgregaALosDesafiosDeUsuarioCorrepondientes() {
-		
+
 	}
 
 	@Test
@@ -185,31 +212,59 @@ class UsuarioTest {
 		double comp = usuario.getPorcentajeDeCompletitud(desafioDeUsuario1);
 		assertEquals(20.0, comp);
 	}
-	
+
 	@Test
-	
+
 	void testUnUsuarioPuntuaUnDesafio() {
 		usuario.agregarDesafio(desafioDeUsuario1);
 		usuario.puntuarDesafio(desafioDeUsuario1, 4);
-		
+
 		verify(desafioDeUsuario1, times(1)).setPuntuacion(4);
 
 	}
-	
+
 	@Test
 	void testUnUsuarioUtilizaLaEstrategiaPreferencia() {
-		usuario.agregarDesafio(desafioDeUsuario1);
-		usuario.agregarDesafio(desafioDeUsuario2);
-		usuario.agregarDesafio(desafioDeUsuario3); 
-	    usuario.setEstrategia(new PreferenciasDeJuego());
 		
+
+		int cantidadAntesDeAgregarDesafios = usuario.getDesafios().size();
+		usuario.setEstrategia(new PreferenciasDeJuego());
+
 		List<Desafio> desafios = new ArrayList<Desafio>();
 		desafios.add(desafio1);
 		desafios.add(desafio2);
 		desafios.add(desafio3);
-		
+
 		usuario.desafiosDeInteres(desafios);
-		
+		usuario.agregarDesafiosDeIntereses();
+
+		assertTrue(usuario.getDesafiosInteres().containsAll(desafios));
+		assertEquals((cantidadAntesDeAgregarDesafios + 3) , usuario.getDesafios().size());
+		// compruebo que la cantidad que de desafios de usuario incrementa en 3 
+
 	}
+	
+	@Test
+	void testNoSeRecomiendanMasDe5Desafios() {
+
+		int cantidadAntesDeAgregarDesafios = usuario.getDesafios().size();
+		usuario.setEstrategia(new PreferenciasDeJuego());
+
+		List<Desafio> desafios = new ArrayList<Desafio>();
+		desafios.add(desafio1);
+		desafios.add(desafio2);
+		desafios.add(desafio3);
+		desafios.add(desafio4); 
+		desafios.add(desafio5);
+		desafios.add(desafio6);
+	
+		usuario.desafiosDeInteres(desafios);
+		usuario.agregarDesafiosDeIntereses();
+		
+		assertFalse(usuario.getDesafiosInteres().containsAll(desafios)); // se comprueba que excluye un desafio 
+		assertEquals((cantidadAntesDeAgregarDesafios + 5) , usuario.getDesafios().size());
+	}
+	
+	
 
 }

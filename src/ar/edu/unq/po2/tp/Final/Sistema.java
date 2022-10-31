@@ -9,6 +9,11 @@ public class Sistema {
 	private Filtro filtro;
 	private PreferenciaDeProyecto preferencia;
 
+	 public Sistema() {
+		 proyectos = new ArrayList<Proyecto>();
+		 usuariosEnSistema = new ArrayList<Usuario>();
+	 }
+	
 	public List<Proyecto> getProyectos() {
 		return proyectos;
 	}

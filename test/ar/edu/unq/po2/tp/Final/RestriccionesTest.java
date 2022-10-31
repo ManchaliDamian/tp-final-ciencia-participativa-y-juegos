@@ -30,7 +30,7 @@ class RestriccionesTest {
 	@Test 
 	void testUnaMuestraSeRealizaElMismoDiaQueLaRestriccionDiaEsValida() {
 		when(muestra.getDia()).thenReturn(Dia.Martes);
-		
+		 
 		assertTrue(restriccionDia.isMuestraValida(muestra)); 
 	}
 	

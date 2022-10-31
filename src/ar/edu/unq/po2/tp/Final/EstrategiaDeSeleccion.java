@@ -5,7 +5,6 @@ import java.util.List;
 public abstract class EstrategiaDeSeleccion {
 	
 	// verificar que los desafios recomendados no esten en los del usuario
-	// pasar de desafio a desafioDeUsuario
 
 	public abstract List<Desafio> desafiosParaElUsuario(List<Desafio> desafios2, Usuario usuario);
 
