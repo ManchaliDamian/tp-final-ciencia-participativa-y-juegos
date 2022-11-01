@@ -38,34 +38,39 @@ class UsuarioTest {
 	public void setUp() throws Exception {
 		preferencia = mock(Preferencia.class);
 		usuario = new Usuario(preferencia);
+		proyecto = new Proyecto("Pepito", "los pepitos"); 
 
-		estadoCompleto = mock(EstadoCompleto.class);
-		estadoAceptado = mock(EstadoAceptado.class);
-		estadoPendiente = mock(EstadoPendiente.class);
 
-		desafioDeUsuario1 = mock(DesafioDeUsuario.class);
-		desafioDeUsuario2 = mock(DesafioDeUsuario.class);
-		desafioDeUsuario3 = mock(DesafioDeUsuario.class);
+		estadoCompleto = new EstadoCompleto();
+		estadoAceptado =new EstadoAceptado(); 
+		estadoPendiente = new EstadoPendiente(); 
 		
-
-		muestra = mock(Muestra.class);
-		proyecto = mock(Proyecto.class);
-
-		desafio1 = mock(Desafio.class);
+		LocalDate unaFechaDeIncio = LocalDate.of(2022, 10, 20);
+		LocalDate unaFechaDeFin = LocalDate.of(2022, 10, 30);
+		restriccion = new RestriccionFecha(unaFechaDeIncio, unaFechaDeFin);
+		muestra = new Muestra(null, usuario , unaFechaDeIncio , null, Dia.Martes);
+		
+		desafio1 = new Desafio(null, restriccion, 5, 5, 1); 
 		desafio2 = mock(Desafio.class);
 		desafio3 = mock(Desafio.class);
 		desafio4 = mock(Desafio.class);
 		desafio5 = mock(Desafio.class);
 		desafio6 = mock(Desafio.class);
 
+		desafioDeUsuario1 = new DesafioDeUsuario(desafio1); 
+		desafioDeUsuario2 = mock(DesafioDeUsuario.class);
+		desafioDeUsuario3 = mock(DesafioDeUsuario.class);
+		
+
+		muestra = new Muestra(null, usuario , unaFechaDeIncio , null, Dia.Martes);
+		proyecto = new Proyecto("Pepito", "los pepitos"); 
+
+
 		List<Desafio> desafios = new ArrayList<Desafio>();
 		desafios.add(desafio1);
 		desafios.add(desafio2);
 		desafios.add(desafio3);
 
-		LocalDate unaFechaDeIncio = LocalDate.of(2022, 10, 20);
-		LocalDate unaFechaDeFin = LocalDate.of(2022, 10, 30);
-		restriccion = new RestriccionFecha(unaFechaDeIncio, unaFechaDeFin);
 	}
 
 	@Test
@@ -141,7 +146,7 @@ class UsuarioTest {
 		usuario.agregarDesafio(desafioDeUsuario1);
 		usuario.agregarMuestra(muestra, proyecto);
 		
-		verify(desafioDeUsuario1, times(0)).agregarSiCumpleRestriccion(muestra);
+	    assertFalse(desafioDeUsuario1.getMuestrasObtenidas().contains(muestra)); 
 		// el desafio nunca recibe el mensaje
 	}
 	
@@ -151,7 +156,7 @@ class UsuarioTest {
 		usuario.aceptarDesafiosPendientes();
 		usuario.agregarMuestra(muestra, proyecto); 
 		
-		verify(desafioDeUsuario1, times(1)).agregarMuestra(muestra);
+	    assertTrue(desafioDeUsuario1.getMuestrasObtenidas().contains(muestra)); 
 		
 		//hay algo mal entre agregar muestra y agregarSiCumpleRestriccion, seguro problemas con el estado
 	

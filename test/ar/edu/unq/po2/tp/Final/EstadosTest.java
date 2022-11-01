@@ -1,5 +1,6 @@
 package ar.edu.unq.po2.tp.Final;
 
+import static org.junit.Assert.assertThrows;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
@@ -14,6 +15,7 @@ class EstadosTest {
 	DesafioDeUsuario desafio1;
 	DesafioDeUsuario desafio2;
 	Usuario usuario;
+	Desafio desafio; 
 
 	@BeforeEach
 	public void setUp() throws Exception {
@@ -22,19 +24,34 @@ class EstadosTest {
 		estadoAceptado =new EstadoAceptado();
 		estadoPendiente = new EstadoPendiente();
 		usuario = mock(Usuario.class);
-		desafio1 = mock(DesafioDeUsuario.class);
+		desafio = mock(Desafio.class); 
+		desafio1 = new DesafioDeUsuario(desafio); 
 
 	}
  
 	@Test
-	void testElEstadoActualizaSuEstado() {
-		when(desafio1.getEstado()).thenReturn(estadoAceptado); 
-        
-		estadoAceptado.actualizarEstado(desafio1);
+	void testElDesafioActualizaSuEstado() {
 		
+		
+		assertFalse(desafio1.getEstado().estaAceptado());
+		when(desafio1.cantMuestrasParaCumplirDesafio()).thenReturn(5); 
+		
+	    estadoPendiente.actualizarEstado(desafio1);		
 		assertTrue(desafio1.getEstado().estaAceptado());
 		
 
 	}
+	
+	@Test 
+	void testElDesafioNoSeActualizaSinLasMuestras() {
+		when(desafio1.cantMuestrasParaCumplirDesafio()).thenReturn(5); 
+	
+       try { 
+    	   estadoAceptado.actualizarEstado(desafio1);
+       } catch (RuntimeException e ) {
+	         assertEquals(e.getMessage(), "no se puede actualizar porque no hay muestras necesarias"); 
+	}
 
+
+	}
 }

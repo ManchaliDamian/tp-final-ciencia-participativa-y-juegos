@@ -53,6 +53,7 @@ class DesafioDeUsuarioTest {
 		desafioDeUsuario.agregarMuestra(muestra1);  
 		
 		verify(estadoAceptado, times(1)).actualizarEstado(desafioDeUsuario);
+		
 		// no podemos lograr comparar tipos de estado, de esta manera si estadoAceptado
 		// actualiza su estado, verifica que el mismo paso a completo
 	} 

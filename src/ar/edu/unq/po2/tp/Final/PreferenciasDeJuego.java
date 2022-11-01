@@ -9,7 +9,7 @@ public class PreferenciasDeJuego extends EstrategiaDeSeleccion {
 	public List<Desafio> desafiosParaElUsuario(List<Desafio> desafios2, Usuario usuario) {
 		List<Desafio> desafiosRecomendados = new ArrayList<Desafio>(); 
 		List<Integer> resultadoDeCoincidencia = losResultados(desafios2 , usuario); 
-		for (Desafio d : desafios2) {
+		  for (Desafio d : desafios2) {
 			if (resultadoDeCoincidencia.contains(coincidenciaDeDesafioYUsuario(d, usuario))) {
 				resultadoDeCoincidencia.remove(coincidenciaDeDesafioYUsuario(d, usuario)); 
 				desafiosRecomendados.add(d); 		

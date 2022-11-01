@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RestriccionDiaYFecha extends Restricciones{
-	List<Restricciones> restricciones = new ArrayList<Restricciones>();public List<Restricciones> getRestricciones() {
+	List<Restricciones> restricciones = new ArrayList<Restricciones>();
+	
+	public List<Restricciones> getRestricciones() {
 		return restricciones;
 	}
 
@@ -17,13 +19,14 @@ public class RestriccionDiaYFecha extends Restricciones{
 	@Override
 	public boolean isMuestraValida(Muestra muestra) {
 		List<Restricciones> rests = restricciones; 
+		List<Restricciones> lista = restricciones; 
 		for (Restricciones restriccion : rests) {
 			if(restriccion.isMuestraValida(muestra)) {
-				rests.remove(restriccion); 
+				lista.remove(restriccion); 
 			}
 		}
 		
-		return rests.isEmpty();
+		return lista.isEmpty();
 	}
 
 }

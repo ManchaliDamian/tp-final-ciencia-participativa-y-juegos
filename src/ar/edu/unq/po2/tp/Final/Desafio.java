@@ -6,6 +6,14 @@ public class Desafio {
 	private int cantMuestras;
 	private int dificultad;
 	private int recompensa;
+	
+	public Desafio(Area area, Restricciones restriciones, int cantMuestras , int dificultad , int recompesas) {
+		setArea(area);
+		setRestriccionesTemp(restriciones);
+		setCantMuestras(cantMuestras);
+		setDificultad(dificultad);
+		setRecompensa(recompesas);
+	}
 
 	public Area getArea() {
 		return area;
