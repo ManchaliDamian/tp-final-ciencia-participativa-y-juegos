@@ -100,7 +100,7 @@ public class Usuario {
 
 	public double getPorcentajeDeCompletitud(DesafioDeUsuario desafioDeUsuario1) {
 
-		return desafioDeUsuario1.getEstado().porcentajeDeCompletitud(desafioDeUsuario1);
+		return desafioDeUsuario1.getPorcentajeDeCompletitud(); 
 
 	}
 
@@ -115,8 +115,10 @@ public class Usuario {
 	}
 
 	public void puntuarDesafio(DesafioDeUsuario desafio, int puntuacion) {
-		desafio.setPuntuacion(puntuacion);
-		System.out.print("la puntuacion es" + " " + puntuacion);
+		if(desafio.getEstado().estaCompleto()) {
+			desafio.setPuntuacion(puntuacion);
+			System.out.print("la puntuacion es" + " " + puntuacion);
+		}
 
 	}
 

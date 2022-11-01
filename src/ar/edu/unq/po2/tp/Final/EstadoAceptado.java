@@ -12,7 +12,10 @@ public class EstadoAceptado extends Estado {
 	public void actualizarEstado(DesafioDeUsuario desafioDeUsuario) {
 		if (this.porcentajeDeCompletitud(desafioDeUsuario) == 100) {
 			desafioDeUsuario.setEstado(new EstadoCompleto());
-		} else {throw new RuntimeException("no se puede actualizar porque no hay muestras necesarias"); }
+		} else {//throw new RuntimeException("no se puede actualizar porque no hay muestras necesarias");
+			
+		}
+		
 	} 
 
 	@Override

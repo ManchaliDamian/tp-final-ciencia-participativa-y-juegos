@@ -71,5 +71,9 @@ public class DesafioDeUsuario {
 			this.estado.actualizarEstado(this);
 		}
 	}
+
+	public double getPorcentajeDeCompletitud() {
+		return estado.porcentajeDeCompletitud(this);
+	}
 	
 }

@@ -20,19 +20,19 @@ class UsuarioTest {
 	Desafio desafio4;
 	Desafio desafio5;
 	Desafio desafio6;
+	
 	DesafioDeUsuario desafioDeUsuario1;
 	DesafioDeUsuario desafioDeUsuario2;
 	DesafioDeUsuario desafioDeUsuario3;
 	Estado estadoCompleto;
 	Estado estadoAceptado;
 	Estado estadoPendiente;
-	Muestra muestra;
+	Muestra muestra1;
+	Muestra muestra2;
 	Proyecto proyecto;
-	Restricciones restriccion;
+	Restricciones restriccionFecha;
+	Restricciones restriccionDia; 
 	EstrategiaDeSeleccion estrategia;
-
-	// tambien el de agregarMuestra hacer uno o dos de como
-	// afecta al mock de Desafio de usuario
 
 	@BeforeEach
 	public void setUp() throws Exception {
@@ -47,29 +47,26 @@ class UsuarioTest {
 		
 		LocalDate unaFechaDeIncio = LocalDate.of(2022, 10, 20);
 		LocalDate unaFechaDeFin = LocalDate.of(2022, 10, 30);
-		restriccion = new RestriccionFecha(unaFechaDeIncio, unaFechaDeFin);
-		muestra = new Muestra(null, usuario , unaFechaDeIncio , null, Dia.Martes);
+		restriccionFecha = new RestriccionFecha(unaFechaDeIncio, unaFechaDeFin);
+		restriccionDia = new RestriccionDia(Dia.Lunes); 
 		
-		desafio1 = new Desafio(null, restriccion, 5, 5, 1); 
-		desafio2 = mock(Desafio.class);
-		desafio3 = mock(Desafio.class);
-		desafio4 = mock(Desafio.class);
-		desafio5 = mock(Desafio.class);
-		desafio6 = mock(Desafio.class);
+		LocalDate fechaDeMuestra = LocalDate.of(2022, 10, 22);
+		muestra1 = new Muestra(null, usuario, fechaDeMuestra, null, Dia.Martes);
+		muestra2 = new Muestra(null, usuario, fechaDeMuestra, null, Dia.Jueves);
+		
+	
+		desafio1 = new Desafio(null, restriccionFecha, 2, 5, 1); 
+		desafio2 = new Desafio(null, restriccionDia, 2, 5, 1);
 
 		desafioDeUsuario1 = new DesafioDeUsuario(desafio1); 
-		desafioDeUsuario2 = mock(DesafioDeUsuario.class);
-		desafioDeUsuario3 = mock(DesafioDeUsuario.class);
+		desafioDeUsuario2 = new DesafioDeUsuario(desafio2); 
 		
-
-		muestra = new Muestra(null, usuario , unaFechaDeIncio , null, Dia.Martes);
 		proyecto = new Proyecto("Pepito", "los pepitos"); 
 
 
 		List<Desafio> desafios = new ArrayList<Desafio>();
 		desafios.add(desafio1);
 		desafios.add(desafio2);
-		desafios.add(desafio3);
 
 	}
 
@@ -96,38 +93,36 @@ class UsuarioTest {
 
 	@Test
 	void testUnUsuarioConoceSusDesafiosPendientes() {
+		usuario.agregarDesafio(desafioDeUsuario1);
 		usuario.agregarDesafio(desafioDeUsuario2);
-		usuario.agregarDesafio(desafioDeUsuario3);
-		when(estadoPendiente.esEstadoPendiente()).thenReturn(true);
-		when(estadoAceptado.esEstadoPendiente()).thenReturn(false);
-		when(desafioDeUsuario3.getEstado()).thenReturn(estadoPendiente);
-		when(desafioDeUsuario2.getEstado()).thenReturn(estadoAceptado);
-
+		
 		int cantP = usuario.desafiosPendientes().size();
-		assertEquals(1, cantP);
+		assertEquals(2, cantP);
 
 	}
 
 	@Test
 	void testUnUsuarioAceptaLosDesafíosQueTienePendientes() {
-		usuario.agregarDesafio(desafioDeUsuario3);
-		when(desafioDeUsuario3.getEstado()).thenReturn(estadoPendiente);
-
+		//cuando un desafioDeUsuario se agrega comienza siendo pendiente.
+		usuario.agregarDesafio(desafioDeUsuario1);
+		usuario.agregarDesafio(desafioDeUsuario2);
+		
 		usuario.aceptarDesafiosPendientes();
 		int cantDesafiosPendientes = usuario.desafiosPendientes().size();
 
+		assertTrue(desafioDeUsuario1.getEstado().estaAceptado());
 		assertEquals(0, cantDesafiosPendientes);
 	}
 
 	@Test
 	void testUnUsuarioNoAceptaLosDesafiosQueTienePendiente() {
-		usuario.agregarDesafio(desafioDeUsuario3);
-		when(desafioDeUsuario3.getEstado()).thenReturn(estadoPendiente);
-		when(estadoPendiente.esEstadoPendiente()).thenReturn(true);
+		usuario.agregarDesafio(desafioDeUsuario1);
+		usuario.agregarDesafio(desafioDeUsuario2);
 
 		int cantDesafiosPendientes = usuario.desafiosPendientes().size();
 
-		assertEquals(1, cantDesafiosPendientes);
+		assertTrue(desafioDeUsuario1.getEstado().esEstadoPendiente());
+		assertEquals(2, cantDesafiosPendientes);
 
 	}
 
@@ -141,27 +136,6 @@ class UsuarioTest {
 
 	}
 	
-	@Test 
-	void testElUsuarioDebeAceptarLosTestParaSumarMuestras() {
-		usuario.agregarDesafio(desafioDeUsuario1);
-		usuario.agregarMuestra(muestra, proyecto);
-		
-	    assertFalse(desafioDeUsuario1.getMuestrasObtenidas().contains(muestra)); 
-		// el desafio nunca recibe el mensaje
-	}
-	
-	@Test 
-	void testElUsuarioAceptaElDesafiotParaSumarMuestras() {
-		usuario.agregarDesafio(desafioDeUsuario1);
-		usuario.aceptarDesafiosPendientes();
-		usuario.agregarMuestra(muestra, proyecto); 
-		
-	    assertTrue(desafioDeUsuario1.getMuestrasObtenidas().contains(muestra)); 
-		
-		//hay algo mal entre agregar muestra y agregarSiCumpleRestriccion, seguro problemas con el estado
-	
-	}
-
 	@Test
 	void testUnUsuarioEliminaUnProyecto() {
 		usuario.agregarProyecto(proyecto);
@@ -171,16 +145,36 @@ class UsuarioTest {
 
 		assertEquals(0, cantP);
 	}
+	
+	@Test 
+	void testElUsuarioNoPuedeAgregarUnaMuestraSiElDesafioDeUsuarioNoEstaAceptado() {
+		usuario.agregarDesafio(desafioDeUsuario1);
+		usuario.agregarMuestra(muestra1, proyecto);
+		
+	    assertFalse(desafioDeUsuario1.getMuestrasObtenidas().contains(muestra1)); 
+	
+	}
+	
+	@Test 
+	void testUnUsuarioAgregaUnaMuestraADesafioDeUsuarioAceptado() {
+		usuario.agregarDesafio(desafioDeUsuario1);
+		usuario.aceptarDesafiosPendientes();
+		
+		usuario.agregarMuestra(muestra1, proyecto); 
+	
+	    assertTrue(desafioDeUsuario1.getMuestrasObtenidas().contains(muestra1)); 
+		
+	
+	}
 
 	@Test
 	void testUnUsuarioConoceSusDesafiosCompletos() {
 		usuario.agregarDesafio(desafioDeUsuario1);
 		usuario.agregarDesafio(desafioDeUsuario2);
-		when(estadoCompleto.estaCompleto()).thenReturn(true);
-		when(estadoAceptado.estaCompleto()).thenReturn(false);
-		when(desafioDeUsuario1.getEstado()).thenReturn(estadoCompleto);
-		when(desafioDeUsuario2.getEstado()).thenReturn(estadoAceptado);
-
+		usuario.aceptarDesafiosPendientes();
+		
+		usuario.agregarMuestra(muestra1, proyecto);
+		usuario.agregarMuestra(muestra2, proyecto);
 		int cantC = usuario.desafiosCompletos().size();
 
 		assertEquals(1, cantC);
@@ -188,44 +182,58 @@ class UsuarioTest {
 
 	@Test
 	void testUnUsuarioAgregaUnaMuestraTambienSeAgregaAlProyecto() {
-		usuario.agregarMuestra(muestra, proyecto);
+		proyecto.agregarParticipante(usuario);
+		
+		usuario.agregarMuestra(muestra1, proyecto);
 
-		verify(proyecto, times(1)).agregarMuestra(muestra);
-	}
-
-	@Test
-	void testUnUsuarioAgregaUnaMuestraSeEnviaUnMensajeATodosLosDesafiosDeUsuarioParaAgregarMuestra() {
-		usuario.agregarDesafio(desafioDeUsuario1);
-		usuario.agregarDesafio(desafioDeUsuario2);
-
-		usuario.agregarMuestra(muestra, proyecto);
-
-		verify(desafioDeUsuario1, times(1)).agregarMuestra(muestra);
-		verify(desafioDeUsuario2, times(1)).agregarMuestra(muestra);
+		assertTrue(proyecto.getMuestras().contains(muestra1));
 	}
 
 	@Test
 	void testUnUsuarioCuandoAgregaUnaMuestraSeAgregaALosDesafiosDeUsuarioCorrepondientes() {
-
+		usuario.agregarDesafio(desafioDeUsuario1);
+		usuario.agregarDesafio(desafioDeUsuario2);
+		usuario.aceptarDesafiosPendientes();
+		
+		usuario.agregarMuestra(muestra1, proyecto);
+		usuario.agregarMuestra(muestra2, proyecto);
+		
+		assertTrue(desafioDeUsuario1.getMuestrasObtenidas().contains(muestra1));
+		assertFalse(desafioDeUsuario2.getMuestrasObtenidas().contains(muestra2));
+		
 	}
 
 	@Test
 	void testUnUsuarioConoceElPorcentajeDeCompletitudDeUnDesafioDeUsuario() {
-		when(estadoAceptado.porcentajeDeCompletitud(desafioDeUsuario1)).thenReturn(20);
-		when(desafioDeUsuario1.getEstado()).thenReturn(estadoAceptado);
 		usuario.agregarDesafio(desafioDeUsuario1);
-		double comp = usuario.getPorcentajeDeCompletitud(desafioDeUsuario1);
-		assertEquals(20.0, comp);
+		usuario.aceptarDesafiosPendientes();
+		usuario.agregarMuestra(muestra1, proyecto);
+		
+		double porcentaje = usuario.getPorcentajeDeCompletitud(desafioDeUsuario1);
+		
+		assertEquals(50.0, porcentaje);
+		
 	}
 
 	@Test
 
-	void testUnUsuarioPuntuaUnDesafio() {
+	void testUnUsuarioPuntuaUnDesafioDeUsuarioCompleto() {
 		usuario.agregarDesafio(desafioDeUsuario1);
+		usuario.aceptarDesafiosPendientes();
+		usuario.agregarMuestra(muestra1, proyecto);
+		usuario.agregarMuestra(muestra2, proyecto);
+		
 		usuario.puntuarDesafio(desafioDeUsuario1, 4);
 
-		verify(desafioDeUsuario1, times(1)).setPuntuacion(4);
+		assertEquals(4, desafioDeUsuario1.getPuntuacion());
 
+	}
+	
+	@Test
+	void testUnUsuarioNoPuedePuntuarUnDesafioDeUsuarioNoCompleto() {
+		usuario.puntuarDesafio(desafioDeUsuario1, 4);
+		
+		assertEquals(0, desafioDeUsuario1.getPuntuacion());
 	}
 
 	@Test
