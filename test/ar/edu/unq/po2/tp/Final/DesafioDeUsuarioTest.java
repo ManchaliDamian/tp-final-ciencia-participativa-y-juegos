@@ -3,40 +3,39 @@ package ar.edu.unq.po2.tp.Final;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
+import java.time.LocalDate;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class DesafioDeUsuarioTest {
 	DesafioDeUsuario desafioDeUsuario;
-	Estado estadoAceptado;
-	Estado estadoPendiente;
-	Estado estadoCompleto;
 	Desafio desafio;
+	Usuario usuario;
 	Muestra muestra1;
 	Muestra muestra2;
-	Restricciones restricciones;
+	Restricciones restriccionDia;
 
 	@BeforeEach
 	public void setUp() throws Exception {
-		estadoAceptado = mock(EstadoAceptado.class);
-		estadoPendiente = mock(EstadoPendiente.class);
-		estadoCompleto = mock(EstadoCompleto.class);
-		restricciones = mock(Restricciones.class);
-		muestra1 = mock(Muestra.class);
-		muestra2 = mock(Muestra.class);
+		usuario = mock(Usuario.class);
+		LocalDate fechaMuestra = LocalDate.of(2022, 10, 20);
+		muestra1 = new Muestra(null, usuario, fechaMuestra, null, Dia.Sabado);
+		muestra2 = new Muestra(null, usuario, fechaMuestra, null, Dia.Viernes);
 
-		desafio = mock(Desafio.class);
+		restriccionDia = new RestriccionDia(Dia.Sabado);
+		desafio = new Desafio(null, restriccionDia, 1, 5, 1);
 		desafioDeUsuario = new DesafioDeUsuario(desafio);
-
+ 
 	}
 
 	@Test
-	void testDesafioDeUsuarioSeAgregaComoEstadoPendiente() {
+	void testUnDesafioDeUsuarioComienzaSiendoUnEstadoPediente() {
 		assertTrue(desafioDeUsuario.getEstado().esEstadoPendiente());
 	}
 
 	@Test
-	void testDesafioDeUsuarioAceptaDesafiosPendientes() {
+	void testDesafioDeUsuarioActualizaSuEstadoAEstadoAceptado() {
 		desafioDeUsuario.aceptarDesafio();
 
 		assertTrue(desafioDeUsuario.getEstado().estaAceptado());
@@ -44,87 +43,67 @@ class DesafioDeUsuarioTest {
 	}
 
 	@Test
+	void testUnDesafioDeUsuarioConEstadoAceptadoAgregaUnaMuestra() {
+		desafioDeUsuario.aceptarDesafio();
+
+		desafioDeUsuario.agregarMuestra(muestra1);
+
+		assertTrue(desafioDeUsuario.getMuestrasObtenidas().contains(muestra1));
+	}
+
+	@Test
+	void testUnDesafioDeUsuarioConEstadoPendienteNoAgregaUnaMuestra() {
+		desafioDeUsuario.agregarMuestra(muestra1);
+
+		assertFalse(desafioDeUsuario.getMuestrasObtenidas().contains(muestra1));
+	}
+
+	@Test
+	void testUnDesafioDeUsuarioConEstadoCompletoNoAgregaUnaMuestra() {
+		desafioDeUsuario.agregarMuestra(muestra1);
+
+		desafioDeUsuario.agregarMuestra(muestra2);
+
+		assertFalse(desafioDeUsuario.getMuestrasObtenidas().contains(muestra2));
+	}
+
+	@Test
+	void testUnDesafioDeUsuarioAgregaUnaMuestraQueCumpleConRestriccionesDeDesafio() {
+		desafioDeUsuario.agregarSiCumpleRestriccion(muestra1);
+
+		assertTrue(desafioDeUsuario.getMuestrasObtenidas().contains(muestra1));
+	}
+
+	@Test
+	void testUnDesafioDeUsuarioNoAgregaUnaMuestraSiNoCumpleConLaRestriccionesDeDesafio() {
+		desafioDeUsuario.agregarMuestra(muestra2);
+
+		assertFalse(desafioDeUsuario.getMuestrasObtenidas().contains(muestra2));
+	}
+
+	@Test
 	void testCuandoUnDesafioDeUsuarioEsCompletadoSeActualizaAEstadoCompleto() {
-		when(desafio.getCantMuestras()).thenReturn(1);
-		when(estadoAceptado.estaAceptado()).thenReturn(true);
-		when(desafio.cumpleConRestriccion(muestra1)).thenReturn(true);
-		desafioDeUsuario.setEstado(estadoAceptado);
-		
-		desafioDeUsuario.agregarMuestra(muestra1);  
-		
-		verify(estadoAceptado, times(1)).actualizarEstado(desafioDeUsuario);
-		
-		// no podemos lograr comparar tipos de estado, de esta manera si estadoAceptado
-		// actualiza su estado, verifica que el mismo paso a completo
-	} 
- 
-	@Test
-	void testDesafioDeUsuarioAgregaUnaMuestraSiElDesafioEstaAceptado() {
-		desafioDeUsuario.setEstado(estadoAceptado);
-		when(estadoAceptado.estaAceptado()).thenReturn(true);
-		when(desafio.cumpleConRestriccion(muestra1)).thenReturn(true);
+		desafioDeUsuario.aceptarDesafio();
 
 		desafioDeUsuario.agregarMuestra(muestra1);
-		int cant = desafioDeUsuario.cantidadDeMuestrasRecolectadas();
 
-		assertEquals(1, cant);
-	}
- 
-	@Test
-	void testDesafioDeUsuarioNoAgregaUnaMuestraSiElDesafioEstaPendiente() {
-		desafioDeUsuario.setEstado(estadoPendiente);
-		when(estadoAceptado.estaAceptado()).thenReturn(false);
-		when(desafio.cumpleConRestriccion(muestra1)).thenReturn(true);
-
-		desafioDeUsuario.agregarMuestra(muestra1);
-		int cant = desafioDeUsuario.cantidadDeMuestrasRecolectadas();
-
-		assertEquals(0, cant);
+		assertTrue(desafioDeUsuario.getEstado().estaCompleto());
 	}
 
 	@Test
-	void testCuandoSeCompletaUnDesafioNoAceptaMasMuestras() {
-		desafioDeUsuario.setEstado(estadoCompleto);
-		when(estadoCompleto.estaAceptado()).thenReturn(false);
-		when(desafio.cumpleConRestriccion(muestra1)).thenReturn(true);
-
+	void testUnDesafioDeUsuarioTieneUnaCantidadDeMuestrasRecolectadas() {
+		desafioDeUsuario.aceptarDesafio();
 		desafioDeUsuario.agregarMuestra(muestra1);
-		int cant = desafioDeUsuario.cantidadDeMuestrasRecolectadas();
 
-		assertEquals(0, cant);
+		int cantMuestras = desafioDeUsuario.cantidadDeMuestrasRecolectadas();
+
+		assertEquals(1, cantMuestras);
 	}
 
-	@Test
-	void testDesafioDeUsuarioAgregaUnaMuestraSiEstaAceptadoYLaMuestraEsValida() {
-		desafioDeUsuario.setEstado(estadoAceptado);
-		when(estadoAceptado.estaAceptado()).thenReturn(true);
-		when(desafio.cumpleConRestriccion(muestra1)).thenReturn(true);
-
-		desafioDeUsuario.agregarMuestra(muestra1);
-		int cant = desafioDeUsuario.cantidadDeMuestrasRecolectadas();
-
-		assertEquals(1, cant);
-
-	}
-
-	@Test
-	void testDesafioDeUsuarioNoAgregaUnaMuestraSiEstaAceptadoPeroLaMuestraNoEsValida() {
-		desafioDeUsuario.setEstado(estadoAceptado);
-		when(estadoAceptado.estaAceptado()).thenReturn(true);
-		when(desafio.cumpleConRestriccion(muestra1)).thenReturn(false);
-
-		desafioDeUsuario.agregarMuestra(muestra1);
-		int cant = desafioDeUsuario.cantidadDeMuestrasRecolectadas();
-
-		assertEquals(0, cant);
-	} 
-	
 	@Test
 	void testUnDesafioDeUsuarioTieneUnaCantDeMuestrasParaCompletarElDesafio() {
-		when(desafio.getCantMuestras()).thenReturn(2); 
-
 		int cant = desafioDeUsuario.cantMuestrasParaCumplirDesafio();
 
-		assertEquals(2, cant);
+		assertEquals(1, cant);
 	}
 }
