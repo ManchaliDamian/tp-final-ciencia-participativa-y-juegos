@@ -19,14 +19,11 @@ public class RestriccionDiaYFecha extends Restricciones{
 	@Override
 	public boolean isMuestraValida(Muestra muestra) {
 		List<Restricciones> rests = restricciones; 
-		List<Restricciones> lista = restricciones; 
-		for (Restricciones restriccion : rests) {
-			if(restriccion.isMuestraValida(muestra)) {
-				lista.remove(restriccion); 
-			}
+		while(!rests.isEmpty() && rests.get(0).isMuestraValida(muestra)) {
+			rests.remove(0); 
 		}
-		
-		return lista.isEmpty();
+
+		return rests.isEmpty();
 	}
 
 }

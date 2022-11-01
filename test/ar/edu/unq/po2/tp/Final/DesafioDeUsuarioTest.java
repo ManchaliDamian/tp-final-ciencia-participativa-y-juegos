@@ -106,4 +106,14 @@ class DesafioDeUsuarioTest {
 
 		assertEquals(1, cant);
 	}
-}
+	
+	@Test
+	void testUnDesafioDeUsuarioConoceSuPorcentajeDeCompletitud() {
+		desafioDeUsuario.aceptarDesafio();
+		desafioDeUsuario.agregarMuestra(muestra1);
+		
+		double porcentaje = desafioDeUsuario.getPorcentajeDeCompletitud();
+		
+		assertEquals(100.0, porcentaje);
+	}
+} 

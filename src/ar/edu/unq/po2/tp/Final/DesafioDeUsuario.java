@@ -69,7 +69,7 @@ public class DesafioDeUsuario {
 		if (desafio.cumpleConRestriccion(muestra)) {
 			this.muestrasObtenidas.add(muestra);
 			this.estado.actualizarEstado(this);
-		}
+		} 
 	}
 
 	public double getPorcentajeDeCompletitud() {

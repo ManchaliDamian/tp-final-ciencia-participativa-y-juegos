@@ -29,10 +29,10 @@ public class RestriccionFecha extends Restricciones {
 	
 	@Override
 	public boolean isMuestraValida(Muestra muestra) {
-		   return !(muestra.getFecha().isBefore(fechaInicio) && muestra.getFecha().isAfter(fechaFin)) ; 
+		   return muestra.getFecha().isAfter(fechaInicio) && muestra.getFecha().isBefore(fechaFin) ; 
 				   
 	}
-
+ 
 	@Override
 	public void agregarRestriccion(Restricciones restricción) {
 		RestriccionDiaYFecha  r = new RestriccionDiaYFecha();

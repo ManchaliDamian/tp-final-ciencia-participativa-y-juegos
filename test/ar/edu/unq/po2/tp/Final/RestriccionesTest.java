@@ -12,9 +12,12 @@ class RestriccionesTest {
 	RestriccionDia restriccionDia; 
 	RestriccionFecha restriccionFecha;
 	RestriccionDiaYFecha restriccionDiaYFecha;
-	Muestra muestra; 
+	Muestra muestra1; 
+	Muestra muestra2; 
+	Muestra muestra3; 
+	Usuario usuario; 
 	
-	@BeforeEach
+	@BeforeEach 
 	public void setUp() throws Exception{
 		restriccionDia = new RestriccionDia(Dia.Martes);
 		
@@ -23,38 +26,36 @@ class RestriccionesTest {
 		restriccionFecha = new RestriccionFecha(unaFechaDeIncio, unaFechaDeFin);
 		 
 		restriccionDiaYFecha = new RestriccionDiaYFecha(); 
-		muestra = mock(Muestra.class); 
 		
+		LocalDate fechaMuestra1 = LocalDate.of(2022, 10, 22);
+		LocalDate fechaMuestra2 = LocalDate.of(2022, 11, 1);
+		muestra1 = new Muestra(null, usuario, fechaMuestra1, null, Dia.Martes);
+		muestra2 = new Muestra(null, usuario, fechaMuestra2, null, Dia.Martes);
+		muestra3 = new Muestra(null, usuario, fechaMuestra1, null, Dia.Lunes);
 	} 
-
+ 
 	@Test 
-	void testUnaMuestraSeRealizaElMismoDiaQueLaRestriccionDiaEsValida() {
-		when(muestra.getDia()).thenReturn(Dia.Martes);
+	void testCuandoUnaMuestraSeRealizaElMismoDiaQueLaRestriccionDiaEsValida() {
 		 
-		assertTrue(restriccionDia.isMuestraValida(muestra)); 
+		assertTrue(restriccionDia.isMuestraValida(muestra1)); 
 	}
 	
 	@Test
-	void testUnaMuestraSeRealizaUnDiaDiferenteALaRestriccionDiaNoEsValida() {
-		when(muestra.getDia()).thenReturn(Dia.Jueves);
-		
-		assertFalse(restriccionDia.isMuestraValida(muestra)); 
+	void testCuandotUnaMuestraSeRealizaUnDiaDiferenteALaRestriccionDiaNoEsValida() {
+	
+		assertFalse(restriccionDia.isMuestraValida(muestra3)); 
 	}
 	
 	@Test
 	void testUnaMuestraSeRealizaDentroDeLasFechasDeLaRestriccionFechaEsValida() {
-		LocalDate fechaMuestra = LocalDate.of(2022, 10, 22);
-		when(muestra.getFecha()).thenReturn(fechaMuestra); 
 		
-		assertTrue(restriccionFecha.isMuestraValida(muestra)); 
+		assertTrue(restriccionFecha.isMuestraValida(muestra1)); 
 	}
 	
 	@Test
 	void testUnaMuestraSeRealizaFueraDeLasFechasDeLaRestriccionFechaNoEsValida() {
-		LocalDate fechaMuestra = LocalDate.of(2022, 11, 2);
-		when(muestra.getFecha()).thenReturn(fechaMuestra);
 		
-		assertFalse(restriccionFecha.isMuestraValida(muestra)); 
+		assertFalse(restriccionFecha.isMuestraValida(muestra2)); 
 	}
 	
 	@Test
@@ -67,36 +68,26 @@ class RestriccionesTest {
 
 	@Test
 	void testUnaMuestraSeRealizaDentroDeLosDiasYFechasDeLaRestriccionFechaYDiaEsValida() {
-		LocalDate fechaMuestra = LocalDate.of(2022, 10, 22);
-		when(muestra.getFecha()).thenReturn(fechaMuestra);
-		when(muestra.getDia()).thenReturn(Dia.Martes);
 		
-		assertTrue(restriccionDiaYFecha.isMuestraValida(muestra)); 
+		assertTrue(restriccionDiaYFecha.isMuestraValida(muestra1)); 
 		
 		
 	}
 	
 	@Test
 	 void testUnaMuestraSeRealizaElMismoDiaPeroNoSeEncuentraDentroDeLaFecha() {
-		LocalDate fechaMuestra = LocalDate.of(2022, 11, 2);
-		when(muestra.getFecha()).thenReturn(fechaMuestra);
-		
 		restriccionDiaYFecha.agregarRestriccion(restriccionDia);
 		restriccionDiaYFecha.agregarRestriccion(restriccionFecha);
 	
-		assertFalse(restriccionDiaYFecha.isMuestraValida(muestra)); 
+		assertFalse(restriccionDiaYFecha.isMuestraValida(muestra2)); 
 	}
 	
 	@Test
 	void testUnaMuestraSeRealizaEnFechaPeroNoEnDia() {
-		LocalDate fechaMuestra = LocalDate.of(2022, 10, 22);
-		when(muestra.getFecha()).thenReturn(fechaMuestra);
-		when(muestra.getDia()).thenReturn(Dia.Jueves);
-		
 		restriccionDiaYFecha.agregarRestriccion(restriccionDia);
 		restriccionDiaYFecha.agregarRestriccion(restriccionFecha);
 		
-		assertFalse(restriccionDiaYFecha.isMuestraValida(muestra)); 
+		assertFalse(restriccionDiaYFecha.isMuestraValida(muestra3)); 
 	}
 
 }

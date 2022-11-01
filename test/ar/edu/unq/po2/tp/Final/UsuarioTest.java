@@ -28,6 +28,7 @@ class UsuarioTest {
 	Estado estadoPendiente;
 	Muestra muestra1;
 	Muestra muestra2;
+	Muestra muestra3;
 	Proyecto proyecto;
 	Restricciones restriccionFecha;
 	Restricciones restriccionDia; 
@@ -38,7 +39,7 @@ class UsuarioTest {
 		preferencia = mock(Preferencia.class);
 		usuario = new Usuario(preferencia);
 		proyecto = new Proyecto("Pepito", "los pepitos"); 
-
+ 
 
 		estadoCompleto = new EstadoCompleto();
 		estadoAceptado =new EstadoAceptado(); 
@@ -49,10 +50,11 @@ class UsuarioTest {
 		restriccionFecha = new RestriccionFecha(unaFechaDeIncio, unaFechaDeFin);
 		restriccionDia = new RestriccionDia(Dia.Lunes); 
 		
-		LocalDate fechaDeMuestra = LocalDate.of(2022, 10, 22);
-		muestra1 = new Muestra(null, usuario, fechaDeMuestra, null, Dia.Martes);
-		muestra2 = new Muestra(null, usuario, fechaDeMuestra, null, Dia.Jueves);
+		LocalDate fechaDeMuestra1 = LocalDate.of(2022, 10, 22);
+		LocalDate fechaDeMuestra2 = LocalDate.of(2022, 10, 24);
 		
+		muestra1 = new Muestra(null, usuario, fechaDeMuestra1, null, Dia.Martes);
+		muestra2 = new Muestra(null, usuario, fechaDeMuestra2, null, Dia.Jueves);
 	
 		desafio1 = new Desafio(null, restriccionFecha, 2, 5, 1); 
 		desafio2 = new Desafio(null, restriccionDia, 2, 5, 1);
@@ -223,7 +225,7 @@ class UsuarioTest {
 		usuario.agregarMuestra(muestra2, proyecto);
 		
 		usuario.puntuarDesafio(desafioDeUsuario1, 4);
-
+		
 		assertEquals(4, desafioDeUsuario1.getPuntuacion());
 
 	}
