@@ -14,15 +14,15 @@ class ProyectoTestCase {
 	Usuario participante; 
 	Categoria categoria; 
 	Muestra muestra; 
-	Usuario unUsuario; 
+	Preferencia preferencia; 
 	
 	@BeforeEach
 	public void setUp() throws Exception{
 		proyecto = new Proyecto("Otoño", "Estación del año");
-		participante = mock(Usuario.class);
-		categoria = mock(Categoria.class); 
-		muestra = mock(Muestra.class); 
-		unUsuario = mock(Usuario.class); 
+		preferencia = new Preferencia(4, 15, 8); 
+		participante = new Usuario(preferencia); 
+		categoria =  new Categoria(); 
+		muestra = new Muestra(null, participante, null, null, null); 
 		
 	}
 	
@@ -60,11 +60,10 @@ class ProyectoTestCase {
 	}
 	
 	@Test
-	void testUnProyectoAgregaUnaNuevaMuestra() {
+	void testUnProyectoAgregaUnaNuevaMuestraCuandoElUsuarioAgregaUna() {
 		proyecto.agregarParticipante(participante);
-		when(muestra.getUsuario()).thenReturn(participante);
 		
-		proyecto.agregarMuestra(muestra);
+		participante.agregarMuestra(muestra, proyecto);
 		
 		assertTrue(proyecto.getMuestras().contains(muestra)); 
 	} 
@@ -81,9 +80,7 @@ class ProyectoTestCase {
 	
 	@Test 
 	void testUnProyectoNoAgregaUnaMuestraSiElUsuarioNoEsParticipante() {
-		when(muestra.getUsuario()).thenReturn(unUsuario);
-		
-		proyecto.agregarMuestra(muestra);
+	    participante.agregarMuestra(muestra, proyecto);
 		
 		assertFalse(proyecto.getMuestras().contains(muestra));
 		
