@@ -4,6 +4,11 @@ public class Categoria {
 	private String nombre;
 	private String descripción; 
 	
+	public Categoria (String unNombre, String unaDescripcion){
+		this.nombre = unNombre;
+		this.descripción = unaDescripcion; 
+	}
+	
 	public String getNombre() {
 		return nombre;
 	}

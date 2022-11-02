@@ -21,7 +21,7 @@ class ProyectoTestCase {
 		proyecto = new Proyecto("Otoño", "Estación del año");
 		preferencia = new Preferencia(4, 15, 8); 
 		participante = new Usuario(preferencia); 
-		categoria =  new Categoria(); 
+		categoria =  new Categoria("Base de datos", "SQL"); 
 		muestra = new Muestra(null, participante, null, null, null); 
 		
 	}

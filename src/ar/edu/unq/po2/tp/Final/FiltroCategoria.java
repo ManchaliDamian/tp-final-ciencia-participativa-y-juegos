@@ -24,4 +24,11 @@ public class FiltroCategoria extends Filtro {
 
 	}
 
+	@Override
+	public void agregarFiltro(Filtro filtro) {
+		FiltroCompuesto compuesto = new FiltroCompuesto(); 
+		compuesto.agregarFiltro(filtro);
+		
+	}
+
 }
