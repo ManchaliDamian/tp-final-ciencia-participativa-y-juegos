@@ -5,7 +5,6 @@ import java.util.List;
 
 public class Usuario {
 
-	// FALTA asignarle desafios (strategy)
 
 	private Preferencia preferencia;
 	private EstrategiaDeSeleccion estrategia;

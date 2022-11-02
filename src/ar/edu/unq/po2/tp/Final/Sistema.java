@@ -42,7 +42,7 @@ public class Sistema {
 		proyectos.addAll(filtro.filtrar(proyectos, preferencia));
 	}
 	
-	public void recomendarDesafios(List<Usuario> usuariosEnSistema, List<Desafio> desafios) {
+	public void recomendarDesafios(List<Desafio> desafios) {
 		for (Usuario u : usuariosEnSistema) {
             u.desafiosDeInteres(desafios) ;
 		}
