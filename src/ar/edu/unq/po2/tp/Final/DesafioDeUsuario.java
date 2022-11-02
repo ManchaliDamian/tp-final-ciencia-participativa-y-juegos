@@ -13,7 +13,6 @@ public class DesafioDeUsuario {
 	public DesafioDeUsuario (Desafio desafio) {
 		this.puntuacion = 0;
 		this.desafio = desafio;
-		muestrasObtenidas = new ArrayList<Muestra>();
 		setEstado(new EstadoPendiente());
 
 	}

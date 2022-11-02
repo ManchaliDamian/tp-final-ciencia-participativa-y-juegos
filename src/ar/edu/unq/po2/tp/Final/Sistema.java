@@ -46,6 +46,6 @@ public class Sistema {
 		for (Usuario u : usuariosEnSistema) {
             u.desafiosDeInteres(desafios) ;
 		}
-	}
+	} 
 	
 }

@@ -20,7 +20,7 @@ public class Usuario {
 		
 
 	}
-
+ 
 	public Preferencia getPreferencia() {
 		return preferencia;
 	}

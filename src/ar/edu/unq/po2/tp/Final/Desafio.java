@@ -57,6 +57,6 @@ public class Desafio {
 
 	public boolean cumpleConRestriccion(Muestra muestra) { 
 		return getRestriccionesTemp().isMuestraValida(muestra);
-	} 
+	}  
 
 }

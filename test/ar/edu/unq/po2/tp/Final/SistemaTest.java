@@ -50,6 +50,6 @@ class SistemaTest {
 
 	   assertTrue(usuario1.getDesafiosInteres().containsAll(desafios)); 
    }
-   
+    
    
 }
