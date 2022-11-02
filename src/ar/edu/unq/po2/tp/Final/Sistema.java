@@ -22,10 +22,6 @@ public class Sistema {
 		this.proyectos = proyectos;
 	}
 
-	public void buscarProyecto(List<Proyecto> proyectos, PreferenciaDeProyecto preferencia) {
-		proyectos.addAll(filtro.filtrar(proyectos, preferencia));
-	}
-
 	public List<Usuario> getUsuariosEnSistema() {
 		return usuariosEnSistema;
 	}
@@ -42,9 +38,14 @@ public class Sistema {
 		this.preferencia = preferencia;
 	}
 
+	public void buscarProyectos(List<Proyecto> proyectos, PreferenciaDeProyecto preferencia) {
+		proyectos.addAll(filtro.filtrar(proyectos, preferencia));
+	}
+	
 	public void recomendarDesafios(List<Usuario> usuariosEnSistema, List<Desafio> desafios) {
 		for (Usuario u : usuariosEnSistema) {
             u.desafiosDeInteres(desafios) ;
 		}
 	}
+	
 }

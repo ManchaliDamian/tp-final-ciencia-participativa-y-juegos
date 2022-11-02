@@ -4,25 +4,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FiltroCategoria extends Filtro {
-	// Duda como hacer que exluya e incluya otras porque son dos listas 
-
+	// Duda como hacer que exluya e incluya otras porque son dos listas
 
 	@Override
 	public List<Proyecto> filtrar(List<Proyecto> proyectos, PreferenciaDeProyecto preferencia) {
-		List<Categoria> categoriasDeseadas = preferencia.getCategoriasDeseadas();
-		List<Proyecto> proyectosConCategorias = new ArrayList<Proyecto>(); 
-		for (Categoria c : categoriasDeseadas) {
-			for(Proyecto p : proyectos) {
-				if(p.getCategorias().contains(c) && p.getCategorias()) {
-					proyectosConCategorias.add(p); 
-				}
-			}
-			
+		List<Proyecto> proyectosDePreferencia = proyectos.stream().filter(p -> this.isDePreferencia(p, preferencia.getCategoriasDeseadas())).toList();
+		List<Proyecto> proyectosExcluidos = proyectosDePreferencia.stream().filter(p -> !this.isDePreferencia(p, preferencia.getCategoriasNoDeseadas())).toList();
+		return proyectosExcluidos;
+	}
+
+	private boolean isDePreferencia(Proyecto p, List<Categoria> categoriasDeseadas) {
+		List<Categoria> categoriasDeProyecto = p.getCategorias();
+		while (!categoriasDeProyecto.isEmpty()
+				&& !categoriasDeseadas.contains(categoriasDeProyecto.get(0))) {
+			categoriasDeProyecto.remove(0);
+
 		}
-			
+		return (!categoriasDeProyecto.isEmpty());
 
 	}
 
-	 
 }
-
