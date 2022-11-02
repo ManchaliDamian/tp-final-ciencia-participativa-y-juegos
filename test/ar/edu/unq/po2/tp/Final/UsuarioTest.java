@@ -33,10 +33,12 @@ class UsuarioTest {
 	Restricciones restriccionFecha;
 	Restricciones restriccionDia; 
 	EstrategiaDeSeleccion estrategia;
+	
+	List<Desafio> desafios = new ArrayList<Desafio>();
 
 	@BeforeEach
 	public void setUp() throws Exception {
-		preferencia = mock(Preferencia.class);
+		preferencia = new Preferencia(2, 6, 6); 
 		usuario = new Usuario(preferencia);
 		proyecto = new Proyecto("Pepito", "los pepitos"); 
  
@@ -58,6 +60,19 @@ class UsuarioTest {
 	
 		desafio1 = new Desafio(null, restriccionFecha, 2, 5, 1); 
 		desafio2 = new Desafio(null, restriccionDia, 2, 5, 1);
+		desafio3 = new Desafio(null, restriccionDia, 5, 5, 10);
+		desafio4 = new Desafio(null, restriccionDia, 2, 3, 10);
+		desafio5 = new Desafio(null, restriccionDia, 10, 10, 15);
+		desafio6 = new Desafio(null, restriccionDia, 2, 1, 4);
+
+		
+		desafios.add(desafio1);
+		desafios.add(desafio2);
+		desafios.add(desafio3);
+		desafios.add(desafio4);
+		desafios.add(desafio5);
+		
+
 
 		desafioDeUsuario1 = new DesafioDeUsuario(desafio1); 
 		desafioDeUsuario2 = new DesafioDeUsuario(desafio2); 
@@ -237,47 +252,34 @@ class UsuarioTest {
 		assertEquals(0, desafioDeUsuario1.getPuntuacion());
 	}
 
+	
 	@Test
-	void testUnUsuarioUtilizaLaEstrategiaPreferencia() {
+	void testElUsuarioQueRecibeSusDesafiosDeInteresPasanASerDesafiosDeUsuario() {
+		usuario.setEstrategia(new PreferenciasDeJuego());
 		
-
-		int cantidadAntesDeAgregarDesafios = usuario.getDesafios().size();
-		usuario.setEstrategia(new PreferenciasDeJuego());
-
-		List<Desafio> desafios = new ArrayList<Desafio>();
-		desafios.add(desafio1);
-		desafios.add(desafio2);
-		desafios.add(desafio3);
-
-		usuario.desafiosDeInteres(desafios);
-		usuario.agregarDesafiosDeIntereses();
-
-		assertTrue(usuario.getDesafiosInteres().containsAll(desafios));
-		assertEquals((cantidadAntesDeAgregarDesafios + 3) , usuario.getDesafios().size());
-		// compruebo que la cantidad que de desafios de usuario incrementa en 3 
-
-	}
-	
-	@Test
-	void testNoSeRecomiendanMasDe5Desafios() {
-
-		int cantidadAntesDeAgregarDesafios = usuario.getDesafios().size();
-		usuario.setEstrategia(new PreferenciasDeJuego());
-
-		List<Desafio> desafios = new ArrayList<Desafio>();
-		desafios.add(desafio1);
-		desafios.add(desafio2);
-		desafios.add(desafio3);
-		desafios.add(desafio4); 
-		desafios.add(desafio5);
-		desafios.add(desafio6);
-	
+		int desafiosDeUsuarioSinNuevosDesafios = usuario.getDesafios().size();
+		int nuevosDesafios = desafios.size(); 
+		
 		usuario.desafiosDeInteres(desafios);
 		usuario.agregarDesafiosDeIntereses();
 		
-		assertFalse(usuario.getDesafiosInteres().containsAll(desafios)); // se comprueba que excluye un desafio 
-		assertEquals((cantidadAntesDeAgregarDesafios + 5) , usuario.getDesafios().size());
+		assertEquals(desafiosDeUsuarioSinNuevosDesafios + nuevosDesafios, usuario.getDesafios().size() ); 
+		
 	}
+	
+	@Test 
+	void testElUsuarioNoRecibeMasDeCincoRecomendaciones() {
+		usuario.setEstrategia(new PreferenciasDeJuego());
+		
+		desafios.add(desafio6); 
+		
+		usuario.desafiosDeInteres(desafios);
+		usuario.agregarDesafiosDeIntereses();
+		
+		assertFalse(usuario.getDesafiosInteres().containsAll(desafios)); 
+		
+	}
+	
 	
 	
 

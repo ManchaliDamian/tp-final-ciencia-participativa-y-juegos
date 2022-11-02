@@ -2,16 +2,12 @@ package ar.edu.unq.po2.tp.Final;
 
 import java.util.List;
 
-public abstract class EstrategiaDeSeleccion {
+public interface EstrategiaDeSeleccion {
 	
 	// verificar que los desafios recomendados no esten en los del usuario
 
 	public abstract List<Desafio> desafiosParaElUsuario(List<Desafio> desafios2, Usuario usuario);
 
-	public  int coincidenciaDeDesafioYUsuario(Desafio desafio, Usuario usuario) {
-		return (desafio.getCantMuestras() - usuario.getPreferencia().getCantidadDeMuestras())
-				+ (desafio.getDificultad() - usuario.getPreferencia().getDificultad())
-				+ ((desafio.getRecompensa()) - usuario.getPreferencia().getRecompensa());
-	}
+	public Integer coincidenciaDeDesafioYUsuario(Desafio desafio, Usuario usuario);
 
 }

@@ -15,23 +15,25 @@ class SistemaTest {
    Sistema sistema;
    Usuario usuario1; 
    Usuario usuario2; 
+   Preferencia preferecia; 
+   PreferenciasDeJuego preJuego; 
 
    Desafio desafio1; 
    Desafio desafio2;
-   
+   List<Usuario> usuarios = new ArrayList<Usuario>(); 
+   List<Desafio> desafios = new ArrayList<Desafio>(); 
    @BeforeEach
    public void setUp() throws Exception {
+	   
+	   
 	   sistema = new Sistema();
-	   usuario1 = mock(Usuario.class);
-	   usuario2 = mock(Usuario.class);
-	   desafio1 = mock(Desafio.class);
-	   desafio2 = mock(Desafio.class);
+	   preferecia = new Preferencia(4, 10, 6);
+	   desafio1 = new Desafio(null, null, 10, 4, 15); 
+	   desafio2 = new Desafio(null, null, 5, 10, 6); 
+	   usuario1 = new Usuario(preferecia); 
+	   preJuego = new PreferenciasDeJuego();
 	   
-	   List<Usuario> usuarios = new ArrayList<Usuario>(); 
 	   usuarios.add(usuario1);
-	   usuarios.add(usuario2); 
-	   
-	   List<Desafio> desafios = new ArrayList<Desafio>(); 
 	   desafios.add(desafio1);
 	   desafios.add(desafio2);
 
@@ -39,18 +41,15 @@ class SistemaTest {
    
    @Test
    void testElSistemaRecomiendaDesafiosALosUsuariosDelSistema() {
-	   List<Usuario> usuarios = new ArrayList<Usuario>(); 
-	   usuarios.add(usuario1);
-	   usuarios.add(usuario2); 
-	   
-	   List<Desafio> desafios = new ArrayList<Desafio>(); 
-	   desafios.add(desafio1);
-	   desafios.add(desafio2);
-	   
+	   usuario1.setEstrategia(preJuego);
+
 	   sistema.recomendarDesafios(usuarios, desafios);
 	   
-	   verify(usuario1 , times(1)).desafiosDeInteres(desafios);
-	   
+	   assertEquals(usuario1.getDesafiosInteres().get(0), desafio2); 
+	   assertEquals(usuario1.getDesafiosInteres().get(1), desafio1); 
+
+	   assertTrue(usuario1.getDesafiosInteres().containsAll(desafios)); 
    }
+   
    
 }
