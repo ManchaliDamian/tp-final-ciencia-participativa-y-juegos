@@ -35,7 +35,7 @@ public class RestriccionFecha extends Restricciones {
  
 	@Override
 	public void agregarRestriccion(Restricciones restricción) {
-		RestriccionDiaYFecha  r = new RestriccionDiaYFecha();
+		RestriccionCompuesta  r = new RestriccionCompuesta();
 		r.agregarRestriccion(restricción);
 		
 	} 

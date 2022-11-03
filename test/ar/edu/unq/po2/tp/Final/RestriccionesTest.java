@@ -1,7 +1,6 @@
 package ar.edu.unq.po2.tp.Final;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*; 
 
 import java.time.LocalDate;
 
@@ -9,85 +8,118 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class RestriccionesTest {
-	RestriccionDia restriccionDia; 
+	RestriccionDia restriccionDia;
 	RestriccionFecha restriccionFecha;
-	RestriccionDiaYFecha restriccionDiaYFecha;
-	Muestra muestra1; 
-	Muestra muestra2; 
-	Muestra muestra3; 
-	Usuario usuario; 
-	
-	@BeforeEach 
-	public void setUp() throws Exception{
+	RestriccionArea restriccionArea;
+	RestriccionCompuesta restriccionCompuesta;
+	Muestra muestra1;
+	Muestra muestra2;
+	Muestra muestra3;
+	Muestra muestra4;
+	Usuario usuario;
+	CoordenadaGeografica coordenada1;
+	CoordenadaGeografica coordenada2;
+	CoordenadaGeografica coordenada3;
+	Area area;
+
+	@BeforeEach
+	public void setUp() throws Exception {
 		restriccionDia = new RestriccionDia(Dia.Martes);
-		
+
 		LocalDate unaFechaDeIncio = LocalDate.of(2022, 10, 20);
-		LocalDate unaFechaDeFin = LocalDate.of(2022, 10, 30); 
+		LocalDate unaFechaDeFin = LocalDate.of(2022, 10, 30);
 		restriccionFecha = new RestriccionFecha(unaFechaDeIncio, unaFechaDeFin);
-		 
-		restriccionDiaYFecha = new RestriccionDiaYFecha(); 
-		
+
+		coordenada1 = new CoordenadaGeografica(1, 4);
+		area = new Area(coordenada1, 20);
+		restriccionArea = new RestriccionArea(area);
+
+		restriccionCompuesta = new RestriccionCompuesta();
+
 		LocalDate fechaMuestra1 = LocalDate.of(2022, 10, 22);
 		LocalDate fechaMuestra2 = LocalDate.of(2022, 11, 1);
-		muestra1 = new Muestra(null, usuario, fechaMuestra1, null, Dia.Martes);
-		muestra2 = new Muestra(null, usuario, fechaMuestra2, null, Dia.Martes);
+		coordenada2 = new CoordenadaGeografica(6, 6);
+		coordenada3 = new CoordenadaGeografica(30, 22);
+		muestra1 = new Muestra(coordenada2, usuario, fechaMuestra1, null, Dia.Martes);
+		muestra2 = new Muestra(coordenada3, usuario, fechaMuestra2, null, Dia.Martes);
 		muestra3 = new Muestra(null, usuario, fechaMuestra1, null, Dia.Lunes);
+		muestra4 = new Muestra(coordenada3, usuario, fechaMuestra1, null, Dia.Martes);
 	} 
- 
-	@Test 
+
+	@Test
 	void testCuandoUnaMuestraSeRealizaElMismoDiaQueLaRestriccionDiaEsValida() {
-		 
-		assertTrue(restriccionDia.isMuestraValida(muestra1)); 
+
+		assertTrue(restriccionDia.isMuestraValida(muestra1));
 	}
-	
+
 	@Test
 	void testCuandotUnaMuestraSeRealizaUnDiaDiferenteALaRestriccionDiaNoEsValida() {
-	
-		assertFalse(restriccionDia.isMuestraValida(muestra3)); 
+
+		assertFalse(restriccionDia.isMuestraValida(muestra3));
 	}
-	
+
 	@Test
 	void testUnaMuestraSeRealizaDentroDeLasFechasDeLaRestriccionFechaEsValida() {
-		
-		assertTrue(restriccionFecha.isMuestraValida(muestra1)); 
+
+		assertTrue(restriccionFecha.isMuestraValida(muestra1));
 	}
-	
+
 	@Test
 	void testUnaMuestraSeRealizaFueraDeLasFechasDeLaRestriccionFechaNoEsValida() {
-		
-		assertFalse(restriccionFecha.isMuestraValida(muestra2)); 
+
+		assertFalse(restriccionFecha.isMuestraValida(muestra2));
 	}
-	
+
 	@Test
-	void testUnaRestriccionDiaYFechaAgregaUnaNuevaRestriccion() {
-		restriccionDiaYFecha.agregarRestriccion(restriccionDia);
-		int cantDeRestricciones = restriccionDiaYFecha.getRestricciones().size();
-		
+	void testUnaMuestraSeRealizaDentroDeLaCoordenadaGeograficaDelArea() {
+
+		assertTrue(restriccionArea.isMuestraValida(muestra1));
+	}
+
+	@Test
+	void testUnaMuestraSeRealizaFueraDeLaCoordenadaGeograficaDelArea() {
+
+		assertFalse(restriccionArea.isMuestraValida(muestra2));
+	}
+
+	@Test
+	void testUnaRestriccionCompuestaAgregaUnaNuevaRestriccion() {
+		restriccionCompuesta.agregarRestriccion(restriccionDia);
+		int cantDeRestricciones = restriccionCompuesta.getRestricciones().size();
+
 		assertEquals(1, cantDeRestricciones);
-	} 
-
-	@Test
-	void testUnaMuestraSeRealizaDentroDeLosDiasYFechasDeLaRestriccionFechaYDiaEsValida() {
-		
-		assertTrue(restriccionDiaYFecha.isMuestraValida(muestra1)); 
-		
-		
-	}
-	
-	@Test
-	 void testUnaMuestraSeRealizaElMismoDiaPeroNoSeEncuentraDentroDeLaFecha() {
-		restriccionDiaYFecha.agregarRestriccion(restriccionDia);
-		restriccionDiaYFecha.agregarRestriccion(restriccionFecha);
-	
-		assertFalse(restriccionDiaYFecha.isMuestraValida(muestra2)); 
-	}
-	
-	@Test
-	void testUnaMuestraSeRealizaEnFechaPeroNoEnDia() {
-		restriccionDiaYFecha.agregarRestriccion(restriccionDia);
-		restriccionDiaYFecha.agregarRestriccion(restriccionFecha);
-		
-		assertFalse(restriccionDiaYFecha.isMuestraValida(muestra3)); 
 	}
 
-}
+	@Test
+	void testUnaMuestraCumpleConTodasLasRestriccionesDeLaRestriccionArea() {
+
+		assertTrue(restriccionCompuesta.isMuestraValida(muestra1));
+
+	}
+
+	@Test
+	void testUnaMuestraSeRealizaElMismoDiaPeroNoSeEncuentraDentroDeLaFechaDelDesafio() {
+		restriccionCompuesta.agregarRestriccion(restriccionDia);
+		restriccionCompuesta.agregarRestriccion(restriccionFecha);
+
+		assertFalse(restriccionCompuesta.isMuestraValida(muestra2));
+	}
+
+	@Test
+	void testUnaMuestraSeRealizaEnFechaPeroNoEnDiaDelDesafio() {
+		restriccionCompuesta.agregarRestriccion(restriccionDia);
+		restriccionCompuesta.agregarRestriccion(restriccionFecha);
+
+		assertFalse(restriccionCompuesta.isMuestraValida(muestra3));
+	}
+	
+	@Test 
+	void testUnaMuestraSeRealizaEnFechaYDiaPeroNoEnAreaDelDesafio() {
+		restriccionCompuesta.agregarRestriccion(restriccionArea);
+		restriccionCompuesta.agregarRestriccion(restriccionDia);
+		restriccionCompuesta.agregarRestriccion(restriccionFecha);
+		
+		assertFalse(restriccionCompuesta.isMuestraValida(muestra4));
+	}
+
+} 

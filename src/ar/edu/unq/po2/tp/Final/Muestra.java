@@ -4,13 +4,13 @@ import java.time.LocalDate;
 import java.time.chrono.ChronoLocalDate;
 
 public class Muestra {
-	private Coordenada cordGeografica;
+	private CoordenadaGeografica cordGeografica;
 	private Usuario usuario;
 	private LocalDate fecha;
 	private ChronoLocalDate hora; 
 	private Dia dia; 
 	 
-	public Muestra(Coordenada cord, Usuario unUsuario, LocalDate fecha, ChronoLocalDate hora, Dia dia) {
+	public Muestra(CoordenadaGeografica cord, Usuario unUsuario, LocalDate fecha, ChronoLocalDate hora, Dia dia) {
 		this.cordGeografica = cord;
 		this.usuario = unUsuario;
 		this.fecha = fecha;
@@ -18,10 +18,10 @@ public class Muestra {
 		this.dia = dia; 
 	}
 	
-	public Coordenada getCordGeografica() {
+	public CoordenadaGeografica getCordGeografica() {
 		return cordGeografica;
 	}
-	public void setCordGeografica(Coordenada cordGeografica) {
+	public void setCordGeografica(CoordenadaGeografica cordGeografica) {
 		this.cordGeografica = cordGeografica;
 	}
 	public Usuario getUsuario() {
