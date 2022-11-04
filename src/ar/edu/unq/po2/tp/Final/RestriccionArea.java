@@ -17,13 +17,6 @@ public class RestriccionArea extends Restricciones {
 	}
 
 	@Override
-	public void agregarRestriccion(Restricciones restricción) {
-		RestriccionCompuesta  r = new RestriccionCompuesta();
-		r.agregarRestriccion(restricción);
-		
-	}
-
-	@Override
 	public boolean isMuestraValida(Muestra muestra) {
 		// TODO Auto-generated method stub
 		return area.esCoordenadaGeograficaValida(muestra.getCordGeografica());

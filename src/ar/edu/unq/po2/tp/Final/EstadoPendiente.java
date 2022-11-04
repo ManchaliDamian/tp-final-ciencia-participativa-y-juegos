@@ -13,20 +13,8 @@ public class EstadoPendiente extends Estado {
 		return 0;
 	}
 
-	@Override
 	public boolean esEstadoPendiente() {
-		// TODO Auto-generated method stub
 		return true;
-	}
-
-	@Override
-	public boolean estaAceptado() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-	
-	public boolean estaCompleto() {
-		return false; 
 	}
 
 

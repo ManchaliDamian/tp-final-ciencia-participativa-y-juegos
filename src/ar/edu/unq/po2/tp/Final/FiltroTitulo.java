@@ -6,12 +6,8 @@ public class FiltroTitulo extends Filtro {
 
 	@Override
 	public List<Proyecto> filtrar(List<Proyecto> proyectos, PreferenciaDeProyecto preferencia) { 
-           List<Proyecto> proyectosDePreferencia = proyectos.stream().filter(p -> this.isTituloDePreferencia(p, preferencia.getTitulosDeseados())).toList();
+           List<Proyecto> proyectosDePreferencia = proyectos.stream().filter(p -> preferencia.isTituloDePreferencia(p)).toList();
            return proyectosDePreferencia; 
-	}
-
-	private boolean isTituloDePreferencia(Proyecto p, List<String> titulos) {
-		return titulos.contains(p.getNombre());
 	}
 
 	@Override

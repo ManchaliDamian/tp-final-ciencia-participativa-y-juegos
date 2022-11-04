@@ -44,4 +44,9 @@ public class PreferenciaDeProyecto {
 		categoriasNoDeseadas.add(categoria);
 	}
 
+	public boolean isTituloDePreferencia(Proyecto p) {
+
+		return titulosDeseados.contains(p.getNombre());
+	}
+
 }

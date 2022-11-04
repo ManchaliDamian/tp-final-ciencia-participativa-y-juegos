@@ -32,16 +32,6 @@ public class RestriccionFecha extends Restricciones {
 		   return muestra.getFecha().isAfter(fechaInicio) && muestra.getFecha().isBefore(fechaFin) ; 
 				   
 	}
- 
-	@Override
-	public void agregarRestriccion(Restricciones restricción) {
-		RestriccionCompuesta  r = new RestriccionCompuesta();
-		r.agregarRestriccion(restricción);
-		
-	} 
-		
-	
-	
 	
 }
     

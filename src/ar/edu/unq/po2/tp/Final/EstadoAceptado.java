@@ -19,21 +19,11 @@ public class EstadoAceptado extends Estado {
 	} 
 
 	@Override
-	public boolean esEstadoPendiente() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
 	public boolean estaAceptado() {
-		// TODO Auto-generated method stub
 		return true;
 	}
 
 	
-	public boolean estaCompleto() {
-		return false; 
-	}
 
  
 }
