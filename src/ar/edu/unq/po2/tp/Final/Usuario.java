@@ -5,27 +5,33 @@ import java.util.List;
 
 public class Usuario {
 
-
 	private Preferencia preferencia;
 	private EstrategiaDeSeleccion estrategia;
-	private List<Desafio> desafiosInteres = new ArrayList<Desafio>(); 
+	private List<Desafio> desafiosInteres = new ArrayList<Desafio>();
 
 	private List<DesafioDeUsuario> desafios = new ArrayList<DesafioDeUsuario>();
 	private List<Proyecto> proyectos = new ArrayList<Proyecto>();
-	
 
 	public Usuario(Preferencia unaPreferencia) {
 		this.preferencia = unaPreferencia;
-		
+		this.estrategia = new PreferenciasDeJuego(); // por default
 
 	}
- 
+
 	public Preferencia getPreferencia() {
 		return preferencia;
 	}
 
 	public void setPreferencia(Preferencia preferencia) {
 		this.preferencia = preferencia;
+	}
+
+	public EstrategiaDeSeleccion getEstrategia() {
+		return estrategia;
+	}
+
+	public void setEstrategia(EstrategiaDeSeleccion estrategia) {
+		this.estrategia = estrategia;
 	}
 
 	public void agregarDesafio(DesafioDeUsuario desafio) {
@@ -41,16 +47,8 @@ public class Usuario {
 		return desafios;
 	}
 
-	public void setDesafios(List<DesafioDeUsuario> desafios) {
-		this.desafios = desafios;
-	}
-
 	public List<Proyecto> getProyectos() {
 		return proyectos;
-	}
-
-	public void setProyectos(List<Proyecto> proyectos) {
-		this.proyectos = proyectos;
 	}
 
 	public void agregarProyecto(Proyecto p) {
@@ -99,36 +97,27 @@ public class Usuario {
 
 	public double getPorcentajeDeCompletitud(DesafioDeUsuario desafioDeUsuario1) {
 
-		return desafioDeUsuario1.getPorcentajeDeCompletitud(); 
+		return desafioDeUsuario1.getPorcentajeDeCompletitud();
 
-	}
-
-	public void desafiosDeInteres(List<Desafio> desafios) {
-	   this.desafiosInteres.addAll(estrategia.desafiosParaElUsuario(desafios, this)) ;
-	}
-	
-	public void agregarDesafiosDeIntereses() {
-		for (Desafio d : desafiosInteres) {
-			desafios.add(new DesafioDeUsuario(d));
-		}
 	}
 
 	public void puntuarDesafio(DesafioDeUsuario desafio, int puntuacion) {
-		if(desafio.getEstado().estaCompleto()) {
+		if (desafio.getEstado().estaCompleto()) {
 			desafio.setPuntuacion(puntuacion);
 			System.out.print("la puntuacion es" + " " + puntuacion);
 		}
 
 	}
 
-	public EstrategiaDeSeleccion getEstrategia() {
-		return estrategia;
+	public void desafiosDeInteres(List<Desafio> desafios) {
+		this.desafiosInteres.addAll(estrategia.desafiosParaElUsuario(desafios, this));
 	}
 
-	public void setEstrategia(EstrategiaDeSeleccion estrategia) {
-		this.estrategia = estrategia;
+	public void agregarDesafiosDeIntereses() {
+		for (Desafio d : desafiosInteres) {
+			desafios.add(new DesafioDeUsuario(d));
+		}
 	}
-
 
 	public List<Desafio> getDesafiosInteres() {
 		return desafiosInteres;

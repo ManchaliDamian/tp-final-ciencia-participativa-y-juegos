@@ -9,7 +9,7 @@ public class Desafio {
 	
 	public Desafio(Area area, Restricciones restriciones, int cantMuestras , int dificultad , int recompesas) {
 		setArea(area);
-		setRestriccionesTemp(restriciones);
+		setRestriccionesTemp(restriciones); 
 		setCantMuestras(cantMuestras);
 		setDificultad(dificultad);
 		setRecompensa(recompesas);

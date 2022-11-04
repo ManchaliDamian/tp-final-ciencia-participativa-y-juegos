@@ -36,7 +36,7 @@ public class Sistema {
 
 	public void setPreferencia(PreferenciaDeProyecto preferencia) {
 		this.preferencia = preferencia;
-	}
+	} 
 
 	public void buscarProyectos(List<Proyecto> proyectos, PreferenciaDeProyecto preferencia) {
 		proyectos.addAll(filtro.filtrar(proyectos, preferencia));
@@ -45,7 +45,7 @@ public class Sistema {
 	public void recomendarDesafios(List<Desafio> desafios) {
 		for (Usuario u : usuariosEnSistema) {
             u.desafiosDeInteres(desafios) ;
-		}
-	} 
+		} 
+	}  
 	
 }

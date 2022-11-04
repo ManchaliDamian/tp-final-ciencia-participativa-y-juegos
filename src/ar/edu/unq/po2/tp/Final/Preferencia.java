@@ -5,10 +5,10 @@ public class Preferencia {
     private int recompensa;
     private int cantidadDeMuestras;
     
-    public Preferencia(int dificultad1 , int recompensa1 , int cantMuestras) {
+    public Preferencia(int unaDificultad , int unaRecompensa , int cantMuestras) {
     	setCantidadDeMuestras(cantMuestras);
-    	setDificultad(dificultad1);
-    	setRecompensa(recompensa1);
+    	setDificultad(unaDificultad);
+    	setRecompensa(unaRecompensa);
     }
     
 	public Integer getDificultad() {
