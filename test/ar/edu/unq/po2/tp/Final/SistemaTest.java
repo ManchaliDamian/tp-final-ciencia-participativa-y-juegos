@@ -22,8 +22,8 @@ class SistemaTest {
 	Proyecto proyecto1;
 	Proyecto proyecto2;
 	Proyecto proyecto3;
-	Proyecto proyecto4; 
-	PreferenciaDeProyecto preferenciaDeProyecto; 
+	Proyecto proyecto4;
+	PreferenciaDeProyecto preferenciaDeProyecto;
 	Categoria categoria1;
 	Categoria categoria2;
 
@@ -34,30 +34,37 @@ class SistemaTest {
 	@BeforeEach
 	public void setUp() throws Exception {
 
-		preJuego = new PreferenciasDeJuego(); 
+		preJuego = new PreferenciasDeJuego();
 		filtroTitulo = new FiltroTitulo();
 		filtroCategoria = new FiltroCategoria();
 		filtroCompuesto = new FiltroCompuesto();
+		
+		categoria1 = new Categoria("Programación", "Lenguaje orientado a objetos");
+		categoria2 = new Categoria("Matematicas", "Logaritmo");
 
-		sistema = new Sistema();
+		preferenciaDeProyecto = new PreferenciaDeProyecto();
+		preferenciaDeProyecto.agregarTituloDePreferencia("Programacion");
+		preferenciaDeProyecto.agregarCategoriaDeseada(categoria1);
+		preferenciaDeProyecto.agregarCategoriaNoDeseada(categoria2);
+
 		preferecia = new Preferencia(4, 10, 6);
 		desafio1 = new Desafio(null, null, 10, 4, 15);
 		desafio2 = new Desafio(null, null, 5, 10, 6);
 		usuario1 = new Usuario(preferecia);
-		
+
 		proyecto1 = new Proyecto("Java", "arboles");
-		proyecto2 = new Proyecto("Programacion","Lenguaje orientado a objetos");
-		proyecto3 = new Proyecto("Matematicas", "Poryectos logaritmicos");
-		proyecto4 = new Proyecto("Java", "ramas");	
-		
-		categoria1 = new Categoria("Programación", "Lenguaje orientado a objetos");
-		categoria2 = new Categoria("Matematicas", "Logaritmo");
-		
+		proyecto2 = new Proyecto("Programacion", "Lenguaje orientado a objetos");
+		proyecto3 = new Proyecto("Matematicas", "Proyectos logaritmicos");
+		proyecto4 = new Proyecto("Java", "ramas");
+
 		proyecto1.agregarCategoria(categoria1);
-		proyecto2.agregarCategoria(categoria2);
+		proyecto2.agregarCategoria(categoria1);
 		proyecto3.agregarCategoria(categoria1);
 		proyecto3.agregarCategoria(categoria2);
 		proyecto4.agregarCategoria(categoria1);
+		
+		filtroCompuesto.agregarFiltro(filtroTitulo);
+		filtroCompuesto.agregarFiltro(filtroCategoria);
 
 		desafios.add(desafio1);
 		desafios.add(desafio2);
@@ -65,10 +72,45 @@ class SistemaTest {
 	}
 
 	@Test
+	void testUnSistemaBuscaProyectosPorFiltroTitulo() {
+		sistema = new Sistema(filtroTitulo);
+		List<Proyecto> proyectos = Arrays.asList(proyecto1, proyecto2, proyecto3, proyecto4);
+
+		sistema.buscarProyectos(proyectos, preferenciaDeProyecto);
+
+		assertEquals(1, sistema.getProyectosDePreferencia().size());
+	}
+	
+	@Test 
+	void testUnSistemaBuscaProyectosPorFiltroCategoria() {
+		sistema = new Sistema(filtroCategoria);
+		List<Proyecto> proyectos = Arrays.asList(proyecto1, proyecto2, proyecto3, proyecto4);
+
+		sistema.buscarProyectos(proyectos, preferenciaDeProyecto);
+
+		assertEquals(3, sistema.getProyectosDePreferencia().size());
+	
+	}
+	
+	@Test
+	void testUnSistemaBuscaProyectosPorFiltroCompuesto() {
+		sistema = new Sistema(filtroCompuesto);
+		List<Proyecto> proyectos = Arrays.asList(proyecto1, proyecto2, proyecto3, proyecto4);
+		
+		sistema.buscarProyectos(proyectos, preferenciaDeProyecto);
+		
+		assertEquals(1, sistema.getProyectosDePreferencia().size());
+	}
+	
+	
+	
+
+	@Test
 	void testElSistemaRecomiendaDesafiosALosUsuariosDelSistema() {
+		sistema = new Sistema(filtroCategoria); 
 		usuario1.setEstrategia(preJuego);
 
-		sistema.getUsuariosEnSistema().add(usuario1); 
+		sistema.getUsuariosEnSistema().add(usuario1);
 		sistema.recomendarDesafios(desafios);
 
 		assertEquals(usuario1.getDesafiosInteres().get(0), desafio2);
@@ -76,8 +118,5 @@ class SistemaTest {
 
 		assertTrue(usuario1.getDesafiosInteres().containsAll(desafios));
 	}
-	
-	
+
 }
-	
-   

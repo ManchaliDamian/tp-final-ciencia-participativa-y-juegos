@@ -12,10 +12,9 @@ public class FiltroCompuesto extends Filtro {
 
 	@Override
 	public List<Proyecto> filtrar( List<Proyecto> proyectos, PreferenciaDeProyecto preferencia) {
-          List<Proyecto> proyectosFiltrados = new ArrayList<Proyecto>(); 
+          List<Proyecto> proyectosFiltrados = proyectos; 
           for(Filtro f : filtros) {
-        	  List<Proyecto> proyectosDeFiltro = f.filtrar(proyectos, preferencia); 
-        	  proyectosFiltrados.addAll(proyectosDeFiltro); 
+        	  proyectosFiltrados = f.filtrar(proyectosFiltrados, preferencia); 
           }
          
           return proyectosFiltrados; 
