@@ -7,12 +7,14 @@ public class DesafioDeUsuario {
 
 	private int puntuacion;
 	private Desafio desafio;
+	private String nombre; 
 	private List<Muestra> muestrasObtenidas = new ArrayList<Muestra>();
 	private Estado estado;
 
-	public DesafioDeUsuario (Desafio desafio) {
+	public DesafioDeUsuario (Desafio desafio, String nombre) {
 		this.puntuacion = 0;
 		this.desafio = desafio;
+		this.nombre = nombre; 
 		setEstado(new EstadoPendiente());
 
 	}
@@ -73,6 +75,14 @@ public class DesafioDeUsuario {
 
 	public double getPorcentajeDeCompletitud() {
 		return estado.porcentajeDeCompletitud(this);
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 	
 }

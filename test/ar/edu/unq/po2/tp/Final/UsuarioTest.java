@@ -1,14 +1,15 @@
 package ar.edu.unq.po2.tp.Final;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.Test;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 
 class UsuarioTest {
 	Preferencia preferencia;
@@ -58,12 +59,12 @@ class UsuarioTest {
 		muestra1 = new Muestra(null, usuario, fechaDeMuestra1, null, Dia.Martes);
 		muestra2 = new Muestra(null, usuario, fechaDeMuestra2, null, Dia.Jueves);
 	
-		desafio1 = new Desafio(null, restriccionFecha, 2, 5, 1); 
-		desafio2 = new Desafio(null, restriccionDia, 2, 5, 1);
-		desafio3 = new Desafio(null, restriccionDia, 5, 5, 10);
-		desafio4 = new Desafio(null, restriccionDia, 2, 3, 10);
-		desafio5 = new Desafio(null, restriccionDia, 10, 10, 15);
-		desafio6 = new Desafio(null, restriccionDia, 2, 1, 4);
+		desafio1 = new Desafio(null, restriccionFecha, 2, 5, 1, "Cuentas"); 
+		desafio2 = new Desafio(null, restriccionDia, 2, 5, 1, "Divisiones");
+		desafio3 = new Desafio(null, restriccionDia, 5, 5, 10, "Multiplicaciones");
+		desafio4 = new Desafio(null, restriccionDia, 2, 3, 10, "Raices");
+		desafio5 = new Desafio(null, restriccionDia, 10, 10, 15, "Logaritmos");
+		desafio6 = new Desafio(null, restriccionDia, 2, 1, 4, "Pitagoras");
 
 		
 		desafios.add(desafio1);
@@ -74,8 +75,8 @@ class UsuarioTest {
 		
 
 
-		desafioDeUsuario1 = new DesafioDeUsuario(desafio1); 
-		desafioDeUsuario2 = new DesafioDeUsuario(desafio2); 
+		desafioDeUsuario1 = new DesafioDeUsuario(desafio1, "Cuentas");   
+		desafioDeUsuario2 = new DesafioDeUsuario(desafio2, "Funciones"); 
 		
 		proyecto = new Proyecto("Pepito", "los pepitos"); 
 
@@ -265,6 +266,7 @@ class UsuarioTest {
 		
 		assertEquals(desafiosDeUsuarioSinNuevosDesafios + nuevosDesafios, usuario.getDesafios().size() ); 
 		
+		
 	}
 	
 	@Test 
@@ -280,7 +282,15 @@ class UsuarioTest {
 		
 	}
 	
-	
-	
+	@Test
+	void testElUsuarioNoAgregaDesafiosSiYaLosRealizo() {
+        usuario.setEstrategia(new PreferenciasDeJuego());
+		int cantidadDeDesafiosAntesDeAgregar = usuario.getDesafiosInteres().size(); 
+		
+		usuario.desafiosDeInteres(desafios);
+		usuario.agregarDesafiosDeIntereses();
+		
+		assertEquals(cantidadDeDesafiosAntesDeAgregar + 4, usuario.getDesafios().size()); 
+	}
 
 }

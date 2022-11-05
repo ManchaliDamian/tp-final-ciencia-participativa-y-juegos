@@ -2,14 +2,16 @@ package ar.edu.unq.po2.tp.Final;
 
 public class Desafio {
 	private Area area;
+	private String nombre; 
 	private Restricciones restriccionesTemp;
 	private int cantMuestras;
 	private int dificultad;
 	private int recompensa;
 	
-	public Desafio(Area area, Restricciones restriciones, int cantMuestras , int dificultad , int recompesas) {
+	public Desafio(Area area, Restricciones restriciones, int cantMuestras , int dificultad , int recompesas, String nombre) {
 		setArea(area);
 		setRestriccionesTemp(restriciones); 
+		setNombre(nombre);
 		setCantMuestras(cantMuestras);
 		setDificultad(dificultad);
 		setRecompensa(recompesas);
@@ -57,6 +59,14 @@ public class Desafio {
 
 	public boolean cumpleConRestriccion(Muestra muestra) { 
 		return getRestriccionesTemp().isMuestraValida(muestra);
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}  
 
 }

@@ -21,4 +21,3 @@ public class PreferenciasDeJuego implements EstrategiaDeSeleccion {
 
 }
 
-// usuario = suFavorito 

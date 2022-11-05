@@ -2,6 +2,7 @@ package ar.edu.unq.po2.tp.Final;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Usuario {
 
@@ -115,8 +116,17 @@ public class Usuario {
 
 	public void agregarDesafiosDeIntereses() {
 		for (Desafio d : desafiosInteres) {
-			desafios.add(new DesafioDeUsuario(d));
+			agregarSiNoEsRepetido(d);
+		} 
+	}
+
+	private void agregarSiNoEsRepetido(Desafio desafio) {
+		for (DesafioDeUsuario d : desafios) {
+			if (d.getNombre() != desafio.getNombre()) {
+				desafios.add(new DesafioDeUsuario(desafio, desafio.getNombre())); 
+			}
 		}
+		
 	}
 
 	public List<Desafio> getDesafiosInteres() {

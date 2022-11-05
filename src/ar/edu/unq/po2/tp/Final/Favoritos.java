@@ -6,7 +6,8 @@ public class Favoritos implements EstrategiaDeSeleccion {
 
 	@Override
 	public List<Desafio> desafiosParaElUsuario(List<Desafio> desafios2, Usuario usuario) {
-	   return ; 
+	   
+		return ; 
 	}
 
 	@Override
