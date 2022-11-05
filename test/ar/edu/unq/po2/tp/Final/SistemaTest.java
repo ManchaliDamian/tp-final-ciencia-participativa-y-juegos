@@ -48,8 +48,8 @@ class SistemaTest {
 		preferenciaDeProyecto.agregarCategoriaNoDeseada(categoria2);
 
 		preferecia = new Preferencia(4, 10, 6);
-		desafio1 = new Desafio(null, null, 10, 4, 15);
-		desafio2 = new Desafio(null, null, 5, 10, 6);
+		desafio1 = new Desafio(null, null, 10, 4, 15, "Matematica logaritmica");
+		desafio2 = new Desafio(null, null, 5, 10, 6, "Programacion informatica");
 		usuario1 = new Usuario(preferecia);
 
 		proyecto1 = new Proyecto("Java", "arboles");

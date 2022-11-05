@@ -24,7 +24,7 @@ class DesafioDeUsuarioTest {
 		muestra2 = new Muestra(null, usuario, fechaMuestra, null, Dia.Viernes);
 
 		restriccionDia = new RestriccionDia(Dia.Sabado);
-		desafio = new Desafio(null, restriccionDia, 1, 5, 1);
+		desafio = new Desafio(null, restriccionDia, 1, 5, 1, "Cuenta");
 		desafioDeUsuario = new DesafioDeUsuario(desafio);
  
 	}

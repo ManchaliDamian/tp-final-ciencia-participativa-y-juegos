@@ -1,8 +1,9 @@
 package ar.edu.unq.po2.tp.Final;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Optional;
 
 public class Usuario {
 
@@ -123,7 +124,7 @@ public class Usuario {
 	private void agregarSiNoEsRepetido(Desafio desafio) {
 		for (DesafioDeUsuario d : desafios) {
 			if (d.getNombre() != desafio.getNombre()) {
-				desafios.add(new DesafioDeUsuario(desafio, desafio.getNombre())); 
+				desafios.add(new DesafioDeUsuario(desafio)); 
 			}
 		}
 		
@@ -135,6 +136,13 @@ public class Usuario {
 
 	public void setDesafiosInteres(List<Desafio> desafiosInteres) {
 		this.desafiosInteres = desafiosInteres;
+	}
+	
+	public DesafioDeUsuario desafioDeUsuarioConMayorPuntaje() {
+		Optional<DesafioDeUsuario> d = desafios.stream().max(Comparator.comparing(DesafioDeUsuario :: getPuntuacion));
+		return d.get(); 
+
+				
 	}
 
 }

@@ -1,15 +1,15 @@
 package ar.edu.unq.po2.tp.Final;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
-import org.junit.Test;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 class UsuarioTest {
 	Preferencia preferencia;
@@ -29,20 +29,17 @@ class UsuarioTest {
 	Estado estadoPendiente;
 	Muestra muestra1;
 	Muestra muestra2;
-	Muestra muestra3;
 	Proyecto proyecto;
 	Restricciones restriccionFecha;
 	Restricciones restriccionDia; 
 	EstrategiaDeSeleccion estrategia;
-	
-	List<Desafio> desafios = new ArrayList<Desafio>();
 
 	@BeforeEach
 	public void setUp() throws Exception {
-		preferencia = new Preferencia(2, 6, 6); 
+		preferencia = mock(Preferencia.class);
 		usuario = new Usuario(preferencia);
 		proyecto = new Proyecto("Pepito", "los pepitos"); 
- 
+
 
 		estadoCompleto = new EstadoCompleto();
 		estadoAceptado =new EstadoAceptado(); 
@@ -53,30 +50,16 @@ class UsuarioTest {
 		restriccionFecha = new RestriccionFecha(unaFechaDeIncio, unaFechaDeFin);
 		restriccionDia = new RestriccionDia(Dia.Lunes); 
 		
-		LocalDate fechaDeMuestra1 = LocalDate.of(2022, 10, 22);
-		LocalDate fechaDeMuestra2 = LocalDate.of(2022, 10, 24);
+		LocalDate fechaDeMuestra = LocalDate.of(2022, 10, 22);
+		muestra1 = new Muestra(null, usuario, fechaDeMuestra, null, Dia.Martes);
+		muestra2 = new Muestra(null, usuario, fechaDeMuestra, null, Dia.Jueves);
 		
-		muestra1 = new Muestra(null, usuario, fechaDeMuestra1, null, Dia.Martes);
-		muestra2 = new Muestra(null, usuario, fechaDeMuestra2, null, Dia.Jueves);
 	
-		desafio1 = new Desafio(null, restriccionFecha, 2, 5, 1, "Cuentas"); 
-		desafio2 = new Desafio(null, restriccionDia, 2, 5, 1, "Divisiones");
-		desafio3 = new Desafio(null, restriccionDia, 5, 5, 10, "Multiplicaciones");
-		desafio4 = new Desafio(null, restriccionDia, 2, 3, 10, "Raices");
-		desafio5 = new Desafio(null, restriccionDia, 10, 10, 15, "Logaritmos");
-		desafio6 = new Desafio(null, restriccionDia, 2, 1, 4, "Pitagoras");
+		desafio1 = new Desafio(null, restriccionFecha, 2, 5, 1, "Muestra"); 
+		desafio2 = new Desafio(null, restriccionDia, 2, 5, 1, "Cuenta");
 
-		
-		desafios.add(desafio1);
-		desafios.add(desafio2);
-		desafios.add(desafio3);
-		desafios.add(desafio4);
-		desafios.add(desafio5);
-		
-
-
-		desafioDeUsuario1 = new DesafioDeUsuario(desafio1, "Cuentas");   
-		desafioDeUsuario2 = new DesafioDeUsuario(desafio2, "Funciones"); 
+		desafioDeUsuario1 = new DesafioDeUsuario(desafio1); 
+		desafioDeUsuario2 = new DesafioDeUsuario(desafio2); 
 		
 		proyecto = new Proyecto("Pepito", "los pepitos"); 
 
@@ -241,7 +224,7 @@ class UsuarioTest {
 		usuario.agregarMuestra(muestra2, proyecto);
 		
 		usuario.puntuarDesafio(desafioDeUsuario1, 4);
-		
+
 		assertEquals(4, desafioDeUsuario1.getPuntuacion());
 
 	}
@@ -253,44 +236,48 @@ class UsuarioTest {
 		assertEquals(0, desafioDeUsuario1.getPuntuacion());
 	}
 
-	
-	@Test
-	void testElUsuarioQueRecibeSusDesafiosDeInteresPasanASerDesafiosDeUsuario() {
+	/*@Test
+	void testUnUsuarioUtilizaLaEstrategiaPreferencia() {
+		
+
+		int cantidadAntesDeAgregarDesafios = usuario.getDesafios().size();
 		usuario.setEstrategia(new PreferenciasDeJuego());
-		
-		int desafiosDeUsuarioSinNuevosDesafios = usuario.getDesafios().size();
-		int nuevosDesafios = desafios.size(); 
-		
+
+		List<Desafio> desafios = new ArrayList<Desafio>();
+		desafios.add(desafio1);
+		desafios.add(desafio2);
+		desafios.add(desafio3);
+
 		usuario.desafiosDeInteres(desafios);
 		usuario.agregarDesafiosDeIntereses();
-		
-		assertEquals(desafiosDeUsuarioSinNuevosDesafios + nuevosDesafios, usuario.getDesafios().size() ); 
-		
-		
-	}
-	
-	@Test 
-	void testElUsuarioNoRecibeMasDeCincoRecomendaciones() {
-		usuario.setEstrategia(new PreferenciasDeJuego());
-		
-		desafios.add(desafio6); 
-		
-		usuario.desafiosDeInteres(desafios);
-		usuario.agregarDesafiosDeIntereses();
-		
-		assertFalse(usuario.getDesafiosInteres().containsAll(desafios)); 
-		
+
+		assertTrue(usuario.getDesafiosInteres().containsAll(desafios));
+		assertEquals((cantidadAntesDeAgregarDesafios + 3) , usuario.getDesafios().size());
+		// compruebo que la cantidad que de desafios de usuario incrementa en 3 
+
 	}
 	
 	@Test
-	void testElUsuarioNoAgregaDesafiosSiYaLosRealizo() {
-        usuario.setEstrategia(new PreferenciasDeJuego());
-		int cantidadDeDesafiosAntesDeAgregar = usuario.getDesafiosInteres().size(); 
-		
+	void testNoSeRecomiendanMasDe5Desafios() {
+
+		int cantidadAntesDeAgregarDesafios = usuario.getDesafios().size();
+		usuario.setEstrategia(new PreferenciasDeJuego());
+
+		List<Desafio> desafios = new ArrayList<Desafio>();
+		desafios.add(desafio1);
+		desafios.add(desafio2);
+		desafios.add(desafio3);
+		desafios.add(desafio4); 
+		desafios.add(desafio5);
+		desafios.add(desafio6);
+	
 		usuario.desafiosDeInteres(desafios);
 		usuario.agregarDesafiosDeIntereses();
 		
-		assertEquals(cantidadDeDesafiosAntesDeAgregar + 4, usuario.getDesafios().size()); 
+		assertFalse(usuario.getDesafiosInteres().containsAll(desafios)); // se comprueba que excluye un desafio 
+		assertEquals((cantidadAntesDeAgregarDesafios + 5) , usuario.getDesafios().size());
 	}
+	
+	*/
 
 }

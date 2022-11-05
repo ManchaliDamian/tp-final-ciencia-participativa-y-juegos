@@ -11,10 +11,10 @@ public class DesafioDeUsuario {
 	private List<Muestra> muestrasObtenidas = new ArrayList<Muestra>();
 	private Estado estado;
 
-	public DesafioDeUsuario (Desafio desafio, String nombre) {
+	public DesafioDeUsuario (Desafio desafio) {
 		this.puntuacion = 0;
 		this.desafio = desafio;
-		this.nombre = nombre; 
+		this.nombre = desafio.getNombre(); 
 		setEstado(new EstadoPendiente());
 
 	}
