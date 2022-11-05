@@ -22,8 +22,8 @@ class UsuarioTest {
 
 	DesafioDeUsuario desafioDeUsuario1;
 	DesafioDeUsuario desafioDeUsuario2;
-	DesafioDeUsuario desafioDeUsuario3;
-	DesafioDeUsuario desafioDeUsuarioMock; 
+	DesafioDeUsuario desafioDeUsuarioMock1;
+	DesafioDeUsuario desafioDeUsuarioMock2;
 	Estado estadoCompleto;
 	Estado estadoAceptado;
 	Estado estadoPendiente;
@@ -36,8 +36,8 @@ class UsuarioTest {
 	EstrategiaDeSeleccion estrategiaFav;
 
 	List<Desafio> desafios = new ArrayList<Desafio>();
-    List<DesafioDeUsuario> desafiosDeUsuario = new ArrayList<DesafioDeUsuario>(); 
-	
+	List<DesafioDeUsuario> desafiosDeUsuario = new ArrayList<DesafioDeUsuario>();
+
 	@BeforeEach
 	public void setUp() throws Exception {
 		preferencia = mock(Preferencia.class);
@@ -66,17 +66,17 @@ class UsuarioTest {
 
 		desafioDeUsuario1 = new DesafioDeUsuario(desafio1);
 		desafioDeUsuario2 = new DesafioDeUsuario(desafio2);
-		
-		desafioDeUsuarioMock = mock(DesafioDeUsuario.class); 
+
+		desafioDeUsuarioMock1 = mock(DesafioDeUsuario.class);
+		desafioDeUsuarioMock2 = mock(DesafioDeUsuario.class);
 
 		proyecto = new Proyecto("Pepito", "los pepitos");
-		
+
 		desafiosDeUsuario.add(desafioDeUsuario1);
 		desafiosDeUsuario.add(desafioDeUsuario2);
-		
+
 		usuario.puntuarDesafio(desafioDeUsuario1, 4);
 		usuario.puntuarDesafio(desafioDeUsuario2, 9);
-
 
 		desafios.add(desafio1);
 		desafios.add(desafio2);
@@ -88,11 +88,10 @@ class UsuarioTest {
 	void testCuandoUnUsuarioAgregaUnNuevoDesafíoLoContieneEntreSusDesafíos() {
 		usuario.agregarDesafio(desafioDeUsuario1);
 		usuario.agregarDesafio(desafioDeUsuario2);
-		usuario.agregarDesafio(desafioDeUsuario3);
 
 		int cantD = usuario.getDesafios().size();
 
-		assertEquals(3, cantD);
+		assertEquals(2, cantD);
 	}
 
 	@Test
@@ -284,5 +283,48 @@ class UsuarioTest {
 		assertEquals((cantidadAntesDeAgregarDesafios + 5), usuario.getDesafios().size());
 	}
 
+	@Test
+	void testElUsuarioConoceSuPorcentajeDeCompletitudGralConTodosCompletos() {
+		desafiosDeUsuario.add(desafioDeUsuarioMock1);
+		desafiosDeUsuario.add(desafioDeUsuarioMock2);
+
+		usuario.getDesafios().add(desafioDeUsuarioMock1);
+		usuario.getDesafios().add(desafioDeUsuarioMock2);
+
+		when(desafioDeUsuarioMock1.getEstado()).thenReturn(estadoCompleto);
+		when(desafioDeUsuarioMock2.getEstado()).thenReturn(estadoCompleto);
+
+		assertEquals(100, usuario.porcentajeDeCompletitudGral());
+
+	}
+
+	@Test
+	void testElUsuarioConoceSuPorcentajeDeCompletitudGralConEstadosNoCompletos() {
+		desafiosDeUsuario.add(desafioDeUsuarioMock1);
+		desafiosDeUsuario.add(desafioDeUsuarioMock2);
+
+		usuario.getDesafios().add(desafioDeUsuarioMock1);
+		usuario.getDesafios().add(desafioDeUsuarioMock2);
+
+		when(desafioDeUsuarioMock1.getEstado()).thenReturn(estadoAceptado);
+		when(desafioDeUsuarioMock2.getEstado()).thenReturn(estadoCompleto);
+
+		assertEquals(50, usuario.porcentajeDeCompletitudGral());
+
+	}
 	
+	@Test
+	void testElUsuarioConoceSuPorcentajeDeCompletitudGralSinNingunoCompleto() {
+		desafiosDeUsuario.add(desafioDeUsuarioMock1);
+		desafiosDeUsuario.add(desafioDeUsuarioMock2);
+
+		usuario.getDesafios().add(desafioDeUsuarioMock1);
+		usuario.getDesafios().add(desafioDeUsuarioMock2);
+
+		when(desafioDeUsuarioMock1.getEstado()).thenReturn(estadoPendiente);
+		when(desafioDeUsuarioMock2.getEstado()).thenReturn(estadoPendiente);
+	
+		assertEquals(0, usuario.porcentajeDeCompletitudGral());
+
+	}
 }

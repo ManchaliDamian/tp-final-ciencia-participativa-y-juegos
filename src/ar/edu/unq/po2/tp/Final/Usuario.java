@@ -124,6 +124,11 @@ public class Usuario {
 	public List<Desafio> getDesafiosInteres() {
 		return desafiosInteres;
 	}
+	
+	public int porcentajeDeCompletitudGral() {
+		int cantidadDeDesafios = desafios.size();
+		return  (this.desafiosCompletos().size() * 100) / cantidadDeDesafios; 
+	}
 
 	
 	public DesafioDeUsuario desafioDeUsuarioConMayorPuntaje() {
