@@ -117,32 +117,22 @@ public class Usuario {
 
 	public void agregarDesafiosDeIntereses() {
 		for (Desafio d : desafiosInteres) {
-			agregarSiNoEsRepetido(d);
-		} 
-	}
-
-	private void agregarSiNoEsRepetido(Desafio desafio) {
-		for (DesafioDeUsuario d : desafios) {
-			if (d.getNombre() != desafio.getNombre()) {
-				desafios.add(new DesafioDeUsuario(desafio)); 
-			}
+			desafios.add(new DesafioDeUsuario(d)); 
 		}
-		
 	}
 
 	public List<Desafio> getDesafiosInteres() {
 		return desafiosInteres;
 	}
 
-	public void setDesafiosInteres(List<Desafio> desafiosInteres) {
-		this.desafiosInteres = desafiosInteres;
-	}
 	
 	public DesafioDeUsuario desafioDeUsuarioConMayorPuntaje() {
-		Optional<DesafioDeUsuario> d = desafios.stream().max(Comparator.comparing(DesafioDeUsuario :: getPuntuacion));
-		return d.get(); 
-
-				
+		DesafioDeUsuario desafioConPuntuacionMayor = desafios.get(0);
+		for (DesafioDeUsuario desafioDeUsuario : desafios) {
+			if(desafioConPuntuacionMayor.getPuntuacion() <= desafioDeUsuario.getPuntuacion()) {
+				desafioConPuntuacionMayor = desafioDeUsuario; 
+			}
+		} return desafioConPuntuacionMayor; 
 	}
 
 }
