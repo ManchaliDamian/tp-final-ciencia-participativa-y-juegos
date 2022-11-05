@@ -74,4 +74,9 @@ public class Proyecto {
 	public void eliminarMuestra(Muestra muestra) {
 		muestras.remove(muestra);
 	}
+
+	public boolean isPerteneceA(List<Proyecto> proyectosFiltro) {
+		// TODO Auto-generated method stub
+		return proyectosFiltro.contains(this);
+	}
 }

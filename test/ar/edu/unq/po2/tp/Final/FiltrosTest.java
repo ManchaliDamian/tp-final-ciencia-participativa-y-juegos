@@ -13,10 +13,11 @@ class FiltrosTest {
 	Filtro filtroCategoria;
 	Filtro filtroAnd;
 	Filtro filtroOr;
+	Filtro filtroNegacion; 
 	Proyecto proyecto1;
 	Proyecto proyecto2;
 	Proyecto proyecto3;
-	Proyecto proyecto4;
+	Proyecto proyecto4; 
 	PreferenciaDeProyecto preferenciaDeProyecto;
 	Categoria categoria1;
 	Categoria categoria2;
@@ -27,12 +28,16 @@ class FiltrosTest {
 		filtroCategoria = new FiltroCategoria();
 		filtroAnd = new FiltroAnd();
 		filtroOr = new FiltroOr();
+		filtroNegacion = new FiltroNegacion();
 
 		filtroAnd.agregarFiltro(filtroCategoria);
 		filtroAnd.agregarFiltro(filtroTitulo);
 
 		filtroOr.agregarFiltro(filtroTitulo);
 		filtroOr.agregarFiltro(filtroCategoria);
+		
+		filtroNegacion.agregarFiltro(filtroTitulo);
+		filtroNegacion.agregarFiltro(filtroCategoria);
 
 		proyecto1 = new Proyecto("Java", "arboles");
 		proyecto2 = new Proyecto("Programacion", "Lenguaje orientado a objetos");
@@ -130,5 +135,44 @@ class FiltrosTest {
 		assertFalse(proyectosFiltrados.contains(proyecto2)); 
 		assertEquals(3, proyectosFiltrados.size());
 	}
+	
+	@Test
+	void testFiltroNegaciónFiltraLosProyectosQueNoCumplenConLosFiltros () {
+		List<Proyecto> proyectos = Arrays.asList(proyecto1, proyecto2, proyecto3, proyecto4);
+		preferenciaDeProyecto.agregarTituloDePreferencia("Java");
+		preferenciaDeProyecto.agregarCategoriaDeseada(categoria1);
 
+		List<Proyecto> proyectosFiltrados = filtroNegacion.filtrar(proyectos, preferenciaDeProyecto);
+		
+		assert(proyectosFiltrados.contains(proyecto2)); 
+		assertEquals(1, proyectosFiltrados.size()); 
+	
+	}
+	
+	@Test
+	void testFiltroOrTieneAgregadoFiltroNegacion() {
+		filtroOr.agregarFiltro(filtroNegacion);
+		List<Proyecto> proyectos = Arrays.asList(proyecto1, proyecto2, proyecto3, proyecto4);
+		preferenciaDeProyecto.agregarTituloDePreferencia("Java");
+		preferenciaDeProyecto.agregarCategoriaDeseada(categoria1);
+
+		List<Proyecto> proyectosFiltrados = filtroOr.filtrar(proyectos, preferenciaDeProyecto);
+		
+		assert(proyectosFiltrados.contains(proyecto2)); 
+		assertEquals(4, proyectosFiltrados.size()); 
+	}
+	
+	@Test
+	void testFiltroAndTieneAgregadoFiltroNegacion() {
+		filtroAnd.agregarFiltro(filtroNegacion);
+		List<Proyecto> proyectos = Arrays.asList(proyecto1, proyecto2, proyecto3, proyecto4);
+		preferenciaDeProyecto.agregarTituloDePreferencia("Java");
+		preferenciaDeProyecto.agregarCategoriaDeseada(categoria1);
+
+		List<Proyecto> proyectosFiltrados = filtroAnd.filtrar(proyectos, preferenciaDeProyecto);
+		
+		assertEquals(0, proyectosFiltrados.size());
+		
+	}
+ 
 }
