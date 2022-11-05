@@ -16,7 +16,7 @@ class SistemaTest {
 	Usuario usuario2;
 	Filtro filtroTitulo;
 	Filtro filtroCategoria;
-	Filtro filtroCompuesto;
+	Filtro filtroAnd;
 	Preferencia preferecia;
 	PreferenciasDeJuego preJuego;
 	Proyecto proyecto1;
@@ -37,8 +37,8 @@ class SistemaTest {
 		preJuego = new PreferenciasDeJuego();
 		filtroTitulo = new FiltroTitulo();
 		filtroCategoria = new FiltroCategoria();
-		filtroCompuesto = new FiltroCompuesto();
-		
+		filtroAnd = new FiltroAnd();
+
 		categoria1 = new Categoria("Programación", "Lenguaje orientado a objetos");
 		categoria2 = new Categoria("Matematicas", "Logaritmo");
 
@@ -62,9 +62,9 @@ class SistemaTest {
 		proyecto3.agregarCategoria(categoria1);
 		proyecto3.agregarCategoria(categoria2);
 		proyecto4.agregarCategoria(categoria1);
-		
-		filtroCompuesto.agregarFiltro(filtroTitulo);
-		filtroCompuesto.agregarFiltro(filtroCategoria);
+
+		filtroAnd.agregarFiltro(filtroTitulo);
+		filtroAnd.agregarFiltro(filtroCategoria);
 
 		desafios.add(desafio1);
 		desafios.add(desafio2);
@@ -80,8 +80,8 @@ class SistemaTest {
 
 		assertEquals(1, sistema.getProyectosDePreferencia().size());
 	}
-	
-	@Test 
+
+	@Test
 	void testUnSistemaBuscaProyectosPorFiltroCategoria() {
 		sistema = new Sistema(filtroCategoria);
 		List<Proyecto> proyectos = Arrays.asList(proyecto1, proyecto2, proyecto3, proyecto4);
@@ -89,25 +89,22 @@ class SistemaTest {
 		sistema.buscarProyectos(proyectos, preferenciaDeProyecto);
 
 		assertEquals(3, sistema.getProyectosDePreferencia().size());
-	
+
 	}
-	
+
 	@Test
-	void testUnSistemaBuscaProyectosPorFiltroCompuesto() {
-		sistema = new Sistema(filtroCompuesto);
+	void testUnSistemaBuscaProyectosPorFiltroCompuestoAnd() {
+		sistema = new Sistema(filtroAnd);
 		List<Proyecto> proyectos = Arrays.asList(proyecto1, proyecto2, proyecto3, proyecto4);
-		
+
 		sistema.buscarProyectos(proyectos, preferenciaDeProyecto);
-		
+
 		assertEquals(1, sistema.getProyectosDePreferencia().size());
 	}
-	
-	
-	
 
 	@Test
 	void testElSistemaRecomiendaDesafiosALosUsuariosDelSistema() {
-		sistema = new Sistema(filtroCategoria); 
+		sistema = new Sistema(filtroCategoria);
 		usuario1.setEstrategia(preJuego);
 
 		sistema.getUsuariosEnSistema().add(usuario1);

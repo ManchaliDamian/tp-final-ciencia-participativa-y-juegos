@@ -23,7 +23,7 @@ public class FiltroCategoria extends Filtro {
 
 	@Override
 	public void agregarFiltro(Filtro filtro) {
-		FiltroCompuesto compuesto = new FiltroCompuesto(); 
+		FiltroCompuesto compuesto = new FiltroAnd();  //por default
 		compuesto.agregarFiltro(filtro);
 		
 	}
