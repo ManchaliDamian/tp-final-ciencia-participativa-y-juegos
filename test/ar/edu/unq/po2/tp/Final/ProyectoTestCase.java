@@ -79,7 +79,7 @@ class ProyectoTestCase {
 	}
 	
 	@Test 
-	void testUnProyectoNoAgregaUnaMuestraSiElUsuarioNoEsParticipante() {
+	void testUnProyectoNoAgregaUnaMuestraSiElUsuarioNoEsParticipante() { 
 	    participante.agregarMuestra(muestra, proyecto);
 		
 		assertFalse(proyecto.getMuestras().contains(muestra));

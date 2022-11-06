@@ -44,12 +44,21 @@ class RestriccionesTest {
 		muestra2 = new Muestra(coordenada3, usuario, fechaMuestra2, null, Dia.Martes);
 		muestra3 = new Muestra(null, usuario, fechaMuestra1, null, Dia.Lunes);
 		muestra4 = new Muestra(coordenada3, usuario, fechaMuestra1, null, Dia.Martes);
-	} 
+	}
+
+	@Test
+	void testUnaMuestraConTodasSusRestricciones() {
+        assertEquals(muestra1.getCordGeografica(), coordenada2);
+        assertEquals(muestra1.getUsuario() , usuario);
+        assertEquals(muestra1.getDia(), Dia.Martes);  
+	}
+	
 
 	@Test
 	void testCuandoUnaMuestraSeRealizaElMismoDiaQueLaRestriccionDiaEsValida() {
 
 		assertTrue(restriccionDia.isMuestraValida(muestra1));
+
 	}
 
 	@Test
@@ -112,14 +121,14 @@ class RestriccionesTest {
 
 		assertFalse(restriccionCompuesta.isMuestraValida(muestra3));
 	}
-	
-	@Test 
+
+	@Test
 	void testUnaMuestraSeRealizaEnFechaYDiaPeroNoEnAreaDelDesafio() {
 		restriccionCompuesta.agregarRestriccion(restriccionArea);
 		restriccionCompuesta.agregarRestriccion(restriccionDia);
 		restriccionCompuesta.agregarRestriccion(restriccionFecha);
-		
+
 		assertFalse(restriccionCompuesta.isMuestraValida(muestra4));
 	}
 
-} 
+}

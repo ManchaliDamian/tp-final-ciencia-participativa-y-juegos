@@ -158,7 +158,7 @@ class FiltrosTest {
 
 		List<Proyecto> proyectosFiltrados = filtroOr.filtrar(proyectos, preferenciaDeProyecto);
 		
-		assert(proyectosFiltrados.contains(proyecto2)); 
+		assert(proyectosFiltrados.contains(proyecto2));  
 		assertEquals(4, proyectosFiltrados.size()); 
 	}
 	

@@ -14,43 +14,31 @@ class EstadosTest {
 	DesafioDeUsuario desafio1;
 	DesafioDeUsuario desafio2;
 	Usuario usuario;
-	Desafio desafio; 
+	Desafio desafio;
 
 	@BeforeEach
 	public void setUp() throws Exception {
 
 		estadoCompleto = new EstadoCompleto();
-		estadoAceptado =new EstadoAceptado();
+		estadoAceptado = new EstadoAceptado();
 		estadoPendiente = new EstadoPendiente();
 		usuario = mock(Usuario.class);
-		desafio = mock(Desafio.class); 
-		desafio1 = new DesafioDeUsuario(desafio); 
+		desafio = mock(Desafio.class);
+		desafio1 = new DesafioDeUsuario(desafio);
 
 	}
- 
+
 	@Test
 	void testElDesafioActualizaSuEstado() {
-		
-		
+
 		assertFalse(desafio1.getEstado().estaAceptado());
-		when(desafio1.cantMuestrasParaCumplirDesafio()).thenReturn(5); 
-		
-	    estadoPendiente.actualizarEstado(desafio1);		
+		when(desafio1.cantMuestrasParaCumplirDesafio()).thenReturn(5);
+
+		estadoPendiente.actualizarEstado(desafio1);
 		assertTrue(desafio1.getEstado().estaAceptado());
-		
 
 	}
 	
-	@Test 
-	void testElDesafioNoSeActualizaSinLasMuestras() {
-		when(desafio1.cantMuestrasParaCumplirDesafio()).thenReturn(5); 
 	
-       try { 
-    	   estadoAceptado.actualizarEstado(desafio1);
-       } catch (RuntimeException e ) {
-	         assertEquals(e.getMessage(), "no se puede actualizar porque no hay muestras necesarias"); 
-	}
 
-
-	}
 }

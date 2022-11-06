@@ -10,7 +10,7 @@ public class PreferenciaDeProyecto {
 
 	public List<Categoria> getCategoriasDeseadas() {
 		return categoriasDeseadas;
-	}
+	} 
 
 	public void setCategoriasDeseadas(List<Categoria> categoriasDeseadas) {
 		this.categoriasDeseadas = categoriasDeseadas;

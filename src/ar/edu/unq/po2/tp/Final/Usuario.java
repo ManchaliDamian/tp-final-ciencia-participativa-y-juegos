@@ -25,11 +25,11 @@ public class Usuario {
 	}
 
 	public void setPreferencia(Preferencia preferencia) {
-		this.preferencia = preferencia;
+		this.preferencia = preferencia; 
 	}
 
 	public EstrategiaDeSeleccion getEstrategia() {
-		return estrategia;
+		return estrategia; 
 	}
 
 	public void setEstrategia(EstrategiaDeSeleccion estrategia) {
@@ -106,7 +106,6 @@ public class Usuario {
 	public void puntuarDesafio(DesafioDeUsuario desafio, int puntuacion) {
 		if (desafio.getEstado().estaCompleto()) {
 			desafio.setPuntuacion(puntuacion);
-			System.out.print("la puntuacion es" + " " + puntuacion);
 		}
 
 	}
@@ -117,27 +116,32 @@ public class Usuario {
 
 	public void agregarDesafiosDeIntereses() {
 		for (Desafio d : desafiosInteres) {
-			desafios.add(new DesafioDeUsuario(d)); 
+			desafios.add(new DesafioDeUsuario(d));
 		}
 	}
 
 	public List<Desafio> getDesafiosInteres() {
 		return desafiosInteres;
 	}
-	
+
 	public int porcentajeDeCompletitudGral() {
 		int cantidadDeDesafios = desafios.size();
-		return  (this.desafiosCompletos().size() * 100) / cantidadDeDesafios; 
+		return (this.desafiosCompletos().size() * 100) / cantidadDeDesafios;
 	}
 
-	
 	public DesafioDeUsuario desafioDeUsuarioConMayorPuntaje() {
-		DesafioDeUsuario desafioConPuntuacionMayor = desafios.get(0);
-		for (DesafioDeUsuario desafioDeUsuario : desafios) {
-			if(desafioConPuntuacionMayor.getPuntuacion() <= desafioDeUsuario.getPuntuacion()) {
-				desafioConPuntuacionMayor = desafioDeUsuario; 
-			}
-		} return desafioConPuntuacionMayor; 
+       DesafioDeUsuario mayorHastaAhora = desafios.get(0);
+		for (DesafioDeUsuario d : desafios) {
+			if(mayorHastaAhora.getPuntuacion() <= d.getPuntuacion()) {
+				mayorHastaAhora = d;
+			} 
+		} return mayorHastaAhora; 
 	}
 
+	public void agregarProyectos(List<Proyecto> proyectosDePreferencia) {
+		for (Proyecto p : proyectosDePreferencia) {
+			this.agregarProyecto(p);
+		} 
+		
+	}
 }

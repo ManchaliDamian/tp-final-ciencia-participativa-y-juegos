@@ -10,7 +10,7 @@ public class Sistema {
 	private PreferenciaDeProyecto preferencia;
 
 	public Sistema(Filtro unFiltro) {
-		this.filtro = unFiltro;
+		this.filtro = unFiltro; 
 	}
 
 	public List<Proyecto> getProyectosDePreferencia() {
@@ -45,6 +45,12 @@ public class Sistema {
 	public void recomendarDesafios(List<Desafio> desafios) {
 		for (Usuario u : usuariosEnSistema) {
 			u.desafiosDeInteres(desafios);
+		}
+	}
+	
+	public void asignarProyectos(List<Usuario> usuariosEnSistema, List<Proyecto> proyectosDePreferencia) {
+		for (Usuario u : usuariosEnSistema) {
+		     u.agregarProyectos(proyectosDePreferencia);
 		}
 	}
 

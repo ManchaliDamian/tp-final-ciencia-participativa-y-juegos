@@ -5,8 +5,8 @@ import java.util.List;
 
 public class DesafioDeUsuario {
 
-	private int puntuacion;
-	private Desafio desafio;
+	private Integer puntuacion;
+	private Desafio desafio; 
 	private String nombre; 
 	private List<Muestra> muestrasObtenidas = new ArrayList<Muestra>();
 	private Estado estado;
@@ -19,7 +19,7 @@ public class DesafioDeUsuario {
 
 	}
 
-	public int getPuntuacion() {
+	public Integer getPuntuacion() {
 		return puntuacion;
 	}
 

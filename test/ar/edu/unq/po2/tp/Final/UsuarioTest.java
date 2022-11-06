@@ -5,6 +5,7 @@ import static org.mockito.Mockito.*;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -24,12 +25,16 @@ class UsuarioTest {
 	DesafioDeUsuario desafioDeUsuario2;
 	DesafioDeUsuario desafioDeUsuarioMock1;
 	DesafioDeUsuario desafioDeUsuarioMock2;
+	DesafioDeUsuario desafioDeUsuarioMock3;
 	Estado estadoCompleto;
 	Estado estadoAceptado;
 	Estado estadoPendiente;
 	Muestra muestra1;
 	Muestra muestra2;
-	Proyecto proyecto;
+	Proyecto proyecto1;
+	Proyecto proyecto2;
+	Proyecto proyecto3;
+
 	Restricciones restriccionFecha;
 	Restricciones restriccionDia;
 	EstrategiaDeSeleccion estrategiaPreferencia;
@@ -42,7 +47,6 @@ class UsuarioTest {
 	public void setUp() throws Exception {
 		preferencia = mock(Preferencia.class);
 		usuario = new Usuario(preferencia);
-		proyecto = new Proyecto("Pepito", "los pepitos");
 
 		estadoCompleto = new EstadoCompleto();
 		estadoAceptado = new EstadoAceptado();
@@ -69,8 +73,11 @@ class UsuarioTest {
 
 		desafioDeUsuarioMock1 = mock(DesafioDeUsuario.class);
 		desafioDeUsuarioMock2 = mock(DesafioDeUsuario.class);
+		desafioDeUsuarioMock3 = mock(DesafioDeUsuario.class);
 
-		proyecto = new Proyecto("Pepito", "los pepitos");
+		proyecto3 = new Proyecto("Pepito", "los pepitos");
+		proyecto1 = new Proyecto("Java", "arboles");
+		proyecto2 = new Proyecto("Programacion", "Lenguaje orientado a objetos");
 
 		desafiosDeUsuario.add(desafioDeUsuario1);
 		desafiosDeUsuario.add(desafioDeUsuario2);
@@ -141,7 +148,7 @@ class UsuarioTest {
 
 	@Test
 	void testUnUsuarioAgregaUnNuevoProyecto() {
-		usuario.agregarProyecto(proyecto);
+		usuario.agregarProyecto(proyecto3);
 
 		int cantP = usuario.getProyectos().size();
 
@@ -151,9 +158,9 @@ class UsuarioTest {
 
 	@Test
 	void testUnUsuarioEliminaUnProyecto() {
-		usuario.agregarProyecto(proyecto);
+		usuario.agregarProyecto(proyecto3);
 
-		usuario.eliminarProyecto(proyecto);
+		usuario.eliminarProyecto(proyecto3);
 		int cantP = usuario.getProyectos().size();
 
 		assertEquals(0, cantP);
@@ -162,7 +169,7 @@ class UsuarioTest {
 	@Test
 	void testElUsuarioNoPuedeAgregarUnaMuestraSiElDesafioDeUsuarioNoEstaAceptado() {
 		usuario.agregarDesafio(desafioDeUsuario1);
-		usuario.agregarMuestra(muestra1, proyecto);
+		usuario.agregarMuestra(muestra1, proyecto3);
 
 		assertFalse(desafioDeUsuario1.getMuestrasObtenidas().contains(muestra1));
 
@@ -173,7 +180,7 @@ class UsuarioTest {
 		usuario.agregarDesafio(desafioDeUsuario1);
 		usuario.aceptarDesafiosPendientes();
 
-		usuario.agregarMuestra(muestra1, proyecto);
+		usuario.agregarMuestra(muestra1, proyecto3);
 
 		assertTrue(desafioDeUsuario1.getMuestrasObtenidas().contains(muestra1));
 
@@ -185,8 +192,8 @@ class UsuarioTest {
 		usuario.agregarDesafio(desafioDeUsuario2);
 		usuario.aceptarDesafiosPendientes();
 
-		usuario.agregarMuestra(muestra1, proyecto);
-		usuario.agregarMuestra(muestra2, proyecto);
+		usuario.agregarMuestra(muestra1, proyecto3);
+		usuario.agregarMuestra(muestra2, proyecto3);
 		int cantC = usuario.desafiosCompletos().size();
 
 		assertEquals(1, cantC);
@@ -194,11 +201,11 @@ class UsuarioTest {
 
 	@Test
 	void testUnUsuarioAgregaUnaMuestraTambienSeAgregaAlProyecto() {
-		proyecto.agregarParticipante(usuario);
+		proyecto3.agregarParticipante(usuario);
 
-		usuario.agregarMuestra(muestra1, proyecto);
+		usuario.agregarMuestra(muestra1, proyecto3);
 
-		assertTrue(proyecto.getMuestras().contains(muestra1));
+		assertTrue(proyecto3.getMuestras().contains(muestra1));
 	}
 
 	@Test
@@ -207,8 +214,8 @@ class UsuarioTest {
 		usuario.agregarDesafio(desafioDeUsuario2);
 		usuario.aceptarDesafiosPendientes();
 
-		usuario.agregarMuestra(muestra1, proyecto);
-		usuario.agregarMuestra(muestra2, proyecto);
+		usuario.agregarMuestra(muestra1, proyecto3);
+		usuario.agregarMuestra(muestra2, proyecto3);
 
 		assertTrue(desafioDeUsuario1.getMuestrasObtenidas().contains(muestra1));
 		assertFalse(desafioDeUsuario2.getMuestrasObtenidas().contains(muestra2));
@@ -219,7 +226,7 @@ class UsuarioTest {
 	void testUnUsuarioConoceElPorcentajeDeCompletitudDeUnDesafioDeUsuario() {
 		usuario.agregarDesafio(desafioDeUsuario1);
 		usuario.aceptarDesafiosPendientes();
-		usuario.agregarMuestra(muestra1, proyecto);
+		usuario.agregarMuestra(muestra1, proyecto3);
 
 		double porcentaje = usuario.getPorcentajeDeCompletitud(desafioDeUsuario1);
 
@@ -232,8 +239,8 @@ class UsuarioTest {
 	void testUnUsuarioPuntuaUnDesafioDeUsuarioCompleto() {
 		usuario.agregarDesafio(desafioDeUsuario1);
 		usuario.aceptarDesafiosPendientes();
-		usuario.agregarMuestra(muestra1, proyecto);
-		usuario.agregarMuestra(muestra2, proyecto);
+		usuario.agregarMuestra(muestra1, proyecto3);
+		usuario.agregarMuestra(muestra2, proyecto3);
 
 		usuario.puntuarDesafio(desafioDeUsuario1, 4);
 
@@ -281,6 +288,7 @@ class UsuarioTest {
 
 		assertFalse(usuario.getDesafiosInteres().containsAll(desafios)); // se comprueba que excluye un desafio
 		assertEquals((cantidadAntesDeAgregarDesafios + 5), usuario.getDesafios().size());
+	; 
 	}
 
 	@Test
@@ -288,8 +296,8 @@ class UsuarioTest {
 		desafiosDeUsuario.add(desafioDeUsuarioMock1);
 		desafiosDeUsuario.add(desafioDeUsuarioMock2);
 
-		usuario.getDesafios().add(desafioDeUsuarioMock1);
-		usuario.getDesafios().add(desafioDeUsuarioMock2);
+		usuario.agregarDesafio(desafioDeUsuarioMock1);
+		usuario.agregarDesafio(desafioDeUsuarioMock2);
 
 		when(desafioDeUsuarioMock1.getEstado()).thenReturn(estadoCompleto);
 		when(desafioDeUsuarioMock2.getEstado()).thenReturn(estadoCompleto);
@@ -309,11 +317,11 @@ class UsuarioTest {
 		when(desafioDeUsuarioMock1.getEstado()).thenReturn(estadoAceptado);
 		when(desafioDeUsuarioMock2.getEstado()).thenReturn(estadoCompleto);
 
-		assertEquals(50, usuario.porcentajeDeCompletitudGral());
+		assertEquals(50, usuario.porcentajeDeCompletitudGral()); 
 
 	}
-	
-	@Test
+
+	@Test 
 	void testElUsuarioConoceSuPorcentajeDeCompletitudGralSinNingunoCompleto() {
 		desafiosDeUsuario.add(desafioDeUsuarioMock1);
 		desafiosDeUsuario.add(desafioDeUsuarioMock2);
@@ -323,8 +331,40 @@ class UsuarioTest {
 
 		when(desafioDeUsuarioMock1.getEstado()).thenReturn(estadoPendiente);
 		when(desafioDeUsuarioMock2.getEstado()).thenReturn(estadoPendiente);
-	
+
 		assertEquals(0, usuario.porcentajeDeCompletitudGral());
 
+	}
+
+	@Test
+	void testElUsuarioConoceElDesafioConMayorPuntaje() {
+		desafiosDeUsuario.add(desafioDeUsuarioMock1);
+		desafiosDeUsuario.add(desafioDeUsuarioMock2);
+
+		when(desafioDeUsuarioMock1.getPuntuacion()).thenReturn(5);
+		when(desafioDeUsuarioMock1.getNombre()).thenReturn("Cuentas");
+
+		when(desafioDeUsuarioMock3.getNombre()).thenReturn("Hojas");
+		when(desafioDeUsuarioMock3.getPuntuacion()).thenReturn(10);
+
+		when(desafioDeUsuarioMock2.getNombre()).thenReturn("Arboles");
+		when(desafioDeUsuarioMock2.getPuntuacion()).thenReturn(1);
+
+		usuario.agregarDesafio(desafioDeUsuarioMock1);
+		usuario.agregarDesafio(desafioDeUsuarioMock2);
+		usuario.agregarDesafio(desafioDeUsuarioMock3);
+
+		DesafioDeUsuario desafioFav = usuario.desafioDeUsuarioConMayorPuntaje();
+
+		assertEquals(desafioFav.getNombre(), "Hojas");
+	}
+	
+	@Test
+	void testElUsuarioAgregaProyectosAsignados() {
+		List<Proyecto> proyectos = Arrays.asList(proyecto1, proyecto2, proyecto3);
+		
+		usuario.agregarProyectos(proyectos);
+		
+		assertTrue(usuario.getProyectos().containsAll(proyectos)); 
 	}
 }
