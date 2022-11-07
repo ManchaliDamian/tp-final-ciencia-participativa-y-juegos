@@ -15,12 +15,15 @@ public class Favoritos implements EstrategiaDeSeleccion {
 	}
 
 	public Integer coincidenciaDeDesafioYUsuario(Desafio desafio, Usuario usuario) {
-		int similitud = (desafio.getCantMuestras()
-				- usuario.desafioDeUsuarioConMayorPuntaje().getDesafio().getCantMuestras())
-				+ (desafio.getDificultad() - usuario.desafioDeUsuarioConMayorPuntaje().getDesafio().getDificultad())
-				+ ((desafio.getRecompensa()) - usuario.desafioDeUsuarioConMayorPuntaje().getDesafio().getRecompensa());
-
+		Desafio desafioDeUsuarioConMayorPuntaje = usuario.desafioDeUsuarioConMayorPuntaje().getDesafio(); 
+		int similitud = this.diferenciaEntre(desafio.getCantMuestras(), desafioDeUsuarioConMayorPuntaje.getCantMuestras())
+				+ this.diferenciaEntre(desafio.getDificultad(), desafioDeUsuarioConMayorPuntaje.getDificultad())
+				+ this.diferenciaEntre(desafio.getRecompensa(), desafioDeUsuarioConMayorPuntaje.getRecompensa()); 
 		return similitud / 3; 
+	}  
+	
+	public int diferenciaEntre(int unNumero, int otroNumero) {
+		return Math.abs(unNumero - otroNumero); 
 	}
 
 }
