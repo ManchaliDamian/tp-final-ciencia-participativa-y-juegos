@@ -2,6 +2,10 @@ package ar.edu.unq.po2.tp.Final.Filtros;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import ar.edu.unq.po2.tp.Final.Categoria;
+import ar.edu.unq.po2.tp.Final.PreferenciaDeProyecto;
+import ar.edu.unq.po2.tp.Final.Proyecto;
+
 public class FiltroCategoria extends Filtro {
 
 	@Override
@@ -12,25 +16,13 @@ public class FiltroCategoria extends Filtro {
 	}
 
 	private boolean isDePreferencia(Proyecto p, List<Categoria> categoriasDeseadas) {
-		<<Correcion>> Este algoritmo es muy rudimentario. Podria utilizar mensajes de alto orden para verificar si algun objeto de la lista cumple con la condicion.
-					  Buscar documentacion de anyMatch o reimplementarlo usando streams.
 		List<Categoria> categoriasDeProyecto = p.getCategorias();
-		while (!categoriasDeProyecto.isEmpty()
-				&& !categoriasDeseadas.contains(categoriasDeProyecto.get(0))) {
-			categoriasDeProyecto.remove(0);
-
-		}
-		return (!categoriasDeProyecto.isEmpty());
-
-	}
-
-	@Override
-	public void agregarFiltro(Filtro filtro) {
-		FiltroCompuesto compuesto = new FiltroAnd();  //por default
-		compuesto.agregarFiltro(filtro);
-		<<Correcion>> No se hace nada con la instancia de FiltroCompuesto creada. Este objeto se pierde en la memoria.
-					  Tiene sentido que FiltroProCategoria entienda el mensaje agregarFiltro?
 		
+		return categoriasDeProyecto.stream().anyMatch(c -> categoriasDeseadas.contains(c));
+
 	}
+	
+	
+
 
 }

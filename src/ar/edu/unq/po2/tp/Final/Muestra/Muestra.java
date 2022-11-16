@@ -52,6 +52,10 @@ public class Muestra {
 	public void setDia(Dia dia) {
 		this.dia = dia;
 	}
+
+	public boolean seEncuentraDentroDeLasFechasDeDesafio(LocalDate fechaInicio, LocalDate fechaFin) {
+		return fecha.isAfter(fechaInicio) && fecha.isBefore(fechaFin);
+	}
 	
 	
 

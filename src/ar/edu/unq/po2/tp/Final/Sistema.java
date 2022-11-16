@@ -8,21 +8,22 @@ import ar.edu.unq.po2.tp.Final.Usuario.Desafio;
 import ar.edu.unq.po2.tp.Final.Usuario.Usuario;
 
 public class Sistema {
-	private List<Proyecto> proyectosDePreferencia = new ArrayList<Proyecto>();
+	private List<Proyecto> proyectos = new ArrayList<Proyecto>();
 	private List<Usuario> usuariosEnSistema = new ArrayList<Usuario>();
 	private Filtro filtro;
 	private PreferenciaDeProyecto preferencia;
 
-	public Sistema(Filtro unFiltro) {
+	public Sistema(Filtro unFiltro, PreferenciaDeProyecto unaPreferencia) {
 		this.filtro = unFiltro; 
+		this.preferencia = unaPreferencia;
 	}
 
-	public List<Proyecto> getProyectosDePreferencia() {
-		return proyectosDePreferencia;
+	public List<Proyecto> getProyectos() {
+		return proyectos;
 	}
 
 	public void setProyectosDePreferencia(List<Proyecto> proyectos) {
-		this.proyectosDePreferencia = proyectos;
+		this.proyectos = proyectos;
 	}
 
 	public List<Usuario> getUsuariosEnSistema() {
@@ -41,10 +42,11 @@ public class Sistema {
 		this.preferencia = preferencia;
 	}
 
-	public void buscarProyectos(List<Proyecto> proyectos, PreferenciaDeProyecto preferencia) {
-		proyectosDePreferencia.addAll(filtro.filtrar(proyectos, preferencia));
-		<<Correcion>> Porque esta clase tiene un colaborador PreferenciaDeProyecto si para filtrar utiliza la que viene como parametro?
-					  Como recibe los proyectos como parametros? Quien tiene conocimiento de todos los proyectos?
+	public List<Proyecto> proyectosDePreferencia() {
+		List<Proyecto> proys = new ArrayList<Proyecto>();
+		proys.addAll(filtro.filtrar(proyectos, preferencia));
+		
+		return proys; 
 
 	}
 
@@ -54,9 +56,9 @@ public class Sistema {
 		}
 	}
 	
-	public void asignarProyectos(List<Usuario> usuariosEnSistema, List<Proyecto> proyectosDePreferencia) {
+	public void asignarProyectos() {
 		for (Usuario u : usuariosEnSistema) {
-		     u.agregarProyectos(proyectosDePreferencia);
+		     u.agregarProyectos(proyectosDePreferencia());
 		}
 	}
 

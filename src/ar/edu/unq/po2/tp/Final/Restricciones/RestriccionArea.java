@@ -23,6 +23,7 @@ public class RestriccionArea extends Restricciones {
 	public boolean isMuestraValida(Muestra muestra) {
 		// TODO Auto-generated method stub
 		return area.esCoordenadaGeograficaValida(muestra.getCordGeografica());
+		
 	}
 
 }

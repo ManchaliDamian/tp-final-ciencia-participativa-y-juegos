@@ -2,6 +2,8 @@ package ar.edu.unq.po2.tp.Final.Restricciones;
 
 import java.time.LocalDate;
 
+import ar.edu.unq.po2.tp.Final.Muestra.Muestra;
+
 public class RestriccionFecha extends Restricciones {
 	  private LocalDate fechaInicio;
 	    private LocalDate fechaFin;
@@ -28,9 +30,8 @@ public class RestriccionFecha extends Restricciones {
 	}
 	
 	@Override
-	public boolean isMuestraValida(Muestra muestra) {
-		<<Correcion>>Podria esta logica estar definida en las muestras? Asi no se rompe el encapsulamiento de la clase Muestra
-		   return muestra.getFecha().isAfter(fechaInicio) && muestra.getFecha().isBefore(fechaFin) ; 
+	public boolean isMuestraValida(Muestra muestra) { 
+		return muestra.seEncuentraDentroDeLasFechasDeDesafio(fechaInicio, fechaFin);
 				   
 	}
 	

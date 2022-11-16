@@ -3,6 +3,9 @@ package ar.edu.unq.po2.tp.Final.Filtros;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import ar.edu.unq.po2.tp.Final.PreferenciaDeProyecto;
+import ar.edu.unq.po2.tp.Final.Proyecto;
+
 public class FiltroTitulo extends Filtro {
 
 	@Override
@@ -11,11 +14,6 @@ public class FiltroTitulo extends Filtro {
            return proyectosDePreferencia; 
 	}
 
-	@Override
-	public void agregarFiltro(Filtro filtro) {
-		FiltroCompuesto compuesto = new FiltroAnd(); //por default
-		compuesto.agregarFiltro(filtro);
-		<<Correcion>> Este mensaje no hace nada. Crea un objeto FiltroCompueto pero no lo retorna. Este objeto queda perdido en la memoria.
-	}
+	
 
 }

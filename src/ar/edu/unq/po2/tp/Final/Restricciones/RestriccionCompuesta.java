@@ -10,7 +10,7 @@ public class RestriccionCompuesta extends Restricciones {
 		return restricciones;
 	}
 
-	@Override
+	
 	public void agregarRestriccion(Restricciones restricción) {
 		restricciones.add(restricción);
 
@@ -18,15 +18,8 @@ public class RestriccionCompuesta extends Restricciones {
 
 	@Override
 	public boolean isMuestraValida(Muestra muestra) {
-		List<Restricciones> rests = restricciones;
-		while (!rests.isEmpty() && rests.get(0).isMuestraValida(muestra)) {
-			rests.remove(0);
-		}
+		return restricciones.stream().anyMatch(r -> r.isMuestraValida(muestra));
 		
-		<<Correcion>>
-		Esta es una manera muy rebuscada. Busque en como funciona el mensaje anyMatch y vean de aplicarlo con el booleano que devuelve isMuestraValida
-
-		return rests.isEmpty();
 	}
 
 }
