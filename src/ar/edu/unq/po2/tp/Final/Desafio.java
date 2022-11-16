@@ -8,6 +8,10 @@ public class Desafio {
 	private int dificultad;
 	private int recompensa;
 	
+	
+	<<Correcion>> Este Objeto no tiene mucha responsabilidades. Esto es debido a que rompen encapsulamiento 
+	
+	
 	public Desafio(Area area, Restricciones restriciones, int cantMuestras , int dificultad , int recompesas, String nombre) {
 		setArea(area);
 		setRestriccionesTemp(restriciones); 
@@ -57,7 +61,8 @@ public class Desafio {
 		this.recompensa = recompensa;
 	}
 
-	public boolean cumpleConRestriccion(Muestra muestra) { 
+	public boolean cumpleConRestriccion(Muestra muestra) {
+		<<Correcion>> Falta la validacion sobre la muestra y el area.
 		return getRestriccionesTemp().isMuestraValida(muestra);
 	}
 

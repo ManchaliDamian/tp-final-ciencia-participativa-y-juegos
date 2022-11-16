@@ -8,7 +8,7 @@ public class Muestra {
 	private Usuario usuario;
 	private LocalDate fecha;
 	private ChronoLocalDate hora; 
-	private Dia dia; 
+	private Dia dia; <<Correcion>> Aca se esperaba que utilicen el protocolo de LocalDate paara poder diferenciar entre dias de la semana y dias del fin de semana.
 	 
 	public Muestra(CoordenadaGeografica cord, Usuario unUsuario, LocalDate fecha, ChronoLocalDate hora, Dia dia) {
 		this.cordGeografica = cord;

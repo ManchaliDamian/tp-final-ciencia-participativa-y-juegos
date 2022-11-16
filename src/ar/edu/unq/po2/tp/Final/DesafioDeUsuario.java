@@ -60,8 +60,9 @@ public class DesafioDeUsuario {
 		return getDesafio().getCantMuestras();
 	}
 
-	public void agregarMuestra(Muestra muestra) {
+	public void agregarMuestra(Muestra muestra) { 
 		if (estado.estaAceptado()) {
+			<<Correcion>> Importante: No delegan en el estado.
 			this.agregarSiCumpleRestriccion(muestra);
 		}
 	} 

@@ -20,6 +20,7 @@ public class Proyecto {
 
 	public void agregarMuestra(Muestra unaMuestra) {
 		if (participantesActivos.contains(unaMuestra.getUsuario())) {
+			<<Correcion>> minor: Esta validacion no es necesaria
 			muestras.add(unaMuestra);
 		}
 

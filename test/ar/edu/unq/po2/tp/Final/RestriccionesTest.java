@@ -44,6 +44,7 @@ class RestriccionesTest {
 		muestra2 = new Muestra(coordenada3, usuario, fechaMuestra2, null, Dia.Martes);
 		muestra3 = new Muestra(null, usuario, fechaMuestra1, null, Dia.Lunes);
 		muestra4 = new Muestra(coordenada3, usuario, fechaMuestra1, null, Dia.Martes);
+		<<Correcion>> Esto es un test de integracion. No tulizan doubles.
 	}
 
 	@Test

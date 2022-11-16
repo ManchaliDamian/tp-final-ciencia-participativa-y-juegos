@@ -75,7 +75,11 @@ class SistemaTest {
 
 		desafios.add(desafio1);
 		desafios.add(desafio2);
-
+		<<Correcion>> 
+			No es un test unitario. 
+			No usan dubles
+			No inicializar objetos con null como parametro.
+		
 		
 	}
 

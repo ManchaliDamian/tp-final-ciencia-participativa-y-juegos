@@ -23,6 +23,7 @@ class ProyectoTestCase {
 		participante = new Usuario(preferencia); 
 		categoria =  new Categoria("Base de datos", "SQL"); 
 		muestra = new Muestra(null, participante, null, null, null); 
+		<<Correcion>> No inicializar con null. Utilizar test doubles.
 		
 	}
 	

@@ -1,6 +1,7 @@
 package ar.edu.unq.po2.tp.Final;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class FiltroNegacion extends FiltroCompuesto{
 
@@ -15,7 +16,7 @@ public class FiltroNegacion extends FiltroCompuesto{
 	}
 
 	public List<Proyecto> filtrarProyectos(List<Proyecto> proyectosFiltrados, List<Proyecto> proyectosFiltro) {
-		List<Proyecto> proyectos = proyectosFiltrados.stream().filter(p -> !p.isPerteneceA(proyectosFiltro)).toList(); 
+		List<Proyecto> proyectos = proyectosFiltrados.stream().filter(p -> !p.isPerteneceA(proyectosFiltro)).collect(Collectors.toList()); 
 		return proyectos;
 		
 	}

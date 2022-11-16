@@ -68,6 +68,9 @@ class UsuarioTest {
 		desafio5 = new Desafio(null, restriccionDia, 10, 10, 15, "Logaritmos");
 		desafio6 = new Desafio(null, restriccionDia, 2, 1, 4, "Pitagoras");
 
+		<<Correcion>>
+			No inicializar objetos con variables null. Usar objetos doubles.
+			
 		desafioDeUsuario1 = new DesafioDeUsuario(desafio1);
 		desafioDeUsuario2 = new DesafioDeUsuario(desafio2);
 
@@ -88,6 +91,9 @@ class UsuarioTest {
 		desafios.add(desafio1);
 		desafios.add(desafio2);
 		desafios.add(desafio3);
+		
+		<<Correcion>>
+		ESto no es un test unitario. Esto es un test de integracion donde se innstancian todos los objetos para probar como interactuan entre si.
 
 	}
 

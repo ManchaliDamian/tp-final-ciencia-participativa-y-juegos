@@ -7,6 +7,7 @@ import java.time.LocalDate;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
 
 class DesafioDeUsuarioTest {
 	DesafioDeUsuario desafioDeUsuario;
@@ -22,7 +23,10 @@ class DesafioDeUsuarioTest {
 		LocalDate fechaMuestra = LocalDate.of(2022, 10, 20);
 		muestra1 = new Muestra(null, usuario, fechaMuestra, null, Dia.Sabado);
 		muestra2 = new Muestra(null, usuario, fechaMuestra, null, Dia.Viernes);
-
+		<<Correcion>>
+			No inicializar objetos con variables como null. Para eso estan los Mock.
+			No utlizan objetos doubles. 
+			No esta claro que es SUT y que es DOC.
 		restriccionDia = new RestriccionDia(Dia.Sabado);
 		desafio = new Desafio(null, restriccionDia, 1, 5, 1, "Cuenta");
 		desafioDeUsuario = new DesafioDeUsuario(desafio);
@@ -32,6 +36,7 @@ class DesafioDeUsuarioTest {
 	@Test
 	void testUnDesafioDeUsuarioComienzaSiendoUnEstadoPediente() {
 		assertTrue(desafioDeUsuario.getEstado().esEstadoPendiente());
+		<<Correcion>> Rompen encapsulamiento, el estado es algo interno del desafioDeUsuario.
 	}
 
 	@Test

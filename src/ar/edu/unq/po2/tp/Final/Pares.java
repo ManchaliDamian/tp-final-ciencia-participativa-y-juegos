@@ -5,6 +5,7 @@ public class Pares {
 	private Integer coincidencia;
 
 	public Pares(Desafio desafio, Integer coincidencia) {
+		<<Correcion>> Menor: Este nombre de clase no es coecibo. Es ambiguo y de hecho no tiene comportamiento
          this.setDesafio(desafio);
          this.setCoincidencia(coincidencia); 
 	}

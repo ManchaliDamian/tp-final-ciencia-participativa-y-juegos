@@ -29,6 +29,7 @@ public class RestriccionFecha extends Restricciones {
 	
 	@Override
 	public boolean isMuestraValida(Muestra muestra) {
+		<<Correcion>>Podria esta logica estar definida en las muestras? Asi no se rompe el encapsulamiento de la clase Muestra
 		   return muestra.getFecha().isAfter(fechaInicio) && muestra.getFecha().isBefore(fechaFin) ; 
 				   
 	}

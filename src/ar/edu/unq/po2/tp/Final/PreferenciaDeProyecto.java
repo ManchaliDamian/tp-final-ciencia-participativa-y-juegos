@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PreferenciaDeProyecto {
+	<<Correcion>>  Menor: Para discutir: Este modelo de PreferenciasDeProyecto no escala bien si quisiera agregar Preferencias por area, o preferencias por dificultad.
+	Se les ocurre como mejorar esto?
 	private List<String> titulosDeseados = new ArrayList<String>();
 	private List<Categoria> categoriasDeseadas = new ArrayList<Categoria>();
 	private List<Categoria> categoriasNoDeseadas = new ArrayList<Categoria>();

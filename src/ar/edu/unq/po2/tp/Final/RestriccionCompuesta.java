@@ -22,6 +22,9 @@ public class RestriccionCompuesta extends Restricciones {
 		while (!rests.isEmpty() && rests.get(0).isMuestraValida(muestra)) {
 			rests.remove(0);
 		}
+		
+		<<Correcion>>
+		Esta es una manera muy rebuscada. Busque en como funciona el mensaje anyMatch y vean de aplicarlo con el booleano que devuelve isMuestraValida
 
 		return rests.isEmpty();
 	}

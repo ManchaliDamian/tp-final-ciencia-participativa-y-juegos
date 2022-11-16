@@ -80,17 +80,21 @@ public class Usuario {
 		List<DesafioDeUsuario> desafiosPendientes = new ArrayList<DesafioDeUsuario>();
 		for (DesafioDeUsuario d : desafios) {
 			if (d.getEstado().esEstadoPendiente()) {
+				<<Correcion>> Rompen encapsulamiento del desafio obteniendo su Estado. No delegan en la clase desafioDelUsuario.
 				desafiosPendientes.add(d);
 			}
 
 		}
 		return desafiosPendientes;
 	}
+	<<Correcion>> Codigo repetido para el filtrado de de desafios pendientes y compeltos.
 
 	public List<DesafioDeUsuario> desafiosCompletos() {
 		List<DesafioDeUsuario> desafiosCompletos = new ArrayList<DesafioDeUsuario>();
 		for (DesafioDeUsuario d : desafios) {
 			if (d.getEstado().estaCompleto()) {
+				<<Correcion>> Rompen encapsulamiento del desafio obteniendo su Estado. No delegan en la clase desafioDelUsuario.
+
 				desafiosCompletos.add(d);
 			}
 		}
@@ -105,6 +109,7 @@ public class Usuario {
 
 	public void puntuarDesafio(DesafioDeUsuario desafio, int puntuacion) {
 		if (desafio.getEstado().estaCompleto()) {
+			<<Correcion>> Rompen encapsulamiento del desafio obteniendo su Estado. No delegan en la clase desafioDelUsuario.
 			desafio.setPuntuacion(puntuacion);
 		}
 
@@ -116,6 +121,7 @@ public class Usuario {
 
 	public void agregarDesafiosDeIntereses() {
 		for (Desafio d : desafiosInteres) {
+			<<Correcion>> Este mensaje rompe el principio de OpenClose.
 			desafios.add(new DesafioDeUsuario(d));
 		}
 	}

@@ -1,6 +1,8 @@
 package ar.edu.unq.po2.tp.Final;
 
 public abstract class Estado {
+	
+	<<Correcion>> Por comentarios en otras clases. Los Estados casi no tiene comportamiento, porque no delegaron en los estados.
 
 	public abstract int porcentajeDeCompletitud(DesafioDeUsuario desafioDeUsuario);
 

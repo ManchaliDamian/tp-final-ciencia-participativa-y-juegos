@@ -34,11 +34,15 @@ class EstadosTest {
 		assertFalse(desafio1.getEstado().estaAceptado());
 		when(desafio1.cantMuestrasParaCumplirDesafio()).thenReturn(5);
 
-		estadoPendiente.actualizarEstado(desafio1);
+		estadoPendiente.actualizarEstado(desafio1); 
+		<<Correcion>> La forma de testear cosas relacionadas al estado no se hace de esta manera,
+						El estado es interno del objeto desafio, por lo que la orma de testear los estados no es correcta.
+						Ayudaria unsa mocks
 		assertTrue(desafio1.getEstado().estaAceptado());
 
 	}
-	
+	<<Correcion>>
+	Test muy pobre.
 	
 
 }

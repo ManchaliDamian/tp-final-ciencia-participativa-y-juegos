@@ -39,6 +39,8 @@ public class Sistema {
 
 	public void buscarProyectos(List<Proyecto> proyectos, PreferenciaDeProyecto preferencia) {
 		proyectosDePreferencia.addAll(filtro.filtrar(proyectos, preferencia));
+		<<Correcion>> Porque esta clase tiene un colaborador PreferenciaDeProyecto si para filtrar utiliza la que viene como parametro?
+					  Como recibe los proyectos como parametros? Quien tiene conocimiento de todos los proyectos?
 
 	}
 

@@ -1,5 +1,7 @@
 package ar.edu.unq.po2.tp.Final;
 
+import java.awt.geom.Area;
+
 public class Area {
 	private CoordenadaGeografica coordenada;
 	private int radio;
@@ -30,6 +32,7 @@ public class Area {
 	}
 
 	public double calculoPitagoras(CoordenadaGeografica cordGeografica) {
+		<<Correcion>> Esta logica podria estar en en las coordenadas. Todos estos calculos no dependen del Area y asi la clase Coordenada no queda anemica.
 		int resultado = diferenciaYMultEntre(coordenada.getLongitud(), cordGeografica.getLongitud())
 				+ diferenciaYMultEntre(coordenada.getLatitud(), cordGeografica.getLatitud());
 
