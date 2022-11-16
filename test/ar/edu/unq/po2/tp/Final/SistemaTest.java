@@ -13,6 +13,12 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import ar.edu.unq.po2.tp.Final.EstrategiaSeleccion.PreferenciasDeJuego;
+import ar.edu.unq.po2.tp.Final.Filtros.Filtro;
+import ar.edu.unq.po2.tp.Final.Filtros.FiltroAnd;
+import ar.edu.unq.po2.tp.Final.Filtros.FiltroCategoria;
+import ar.edu.unq.po2.tp.Final.Filtros.FiltroTitulo;
+
 class SistemaTest {
 	Sistema sistema;
 	Usuario usuario1;

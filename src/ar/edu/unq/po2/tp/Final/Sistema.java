@@ -3,6 +3,8 @@ package ar.edu.unq.po2.tp.Final;
 import java.util.ArrayList;
 import java.util.List;
 
+import ar.edu.unq.po2.tp.Final.Filtros.Filtro;
+
 public class Sistema {
 	private List<Proyecto> proyectosDePreferencia = new ArrayList<Proyecto>();
 	private List<Usuario> usuariosEnSistema = new ArrayList<Usuario>();

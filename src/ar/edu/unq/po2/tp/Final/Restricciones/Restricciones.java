@@ -1,4 +1,6 @@
-package ar.edu.unq.po2.tp.Final;
+package ar.edu.unq.po2.tp.Final.Restricciones;
+
+import ar.edu.unq.po2.tp.Final.Muestra;
 
 public abstract class Restricciones {
 

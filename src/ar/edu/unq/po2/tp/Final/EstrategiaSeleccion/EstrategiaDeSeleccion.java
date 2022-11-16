@@ -1,6 +1,9 @@
-package ar.edu.unq.po2.tp.Final;
+package ar.edu.unq.po2.tp.Final.EstrategiaSeleccion;
 
 import java.util.List;
+
+import ar.edu.unq.po2.tp.Final.Desafio;
+import ar.edu.unq.po2.tp.Final.Usuario;
 
 public interface EstrategiaDeSeleccion {
 	

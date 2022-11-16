@@ -1,4 +1,7 @@
-package ar.edu.unq.po2.tp.Final;
+package ar.edu.unq.po2.tp.Final.Restricciones;
+
+import ar.edu.unq.po2.tp.Final.Area;
+import ar.edu.unq.po2.tp.Final.Muestra;
 
 public class RestriccionArea extends Restricciones {
 	

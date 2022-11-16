@@ -1,4 +1,6 @@
-package ar.edu.unq.po2.tp.Final;
+package ar.edu.unq.po2.tp.Final.EstrategiaSeleccion;
+
+import ar.edu.unq.po2.tp.Final.Desafio;
 
 public class Pares {
 	private Desafio desafio;

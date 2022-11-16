@@ -11,6 +11,16 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import ar.edu.unq.po2.tp.Final.Estados.Estado;
+import ar.edu.unq.po2.tp.Final.Estados.EstadoAceptado;
+import ar.edu.unq.po2.tp.Final.Estados.EstadoCompleto;
+import ar.edu.unq.po2.tp.Final.Estados.EstadoPendiente;
+import ar.edu.unq.po2.tp.Final.EstrategiaSeleccion.EstrategiaDeSeleccion;
+import ar.edu.unq.po2.tp.Final.EstrategiaSeleccion.PreferenciasDeJuego;
+import ar.edu.unq.po2.tp.Final.Restricciones.RestriccionDia;
+import ar.edu.unq.po2.tp.Final.Restricciones.Restricciones;
+import ar.edu.unq.po2.tp.Final.Restricciones.Restricciones.RestriccionFecha;
+
 class UsuarioTest {
 	Preferencia preferencia;
 	Usuario usuario;

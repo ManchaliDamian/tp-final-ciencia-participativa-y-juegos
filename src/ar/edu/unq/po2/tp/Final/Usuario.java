@@ -5,6 +5,10 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
+import ar.edu.unq.po2.tp.Final.Estados.Estado;
+import ar.edu.unq.po2.tp.Final.EstrategiaSeleccion.EstrategiaDeSeleccion;
+import ar.edu.unq.po2.tp.Final.EstrategiaSeleccion.PreferenciasDeJuego;
+
 public class Usuario {
 
 	private Preferencia preferencia;

@@ -7,6 +7,11 @@ import java.time.LocalDate;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import ar.edu.unq.po2.tp.Final.Restricciones.RestriccionCompuesta;
+import ar.edu.unq.po2.tp.Final.Restricciones.RestriccionDia;
+import ar.edu.unq.po2.tp.Final.Restricciones.Restricciones.RestriccionArea;
+import ar.edu.unq.po2.tp.Final.Restricciones.Restricciones.RestriccionFecha;
+
 class RestriccionesTest {
 	RestriccionDia restriccionDia;
 	RestriccionFecha restriccionFecha;

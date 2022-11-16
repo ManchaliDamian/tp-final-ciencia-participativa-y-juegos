@@ -6,6 +6,10 @@ import static org.mockito.Mockito.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import ar.edu.unq.po2.tp.Final.Estados.EstadoAceptado;
+import ar.edu.unq.po2.tp.Final.Estados.EstadoCompleto;
+import ar.edu.unq.po2.tp.Final.Estados.EstadoPendiente;
+
 class EstadosTest {
 
 	EstadoCompleto estadoCompleto;

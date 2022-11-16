@@ -1,8 +1,10 @@
-package ar.edu.unq.po2.tp.Final;
+package ar.edu.unq.po2.tp.Final.EstrategiaSeleccion;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import ar.edu.unq.po2.tp.Final.Desafio;
 
 public class Favoritos implements EstrategiaDeSeleccion {
 

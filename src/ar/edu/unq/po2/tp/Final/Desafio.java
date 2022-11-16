@@ -1,5 +1,7 @@
 package ar.edu.unq.po2.tp.Final;
 
+import ar.edu.unq.po2.tp.Final.Restricciones.Restricciones;
+
 public class Desafio {
 	private Area area;
 	private String nombre; 

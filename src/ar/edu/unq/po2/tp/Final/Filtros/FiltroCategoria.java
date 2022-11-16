@@ -1,4 +1,4 @@
-package ar.edu.unq.po2.tp.Final;
+package ar.edu.unq.po2.tp.Final.Filtros;
 import java.util.List;
 import java.util.stream.Collectors;
 

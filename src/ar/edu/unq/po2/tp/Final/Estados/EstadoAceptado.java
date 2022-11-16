@@ -1,4 +1,6 @@
-package ar.edu.unq.po2.tp.Final;
+package ar.edu.unq.po2.tp.Final.Estados;
+
+import ar.edu.unq.po2.tp.Final.DesafioDeUsuario;
 
 public class EstadoAceptado extends Estado {
  
