@@ -3,6 +3,9 @@ package ar.edu.unq.po2.tp.Final;
 import java.util.ArrayList;
 import java.util.List;
 
+import ar.edu.unq.po2.tp.Final.Muestra.Muestra;
+import ar.edu.unq.po2.tp.Final.Usuario.Usuario;
+
 public class Proyecto {
 	private String nombre;
 	private String descripción;
@@ -19,12 +22,9 @@ public class Proyecto {
 	}
 
 	public void agregarMuestra(Muestra unaMuestra) {
-		if (participantesActivos.contains(unaMuestra.getUsuario())) {
-			<<Correcion>> minor: Esta validacion no es necesaria
 			muestras.add(unaMuestra);
 		}
 
-	}
 
 	public void agregarCategoria(Categoria unaCategoria) {
 		categorias.add(unaCategoria);
@@ -77,7 +77,6 @@ public class Proyecto {
 	}
 
 	public boolean isPerteneceA(List<Proyecto> proyectosFiltro) {
-		// TODO Auto-generated method stub
 		return proyectosFiltro.contains(this);
 	}
 }

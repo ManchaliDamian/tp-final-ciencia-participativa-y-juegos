@@ -17,9 +17,15 @@ import ar.edu.unq.po2.tp.Final.Estados.EstadoCompleto;
 import ar.edu.unq.po2.tp.Final.Estados.EstadoPendiente;
 import ar.edu.unq.po2.tp.Final.EstrategiaSeleccion.EstrategiaDeSeleccion;
 import ar.edu.unq.po2.tp.Final.EstrategiaSeleccion.PreferenciasDeJuego;
+import ar.edu.unq.po2.tp.Final.Muestra.Dia;
+import ar.edu.unq.po2.tp.Final.Muestra.Muestra;
 import ar.edu.unq.po2.tp.Final.Restricciones.RestriccionDia;
 import ar.edu.unq.po2.tp.Final.Restricciones.Restricciones;
 import ar.edu.unq.po2.tp.Final.Restricciones.Restricciones.RestriccionFecha;
+import ar.edu.unq.po2.tp.Final.Usuario.Desafio;
+import ar.edu.unq.po2.tp.Final.Usuario.DesafioDeUsuario;
+import ar.edu.unq.po2.tp.Final.Usuario.Preferencia;
+import ar.edu.unq.po2.tp.Final.Usuario.Usuario;
 
 class UsuarioTest {
 	Preferencia preferencia;

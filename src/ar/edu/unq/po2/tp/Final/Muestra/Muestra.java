@@ -1,7 +1,9 @@
-package ar.edu.unq.po2.tp.Final;
+package ar.edu.unq.po2.tp.Final.Muestra;
 
 import java.time.LocalDate;
 import java.time.chrono.ChronoLocalDate;
+
+import ar.edu.unq.po2.tp.Final.Usuario.Usuario;
 
 public class Muestra {
 	private CoordenadaGeografica cordGeografica;

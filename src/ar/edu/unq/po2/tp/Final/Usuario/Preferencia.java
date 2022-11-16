@@ -1,4 +1,4 @@
-package ar.edu.unq.po2.tp.Final;
+package ar.edu.unq.po2.tp.Final.Usuario;
 
 public class Preferencia {
     private int dificultad; // es de 1 a 5 

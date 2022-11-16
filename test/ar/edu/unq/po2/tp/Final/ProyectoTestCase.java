@@ -8,6 +8,10 @@ import java.util.Arrays;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import ar.edu.unq.po2.tp.Final.Muestra.Muestra;
+import ar.edu.unq.po2.tp.Final.Usuario.Preferencia;
+import ar.edu.unq.po2.tp.Final.Usuario.Usuario;
+
 
 class ProyectoTestCase {
 	Proyecto proyecto; 

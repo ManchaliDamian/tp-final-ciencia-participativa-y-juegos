@@ -12,8 +12,13 @@ import org.junit.jupiter.api.Test;
 import ar.edu.unq.po2.tp.Final.EstrategiaSeleccion.EstrategiaDeSeleccion;
 import ar.edu.unq.po2.tp.Final.EstrategiaSeleccion.Favoritos;
 import ar.edu.unq.po2.tp.Final.EstrategiaSeleccion.PreferenciasDeJuego;
+import ar.edu.unq.po2.tp.Final.Muestra.Area;
 import ar.edu.unq.po2.tp.Final.Restricciones.Restricciones;
 import ar.edu.unq.po2.tp.Final.Restricciones.Restricciones.RestriccionArea;
+import ar.edu.unq.po2.tp.Final.Usuario.Desafio;
+import ar.edu.unq.po2.tp.Final.Usuario.DesafioDeUsuario;
+import ar.edu.unq.po2.tp.Final.Usuario.Preferencia;
+import ar.edu.unq.po2.tp.Final.Usuario.Usuario;
 
 class EstrategiaDeSeleccionTest {
 	EstrategiaDeSeleccion favoritos;

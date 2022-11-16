@@ -1,7 +1,7 @@
 package ar.edu.unq.po2.tp.Final.Restricciones;
 
-import ar.edu.unq.po2.tp.Final.Dia;
-import ar.edu.unq.po2.tp.Final.Muestra;
+import ar.edu.unq.po2.tp.Final.Muestra.Dia;
+import ar.edu.unq.po2.tp.Final.Muestra.Muestra;
 
 public class RestriccionDia extends Restricciones {
 	private Dia dia;

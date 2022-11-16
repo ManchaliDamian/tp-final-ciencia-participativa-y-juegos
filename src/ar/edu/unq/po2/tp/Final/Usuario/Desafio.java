@@ -1,5 +1,7 @@
-package ar.edu.unq.po2.tp.Final;
+package ar.edu.unq.po2.tp.Final.Usuario;
 
+import ar.edu.unq.po2.tp.Final.Muestra.Area;
+import ar.edu.unq.po2.tp.Final.Muestra.Muestra;
 import ar.edu.unq.po2.tp.Final.Restricciones.Restricciones;
 
 public class Desafio {

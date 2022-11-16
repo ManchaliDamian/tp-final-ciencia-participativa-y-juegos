@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import ar.edu.unq.po2.tp.Final.Desafio;
+import ar.edu.unq.po2.tp.Final.Usuario.Desafio;
 
 public class Favoritos implements EstrategiaDeSeleccion {
 
@@ -20,8 +20,7 @@ public class Favoritos implements EstrategiaDeSeleccion {
 	public Integer coincidenciaDeDesafioYUsuario(Desafio desafio, Usuario usuario) {
 		<<Correcion>> Rompen encampsulamiento de usuario. Deberian pedirle a la clase usuario que les retorne el desafio con mayor puntaje directamente.
 					  El calculo de diferencias entre Desafios podria ser responsabilidad de la clase Desafio para evitar "abrir" el objeto. 
-					  Si es necesario, podrian utilizar Double Dispatch para dejar la logica del algoritmo definida en esta clase y pasarla como parametro al desafio al momento de la comparacion.
-		Desafio desafioDeUsuarioConMayorPuntaje = usuario.desafioDeUsuarioConMayorPuntaje().getDesafio(); 
+					  Si es necesario, podrian utilizar Double Dispatch para dejar la logica del algoritmo definida en esta clase y pasarla como parametro al desafio al momento de la comparacion.ar.edu.unq.po2.tp.Final.Usuario.Desafio desafioDeUsuarioConMayorPuntaje = usuario.desafioDeUsuarioConMayorPuntaje().getDesafio(); 
 		int similitud = this.diferenciaEntre(desafio.getCantMuestras(), desafioDeUsuarioConMayorPuntaje.getCantMuestras())
 				+ this.diferenciaEntre(desafio.getDificultad(), desafioDeUsuarioConMayorPuntaje.getDificultad())
 				+ this.diferenciaEntre(desafio.getRecompensa(), desafioDeUsuarioConMayorPuntaje.getRecompensa()); 

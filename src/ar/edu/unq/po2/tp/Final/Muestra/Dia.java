@@ -1,4 +1,4 @@
-package ar.edu.unq.po2.tp.Final;
+package ar.edu.unq.po2.tp.Final.Muestra;
 
 public enum Dia {
      Lunes(true), Martes(true) , Miercoles(true) , Jueves(true) , Viernes(true) , Sabado(true) , Domingo(true);

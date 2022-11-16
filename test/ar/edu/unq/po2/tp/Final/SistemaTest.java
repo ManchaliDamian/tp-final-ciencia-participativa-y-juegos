@@ -18,6 +18,9 @@ import ar.edu.unq.po2.tp.Final.Filtros.Filtro;
 import ar.edu.unq.po2.tp.Final.Filtros.FiltroAnd;
 import ar.edu.unq.po2.tp.Final.Filtros.FiltroCategoria;
 import ar.edu.unq.po2.tp.Final.Filtros.FiltroTitulo;
+import ar.edu.unq.po2.tp.Final.Usuario.Desafio;
+import ar.edu.unq.po2.tp.Final.Usuario.Preferencia;
+import ar.edu.unq.po2.tp.Final.Usuario.Usuario;
 
 class SistemaTest {
 	Sistema sistema;

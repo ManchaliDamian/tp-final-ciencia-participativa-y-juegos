@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ar.edu.unq.po2.tp.Final.Filtros.Filtro;
+import ar.edu.unq.po2.tp.Final.Usuario.Desafio;
+import ar.edu.unq.po2.tp.Final.Usuario.Usuario;
 
 public class Sistema {
 	private List<Proyecto> proyectosDePreferencia = new ArrayList<Proyecto>();

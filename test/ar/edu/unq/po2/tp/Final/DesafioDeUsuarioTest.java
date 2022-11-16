@@ -9,7 +9,12 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 
+import ar.edu.unq.po2.tp.Final.Muestra.Dia;
+import ar.edu.unq.po2.tp.Final.Muestra.Muestra;
 import ar.edu.unq.po2.tp.Final.Restricciones.Restricciones;
+import ar.edu.unq.po2.tp.Final.Usuario.Desafio;
+import ar.edu.unq.po2.tp.Final.Usuario.DesafioDeUsuario;
+import ar.edu.unq.po2.tp.Final.Usuario.Usuario;
 
 class DesafioDeUsuarioTest {
 	DesafioDeUsuario desafioDeUsuario;

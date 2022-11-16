@@ -1,7 +1,11 @@
-package ar.edu.unq.po2.tp.Final;
+package ar.edu.unq.po2.tp.Final.Usuario;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import ar.edu.unq.po2.tp.Final.Estados.Estado;
+import ar.edu.unq.po2.tp.Final.Estados.EstadoPendiente;
+import ar.edu.unq.po2.tp.Final.Muestra.Muestra;
 
 public class DesafioDeUsuario {
 
@@ -61,11 +65,9 @@ public class DesafioDeUsuario {
 	}
 
 	public void agregarMuestra(Muestra muestra) { 
-		if (estado.estaAceptado()) {
-			<<Correcion>> Importante: No delegan en el estado.
-			this.agregarSiCumpleRestriccion(muestra);
+		estado.agregarSiCumpleRestriccion(muestra, this);
 		}
-	} 
+	
 
 	public void agregarSiCumpleRestriccion(Muestra muestra) {
 		if (desafio.cumpleConRestriccion(muestra)) {
@@ -84,6 +86,18 @@ public class DesafioDeUsuario {
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
+	}
+
+	public void puntarSiEsDesafioAceptado(int puntuacion) {
+		estado.puntuarDesafio(puntuacion, this); 
+	}
+
+	public boolean esDesafioAceptado() {
+		return estado.estaAceptado();
+	}
+
+	public boolean esDesafioCompleto() {
+		return estado.estaCompleto();
 	}
 	
 }

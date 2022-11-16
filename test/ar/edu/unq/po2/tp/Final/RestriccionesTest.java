@@ -7,10 +7,15 @@ import java.time.LocalDate;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import ar.edu.unq.po2.tp.Final.Muestra.Area;
+import ar.edu.unq.po2.tp.Final.Muestra.CoordenadaGeografica;
+import ar.edu.unq.po2.tp.Final.Muestra.Dia;
+import ar.edu.unq.po2.tp.Final.Muestra.Muestra;
 import ar.edu.unq.po2.tp.Final.Restricciones.RestriccionCompuesta;
 import ar.edu.unq.po2.tp.Final.Restricciones.RestriccionDia;
 import ar.edu.unq.po2.tp.Final.Restricciones.Restricciones.RestriccionArea;
 import ar.edu.unq.po2.tp.Final.Restricciones.Restricciones.RestriccionFecha;
+import ar.edu.unq.po2.tp.Final.Usuario.Usuario;
 
 class RestriccionesTest {
 	RestriccionDia restriccionDia;

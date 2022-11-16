@@ -1,16 +1,16 @@
 package ar.edu.unq.po2.tp.Final.Estados;
 
-import ar.edu.unq.po2.tp.Final.DesafioDeUsuario;
+import ar.edu.unq.po2.tp.Final.Muestra.Muestra;
+import ar.edu.unq.po2.tp.Final.Usuario.DesafioDeUsuario;
 
 public class EstadoPendiente extends Estado {
 
- 
 	@Override
 	public void actualizarEstado(DesafioDeUsuario desafioDeUsuario) {
-		desafioDeUsuario.setEstado(new EstadoAceptado()); 
+		desafioDeUsuario.setEstado(new EstadoAceptado());
 	}
 
-	@Override 
+	@Override
 	public int porcentajeDeCompletitud(DesafioDeUsuario desafioDeUsuario) {
 		return 0;
 	}
@@ -19,5 +19,22 @@ public class EstadoPendiente extends Estado {
 		return true;
 	}
 
+	public void agregarSiCumpleRestriccion(Muestra muestra, DesafioDeUsuario desafioDeUsuario) {
+
+	}
+
+	@Override
+	public boolean estaAceptado() {
+		return false;
+	}
+
+	@Override
+	public boolean estaCompleto() {
+		return false;
+	}
+
+	public void puntuarDesafio(int puntuacion, DesafioDeUsuario desafioDeUsuario) {
+
+	}
 
 }
