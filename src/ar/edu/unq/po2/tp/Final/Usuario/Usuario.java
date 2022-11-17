@@ -10,6 +10,7 @@ import ar.edu.unq.po2.tp.Final.Estados.Estado;
 import ar.edu.unq.po2.tp.Final.EstrategiaSeleccion.EstrategiaDeSeleccion;
 import ar.edu.unq.po2.tp.Final.EstrategiaSeleccion.PreferenciasDeJuego;
 import ar.edu.unq.po2.tp.Final.Muestra.Muestra;
+import ar.edu.unq.po2.tpEnum.ActividadSemanal;
 
 public class Usuario {
 
@@ -31,11 +32,11 @@ public class Usuario {
 	}
 
 	public void setPreferencia(Preferencia preferencia) {
-		this.preferencia = preferencia; 
+		this.preferencia = preferencia;
 	}
 
 	public EstrategiaDeSeleccion getEstrategia() {
-		return estrategia; 
+		return estrategia;
 	}
 
 	public void setEstrategia(EstrategiaDeSeleccion estrategia) {
@@ -93,7 +94,8 @@ public class Usuario {
 		}
 		return desafiosPendientes;
 	}
-	// <<Correcion>> Codigo repetido para el filtrado de de desafios pendientes y compeltos.
+	// <<Correcion>> Codigo repetido para el filtrado de de desafios pendientes y
+	// compeltos.
 
 	public List<DesafioDeUsuario> desafiosCompletos() {
 		List<DesafioDeUsuario> desafiosCompletos = new ArrayList<DesafioDeUsuario>();
@@ -112,9 +114,8 @@ public class Usuario {
 	}
 
 	public void puntuarDesafio(DesafioDeUsuario desafio, int puntuacion) {
-			desafio.puntarSiEsDesafioAceptado(puntuacion);
-		}
-
+		desafio.puntarSiEsDesafioAceptado(puntuacion);
+	}
 
 	public void desafiosDeInteres(List<Desafio> desafios) {
 		this.desafiosInteres.addAll(estrategia.desafiosParaElUsuario(desafios, this));
@@ -136,20 +137,17 @@ public class Usuario {
 		return (this.desafiosCompletos().size() * 100) / cantidadDeDesafios;
 	}
 
-	public DesafioDeUsuario desafioDeUsuarioConMayorPuntaje() {
-       DesafioDeUsuario mayorHastaAhora = desafios.get(0);
-		for (DesafioDeUsuario d : desafios) {
-			if(mayorHastaAhora.getPuntuacion() <= d.getPuntuacion()) {
-				mayorHastaAhora = d;
-			} 
-		} return mayorHastaAhora; 
+	public Desafio desafioDeUsuarioConMayorPuntaje() {
+		Optional<DesafioDeUsuario> defConMayorPuntaje = desafios.stream()
+				.max(Comparator.comparing(d -> d.getPuntuacion()));
+		return defConMayorPuntaje.get().getDesafio();
 	}
 
 	public void agregarProyectos(List<Proyecto> proyectosDePreferencia) {
 		for (Proyecto p : proyectosDePreferencia) {
 			this.agregarProyecto(p);
-		} 
-		
+		}
+
 	}
 
 	public int cantMuestrasPref() {

@@ -81,9 +81,18 @@ public class Desafio {
 		return coin;
 	}  
 	
+	public int coincidenciaPorFav(Desafio desafioConMayorPuntaje) {
+		int coin = this.diferenciaEntre(cantMuestras, desafioConMayorPuntaje.getCantMuestras()) + 
+				diferenciaEntre(dificultad, desafioConMayorPuntaje.getDificultad()) + 
+				diferenciaEntre(recompensa, desafioConMayorPuntaje.getRecompensa());
+		return coin;
+	}
+	
 	public int diferenciaEntre(int unNumero, int otroNumero) {
 		return Math.abs(unNumero - otroNumero); 
 	}
+
+	
 	
 	//public boolean cumpleConRestriccion(Muestra muestra) {
 		//	<<Correcion>> Falta la validacion sobre la muestra y el area.
