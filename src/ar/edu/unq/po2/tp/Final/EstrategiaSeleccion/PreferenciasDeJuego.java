@@ -1,9 +1,6 @@
 package ar.edu.unq.po2.tp.Final.EstrategiaSeleccion;
 
-import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
-
 
 import ar.edu.unq.po2.tp.Final.Usuario.Desafio;
 import ar.edu.unq.po2.tp.Final.Usuario.Usuario;
@@ -17,18 +14,11 @@ public class PreferenciasDeJuego extends EstrategiaDeSeleccion {
 		return this.coincidenciaPorPreferenciaDeUsuario(desafiosParaUsuario, usuario);
 	}
 
-	
-	public List<Desafio> coincidenciaPorPreferenciaDeUsuario(List<Desafio> desafios, Usuario usuario){
-		desafios.stream().sorted((desafio1, desafio2) -> ).toList();
+	public List<Desafio> coincidenciaPorPreferenciaDeUsuario(List<Desafio> desafios, Usuario usuario) {
+		List<Desafio> desafiosPorCoincidencia = desafios.stream().sorted(
+				(desafio1, desafio2) -> desafio1.coincidenciaCon(usuario).compareTo(desafio2.coincidenciaCon(usuario)))
+				.limit(5).toList();
+		return desafiosPorCoincidencia;
 	}
-	
-
-	
-	
-	
-	
-	
-	//<<Correcion>> Rompen encapsulamiento de usuario pidiendole las preferencias, deberian de delegar en el usuario retornar la cantidad de muestras o las recompensas.
 
 }
-

@@ -36,6 +36,5 @@ public abstract class EstrategiaDeSeleccion {
 
 	public abstract List<Desafio> desafiosParaElUsuario(Usuario usuario);
 
-	public abstract int coincidenciaDeDesafioYUsuario(Desafio desafio, Usuario usuario);
 
 }

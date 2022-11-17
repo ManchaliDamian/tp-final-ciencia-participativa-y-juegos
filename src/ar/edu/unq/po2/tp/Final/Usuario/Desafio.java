@@ -65,17 +65,32 @@ public class Desafio {
 		this.recompensa = recompensa;
 	}
 
-	//public boolean cumpleConRestriccion(Muestra muestra) {
-	//	<<Correcion>> Falta la validacion sobre la muestra y el area.
-	//	return getRestriccionesTemp().isMuestraValida(muestra);
-	//}
-
 	public String getNombre() {
 		return nombre;
 	}
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
+	}
+
+	public Integer coincidenciaCon(Usuario usuario) {
+		int coin = this.diferenciaEntre(cantMuestras, usuario.cantMuestrasPref()) + 
+				diferenciaEntre(dificultad, usuario.dificultadPref()) + 
+				diferenciaEntre(recompensa, usuario.recompensaPref()); 
+				
+		return coin;
 	}  
+	
+	public int diferenciaEntre(int unNumero, int otroNumero) {
+		return Math.abs(unNumero - otroNumero); 
+	}
+	
+	//public boolean cumpleConRestriccion(Muestra muestra) {
+		//	<<Correcion>> Falta la validacion sobre la muestra y el area.
+		//	return getRestriccionesTemp().isMuestraValida(muestra);
+		//}
+
+
+	
 	
 }

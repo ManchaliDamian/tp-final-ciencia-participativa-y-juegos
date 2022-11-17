@@ -151,4 +151,19 @@ public class Usuario {
 		} 
 		
 	}
+
+	public int cantMuestrasPref() {
+		// TODO Auto-generated method stub
+		return preferencia.getCantidadDeMuestras();
+	}
+
+	public int dificultadPref() {
+		// TODO Auto-generated method stub
+		return preferencia.getDificultad();
+	}
+
+	public int recompensaPref() {
+		// TODO Auto-generated method stub
+		return preferencia.getRecompensa();
+	}
 }
