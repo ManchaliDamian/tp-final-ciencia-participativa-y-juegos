@@ -3,6 +3,8 @@ package ar.edu.unq.po2.tp.Final.Restricciones;
 import java.util.ArrayList;
 import java.util.List;
 
+import ar.edu.unq.po2.tp.Final.Muestra.Muestra;
+
 public class RestriccionCompuesta extends Restricciones {
 	List<Restricciones> restricciones = new ArrayList<Restricciones>();
 
