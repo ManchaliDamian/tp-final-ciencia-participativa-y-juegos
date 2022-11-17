@@ -34,7 +34,13 @@ public abstract class EstrategiaDeSeleccion {
 		return desafiosYaRecomendados; 
 	}
 
-	public abstract List<Desafio> desafiosParaElUsuario(Usuario usuario);
+	public List<Desafio> desafiosParaElUsuario(Usuario usuario) {
+		List<Desafio> desafiosParaUsuario = this.filtrarDesafiosYaRecomendados(usuario);
+
+		return this.coincidenciasParaUsuario(desafiosParaUsuario, usuario);
+	}
+	
+	public abstract List<Desafio> coincidenciasParaUsuario(List<Desafio> desafios, Usuario usuario);
 
 
 }

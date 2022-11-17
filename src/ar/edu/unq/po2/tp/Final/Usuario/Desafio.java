@@ -73,7 +73,7 @@ public class Desafio {
 		this.nombre = nombre;
 	}
 
-	public Integer coincidenciaCon(Usuario usuario) {
+	public Integer coincidenciaPorPref(Usuario usuario) {
 		int coin = this.diferenciaEntre(cantMuestras, usuario.cantMuestrasPref()) + 
 				diferenciaEntre(dificultad, usuario.dificultadPref()) + 
 				diferenciaEntre(recompensa, usuario.recompensaPref()); 
@@ -81,7 +81,7 @@ public class Desafio {
 		return coin;
 	}  
 	
-	public int coincidenciaPorFav(Desafio desafioConMayorPuntaje) {
+	public Integer coincidenciaPorFav(Desafio desafioConMayorPuntaje) {
 		int coin = this.diferenciaEntre(cantMuestras, desafioConMayorPuntaje.getCantMuestras()) + 
 				diferenciaEntre(dificultad, desafioConMayorPuntaje.getDificultad()) + 
 				diferenciaEntre(recompensa, desafioConMayorPuntaje.getRecompensa());
