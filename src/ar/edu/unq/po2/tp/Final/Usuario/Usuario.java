@@ -10,7 +10,7 @@ import ar.edu.unq.po2.tp.Final.Estados.Estado;
 import ar.edu.unq.po2.tp.Final.EstrategiaSeleccion.EstrategiaDeSeleccion;
 import ar.edu.unq.po2.tp.Final.EstrategiaSeleccion.PreferenciasDeJuego;
 import ar.edu.unq.po2.tp.Final.Muestra.Muestra;
-import ar.edu.unq.po2.tpEnum.ActividadSemanal;
+
 
 public class Usuario {
 
@@ -117,8 +117,8 @@ public class Usuario {
 		desafio.puntarSiEsDesafioAceptado(puntuacion);
 	}
 
-	public void desafiosDeInteres(List<Desafio> desafios) {
-		this.desafiosInteres.addAll(estrategia.desafiosParaElUsuario(desafios, this));
+	public void buscarMathConDesafios(List<Desafio> desafios) {
+		this.desafiosInteres.addAll(estrategia.desafiosParaElUsuario(this, desafios));
 	}
 
 	public void agregarDesafiosDeIntereses() {

@@ -3,27 +3,13 @@ package ar.edu.unq.po2.tp.Final.EstrategiaSeleccion;
 import java.util.ArrayList;
 import java.util.List;
 
-import ar.edu.unq.po2.tp.Final.Sistema;
 import ar.edu.unq.po2.tp.Final.Usuario.Desafio;
 import ar.edu.unq.po2.tp.Final.Usuario.Usuario;
 
 public abstract class EstrategiaDeSeleccion {
-	Sistema sistema; 
-
-	public Sistema getSistema() {
-		return sistema;
-	}
-
-	public void setSistema(Sistema sistema) {
-		this.sistema = sistema;
-	}
 	
-	public List<Desafio> desafiosDeSistema() {
-		return sistema.getDesafios();
-	}
-	
-	public List<Desafio> filtrarDesafiosYaRecomendados(Usuario usuario){
-		List<Desafio> desafiosFiltrados = desafiosDeSistema().stream().filter(d -> desafiosYaRecomendados(usuario).contains(d)).toList();
+	public List<Desafio> filtrarDesafiosYaRecomendados(Usuario usuario, List<Desafio> desafios){
+		List<Desafio> desafiosFiltrados = desafios.stream().filter(d -> desafiosYaRecomendados(usuario).contains(d)).toList();
 		return desafiosFiltrados;
 	}
 	
@@ -34,8 +20,8 @@ public abstract class EstrategiaDeSeleccion {
 		return desafiosYaRecomendados; 
 	}
 
-	public List<Desafio> desafiosParaElUsuario(Usuario usuario) {
-		List<Desafio> desafiosParaUsuario = this.filtrarDesafiosYaRecomendados(usuario);
+	public List<Desafio> desafiosParaElUsuario(Usuario usuario, List<Desafio> desafios) {
+		List<Desafio> desafiosParaUsuario = this.filtrarDesafiosYaRecomendados(usuario, desafios);
 
 		return this.coincidenciasParaUsuario(desafiosParaUsuario, usuario);
 	}

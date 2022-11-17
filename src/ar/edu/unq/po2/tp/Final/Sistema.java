@@ -23,10 +23,6 @@ public class Sistema {
 		return proyectos;
 	}
 
-	public List<Usuario> getUsuariosEnSistema() {
-		return usuariosEnSistema;
-	}
-
 	public PreferenciaDeProyecto getPreferencia() {
 		return preferencia;
 	}

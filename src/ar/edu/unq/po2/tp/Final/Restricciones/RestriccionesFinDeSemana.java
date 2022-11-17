@@ -6,7 +6,7 @@ public class RestriccionesFinDeSemana extends Restricciones {
 
 	@Override
 	public boolean isMuestraValida(Muestra muestra) {
-		return muestra.diaDeLaSemana().getValue() > 5;
+		return muestra.valorDeDiaDeSemana() > 5;
 	}
 
 }

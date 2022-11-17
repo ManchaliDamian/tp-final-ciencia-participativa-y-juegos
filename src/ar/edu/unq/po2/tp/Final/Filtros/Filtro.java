@@ -9,4 +9,7 @@ public abstract class Filtro {
    
 	public abstract List<Proyecto> filtrar(List<Proyecto> proyectos, PreferenciaDeProyecto preferencia); 
 	
+	public void agregarFiltro(Filtro filtro) {
+		filtros.add(filtro);
+	}
 }

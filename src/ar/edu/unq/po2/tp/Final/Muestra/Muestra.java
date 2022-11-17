@@ -51,4 +51,9 @@ public class Muestra {
 	public DayOfWeek diaDeLaSemana() {
 		return fecha.getDayOfWeek(); 
 	}
+
+	public int valorDeDiaDeSemana() {
+		// TODO Auto-generated method stub
+		return diaDeLaSemana().getValue();
+	}
 }

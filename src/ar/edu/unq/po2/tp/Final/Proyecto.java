@@ -61,20 +61,6 @@ public class Proyecto {
 		this.descripción = descripción;
 	}
 
-	public void eliminarParticipante(Usuario participante) {
-		participantesActivos.remove(participante);
-
-	}
-
-	public void eliminarCategoria(Categoria categoria) {
-		categorias.remove(categoria);
-
-	}
-
-	public void eliminarMuestra(Muestra muestra) {
-		muestras.remove(muestra);
-	}
-
 	public boolean isPerteneceA(List<Proyecto> proyectosFiltro) {
 		return proyectosFiltro.contains(this);
 	}

@@ -6,5 +6,9 @@ public abstract class Restricciones {
 	
 	public abstract boolean isMuestraValida(Muestra muestra);
 	
+	public void agregarRestriccion(Restricciones restricción) {
+		
+	}
+	
 	
 }
