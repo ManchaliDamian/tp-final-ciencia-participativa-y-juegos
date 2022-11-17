@@ -7,7 +7,6 @@ import ar.edu.unq.po2.tp.Final.Usuario.Usuario;
 
 public interface EstrategiaDeSeleccion {
 	
-	// verificar que los desafios recomendados no esten en los del usuario
 
 	public abstract List<Desafio> desafiosParaElUsuario(List<Desafio> desafios2, Usuario usuario);
 

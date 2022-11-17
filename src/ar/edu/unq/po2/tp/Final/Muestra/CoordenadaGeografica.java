@@ -27,7 +27,6 @@ public class CoordenadaGeografica {
 	}
 
 	public boolean seEncuentraDentroDelRario(Area area) {
-		// TODO Auto-generated method stub
 		return distanciaSobreElArea(area) <= area.getRadio();
 	}
 	
