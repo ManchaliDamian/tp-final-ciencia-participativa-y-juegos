@@ -12,20 +12,15 @@ public class Sistema {
 	private List<Usuario> usuariosEnSistema = new ArrayList<Usuario>();
 	private List<Desafio> desafios = new ArrayList<Desafio>(); 
 	private Filtro filtro;
-	private PreferenciaDeProyecto preferencia;
 
-	public Sistema(Filtro unFiltro, PreferenciaDeProyecto unaPreferencia) {
+	public Sistema(Filtro unFiltro) {
 		this.filtro = unFiltro; 
-		this.preferencia = unaPreferencia;
 	}
 
 	public List<Proyecto> getProyectos() {
 		return proyectos;
 	}
 
-	public PreferenciaDeProyecto getPreferencia() {
-		return preferencia;
-	}
 	
 	public List<Desafio> getDesafios(){
 		return desafios;
@@ -33,7 +28,7 @@ public class Sistema {
 
 	public List<Proyecto> proyectosDePreferencia() {
 		List<Proyecto> proys = new ArrayList<Proyecto>();
-		proys.addAll(filtro.filtrar(proyectos, preferencia));
+		proys.addAll(filtro.filtrar(proyectos));
 		
 		return proys; 
 
@@ -41,7 +36,7 @@ public class Sistema {
 
 	public void recomendarDesafios(List<Desafio> desafios) {
 		for (Usuario u : usuariosEnSistema) {
-			u.desafiosDeInteres(desafios);
+			u.buscarMathConDesafios(desafios);;
 		}
 	}
 	

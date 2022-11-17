@@ -2,14 +2,10 @@ package ar.edu.unq.po2.tp.Final.Filtros;
 
 import java.util.List;
 
-import ar.edu.unq.po2.tp.Final.PreferenciaDeProyecto;
 import ar.edu.unq.po2.tp.Final.Proyecto;
 
 public abstract class Filtro {
    
-	public abstract List<Proyecto> filtrar(List<Proyecto> proyectos, PreferenciaDeProyecto preferencia); 
+	public abstract List<Proyecto> filtrar(List<Proyecto> proyectos); 
 	
-	public void agregarFiltro(Filtro filtro) {
-		filtros.add(filtro);
-	}
 }
