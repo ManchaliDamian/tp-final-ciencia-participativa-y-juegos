@@ -10,6 +10,7 @@ import ar.edu.unq.po2.tp.Final.Usuario.Usuario;
 public class Sistema {
 	private List<Proyecto> proyectos = new ArrayList<Proyecto>();
 	private List<Usuario> usuariosEnSistema = new ArrayList<Usuario>();
+	private List<Desafio> desafios = new ArrayList<Desafio>(); 
 	private Filtro filtro;
 	private PreferenciaDeProyecto preferencia;
 
@@ -22,24 +23,16 @@ public class Sistema {
 		return proyectos;
 	}
 
-	public void setProyectosDePreferencia(List<Proyecto> proyectos) {
-		this.proyectos = proyectos;
-	}
-
 	public List<Usuario> getUsuariosEnSistema() {
 		return usuariosEnSistema;
-	}
-
-	public void setUsuariosEnSistema(List<Usuario> usuariosEnSistema) {
-		this.usuariosEnSistema = usuariosEnSistema;
 	}
 
 	public PreferenciaDeProyecto getPreferencia() {
 		return preferencia;
 	}
-
-	public void setPreferencia(PreferenciaDeProyecto preferencia) {
-		this.preferencia = preferencia;
+	
+	public List<Desafio> getDesafios(){
+		return desafios;
 	}
 
 	public List<Proyecto> proyectosDePreferencia() {

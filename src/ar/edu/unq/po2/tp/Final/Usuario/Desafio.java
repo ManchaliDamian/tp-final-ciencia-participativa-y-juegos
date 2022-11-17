@@ -65,10 +65,10 @@ public class Desafio {
 		this.recompensa = recompensa;
 	}
 
-	public boolean cumpleConRestriccion(Muestra muestra) {
-		<<Correcion>> Falta la validacion sobre la muestra y el area.
-		return getRestriccionesTemp().isMuestraValida(muestra);
-	}
+	//public boolean cumpleConRestriccion(Muestra muestra) {
+	//	<<Correcion>> Falta la validacion sobre la muestra y el area.
+	//	return getRestriccionesTemp().isMuestraValida(muestra);
+	//}
 
 	public String getNombre() {
 		return nombre;
@@ -77,5 +77,5 @@ public class Desafio {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}  
-
+	
 }

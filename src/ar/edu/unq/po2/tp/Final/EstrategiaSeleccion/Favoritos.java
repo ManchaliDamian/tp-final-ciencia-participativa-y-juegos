@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 
 import ar.edu.unq.po2.tp.Final.Usuario.Desafio;
 
-public class Favoritos implements EstrategiaDeSeleccion {
+public class Favoritos extends EstrategiaDeSeleccion {
 
 	public List<Desafio> desafiosParaElUsuario(List<Desafio> desafios2, Usuario usuario) {
 		ArrayList<Pares> paresClaveValor = new ArrayList<Pares>();
