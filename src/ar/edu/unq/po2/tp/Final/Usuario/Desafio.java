@@ -89,4 +89,9 @@ public class Desafio {
 		return getRestriccionesTemp().isMuestraValida(muestra);
 	}
 
+	public DesafioDeUsuario nuevoDesafioDeUsuario() {
+		DesafioDeUsuario desafioDeUsuario= new DesafioDeUsuario(this);
+		return desafioDeUsuario;
+	}
+
 }

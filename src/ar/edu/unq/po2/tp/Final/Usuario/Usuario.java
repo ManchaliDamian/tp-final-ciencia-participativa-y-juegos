@@ -123,8 +123,7 @@ public class Usuario {
 
 	public void agregarDesafiosDeIntereses() {
 		for (Desafio d : desafiosInteres) {
-			<<Correcion>> Este mensaje rompe el principio de OpenClose.
-			desafios.add(new DesafioDeUsuario(d));
+			desafios.add(d.nuevoDesafioDeUsuario());
 		}
 	}
 
