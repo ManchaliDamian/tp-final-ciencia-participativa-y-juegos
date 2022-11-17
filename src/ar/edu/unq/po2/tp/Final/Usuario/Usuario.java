@@ -136,10 +136,10 @@ public class Usuario {
 		return (this.desafiosCompletos().size() * 100) / cantidadDeDesafios;
 	}
 
-	public Desafio desafioDeUsuarioConMayorPuntaje() {
+	public DesafioDeUsuario desafioDeUsuarioConMayorPuntaje() {
 		Optional<DesafioDeUsuario> defConMayorPuntaje = desafios.stream()
 				.max(Comparator.comparing(d -> d.getPuntuacion()));
-		return defConMayorPuntaje.get().getDesafio();
+		return defConMayorPuntaje.get();
 	}
 
 	public void agregarProyectos(List<Proyecto> proyectosDePreferencia) {
