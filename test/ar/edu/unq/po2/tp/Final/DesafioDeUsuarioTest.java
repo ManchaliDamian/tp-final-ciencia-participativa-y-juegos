@@ -11,6 +11,7 @@ import org.mockito.Mock;
 
 import ar.edu.unq.po2.tp.Final.Muestra.Dia;
 import ar.edu.unq.po2.tp.Final.Muestra.Muestra;
+import ar.edu.unq.po2.tp.Final.Restricciones.RestriccionDiaHabiles;
 import ar.edu.unq.po2.tp.Final.Restricciones.Restricciones;
 import ar.edu.unq.po2.tp.Final.Usuario.Desafio;
 import ar.edu.unq.po2.tp.Final.Usuario.DesafioDeUsuario;
@@ -28,23 +29,18 @@ class DesafioDeUsuarioTest {
 	public void setUp() throws Exception {
 		usuario = mock(Usuario.class);
 		LocalDate fechaMuestra = LocalDate.of(2022, 10, 20);
-		muestra1 = new Muestra(null, usuario, fechaMuestra, null, Dia.Sabado);
-		muestra2 = new Muestra(null, usuario, fechaMuestra, null, Dia.Viernes);
-		<<Correcion>>
-			No inicializar objetos con variables como null. Para eso estan los Mock.
-			No utlizan objetos doubles. 
-			No esta claro que es SUT y que es DOC.
-		restriccionDia = new RestriccionDia(Dia.Sabado);
+		muestra1 = new Muestra(null, usuario, fechaMuestra, null);
+		muestra2 = new Muestra(null, usuario, fechaMuestra, null);
+		//<<Correcion>>
+		//	No inicializar objetos con variables como null. Para eso estan los Mock.
+		//	No utlizan objetos doubles. 
+		//	No esta claro que es SUT y que es DOC.
+		restriccionDia = new RestriccionDiaHabiles();
 		desafio = new Desafio(null, restriccionDia, 1, 5, 1, "Cuenta");
 		desafioDeUsuario = new DesafioDeUsuario(desafio);
  
 	}
 
-	@Test
-	void testUnDesafioDeUsuarioComienzaSiendoUnEstadoPediente() {
-		assertTrue(desafioDeUsuario.getEstado().esEstadoPendiente());
-		<<Correcion>> Rompen encapsulamiento, el estado es algo interno del desafioDeUsuario.
-	}
 
 	@Test
 	void testDesafioDeUsuarioActualizaSuEstadoAEstadoAceptado() {

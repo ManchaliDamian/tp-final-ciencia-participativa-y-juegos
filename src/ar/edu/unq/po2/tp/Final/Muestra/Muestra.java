@@ -1,7 +1,8 @@
 package ar.edu.unq.po2.tp.Final.Muestra;
 
+import java.time.DayOfWeek;
 import java.time.LocalDate;
-import java.time.chrono.ChronoLocalDate;
+import java.time.LocalTime;
 
 import ar.edu.unq.po2.tp.Final.Usuario.Usuario;
 
@@ -9,15 +10,13 @@ public class Muestra {
 	private CoordenadaGeografica cordGeografica;
 	private Usuario usuario;
 	private LocalDate fecha;
-	private ChronoLocalDate hora; 
-	private Dia dia; <<Correcion>> Aca se esperaba que utilicen el protocolo de LocalDate paara poder diferenciar entre dias de la semana y dias del fin de semana.
+	private LocalTime hora; 
 	 
-	public Muestra(CoordenadaGeografica cord, Usuario unUsuario, LocalDate fecha, ChronoLocalDate hora, Dia dia) {
+	public Muestra(CoordenadaGeografica cord, Usuario unUsuario, LocalDate fecha, LocalTime hora) {
 		this.cordGeografica = cord;
 		this.usuario = unUsuario;
 		this.fecha = fecha;
 		this.hora = hora; 
-		this.dia = dia; 
 	}
 	
 	public CoordenadaGeografica getCordGeografica() {
@@ -38,25 +37,18 @@ public class Muestra {
 	public void setFecha(LocalDate fecha) {
 		this.fecha = fecha;
 	}
-	public ChronoLocalDate getHora() {
+	public LocalTime getHora() {
 		return hora;
 	}
-	public void setHora(ChronoLocalDate hora) {
+	public void setHora(LocalTime hora) {
 		this.hora = hora;
-	}
-
-	public Dia getDia() {
-		return dia;
-	}
-
-	public void setDia(Dia dia) {
-		this.dia = dia;
 	}
 
 	public boolean seEncuentraDentroDeLasFechasDeDesafio(LocalDate fechaInicio, LocalDate fechaFin) {
 		return fecha.isAfter(fechaInicio) && fecha.isBefore(fechaFin);
 	}
 	
-	
-
+	public DayOfWeek diaDeLaSemana() {
+		return fecha.getDayOfWeek(); 
+	}
 }

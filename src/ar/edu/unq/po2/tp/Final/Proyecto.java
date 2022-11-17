@@ -22,9 +22,8 @@ public class Proyecto {
 	}
 
 	public void agregarMuestra(Muestra unaMuestra) {
-			muestras.add(unaMuestra);
-		}
-
+		muestras.add(unaMuestra);
+	}
 
 	public void agregarCategoria(Categoria unaCategoria) {
 		categorias.add(unaCategoria);

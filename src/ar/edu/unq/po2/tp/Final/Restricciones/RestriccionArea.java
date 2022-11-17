@@ -21,7 +21,6 @@ public class RestriccionArea extends Restricciones {
 
 	@Override
 	public boolean isMuestraValida(Muestra muestra) {
-		// TODO Auto-generated method stub
 		return area.esCoordenadaGeograficaValida(muestra.getCordGeografica());
 		
 	}
