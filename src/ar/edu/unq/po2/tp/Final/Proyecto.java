@@ -64,4 +64,12 @@ public class Proyecto {
 	public boolean isPerteneceA(List<Proyecto> proyectosFiltro) {
 		return proyectosFiltro.contains(this);
 	}
+
+	public boolean isTituloDeseado(String tituloDeseado) {
+		return nombre == tituloDeseado;
+	}
+
+	public boolean isCategoriasDeseadas(List<Categoria> categoriasDeseadas) {
+		return categorias.stream().anyMatch(c -> categoriasDeseadas.contains(c));
+	}
 }

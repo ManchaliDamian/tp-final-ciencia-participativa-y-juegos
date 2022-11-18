@@ -1,10 +1,10 @@
 package ar.edu.unq.po2.tp.Final.Muestra;
 
-public class Area {
+public class AreaGeografica {
 	private CoordenadaGeografica coordenada;
 	private int radio;
 
-	public Area(CoordenadaGeografica unaCoordenada, int unRadio) {
+	public AreaGeografica(CoordenadaGeografica unaCoordenada, int unRadio) {
 		setCoordenada(unaCoordenada);
 		setRadio(unRadio);
 	}
@@ -34,10 +34,9 @@ public class Area {
 	}
 
 	public boolean esCoordenadaGeograficaValida(CoordenadaGeografica cordGeografica) {
-		//return calculoPitagoras(cordGeografica) <= radio;
-		return cordGeografica.seEncuentraDentroDelRario(this);
+		return cordGeografica.seEncuentraDentroDelRadio(this);
 	}
 
 	
- 
+
 }

@@ -46,11 +46,6 @@ public class Usuario {
 		this.desafios.add(desafio);
 	}
 
-	public void eliminarDesafio(DesafioDeUsuario desafio1) {
-		desafios.remove(desafio1);
-
-	}
-
 	public List<DesafioDeUsuario> getDesafios() {
 		return desafios;
 	}
@@ -83,6 +78,7 @@ public class Usuario {
 	}
 
 	public List<DesafioDeUsuario> desafiosPendientes() {
+<<<<<<< HEAD
 		List<DesafioDeUsuario> desafiosPendientes = new ArrayList<DesafioDeUsuario>();
 		for (DesafioDeUsuario d : desafios) {
 			if (d.esDesafioAceptado()) {
@@ -92,18 +88,18 @@ public class Usuario {
 		}
 		return desafiosPendientes;
 	}
+=======
+		List<DesafioDeUsuario> desafiosPendientes = desafios.stream().filter(d -> d.esDesafioPendiente()).toList();
+		return desafiosPendientes;
+	}
+	
+>>>>>>> b0c95c7ddf4b5dd5dc46cebff67cc9fdcb0e4932
 	public List<DesafioDeUsuario> desafiosCompletos() {
-		List<DesafioDeUsuario> desafiosCompletos = new ArrayList<DesafioDeUsuario>();
-		for (DesafioDeUsuario d : desafios) {
-			if (d.esDesafioCompleto()) {
-				desafiosCompletos.add(d);
-			}
-		}
+		List<DesafioDeUsuario> desafiosCompletos = desafios.stream().filter(d -> d.esDesafioCompleto()).toList();
 		return desafiosCompletos;
 	}
 
 	public double getPorcentajeDeCompletitud(DesafioDeUsuario desafioDeUsuario1) {
-
 		return desafioDeUsuario1.getPorcentajeDeCompletitud();
 
 	}
@@ -131,10 +127,10 @@ public class Usuario {
 		return (this.desafiosCompletos().size() * 100) / cantidadDeDesafios;
 	}
 
-	public Desafio desafioDeUsuarioConMayorPuntaje() {
+	public DesafioDeUsuario desafioDeUsuarioConMayorPuntaje() {
 		Optional<DesafioDeUsuario> defConMayorPuntaje = desafios.stream()
 				.max(Comparator.comparing(d -> d.getPuntuacion()));
-		return defConMayorPuntaje.get().getDesafio();
+		return defConMayorPuntaje.get();
 	}
 
 	public void agregarProyectos(List<Proyecto> proyectosDePreferencia) {

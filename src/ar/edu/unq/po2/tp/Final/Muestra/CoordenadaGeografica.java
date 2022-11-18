@@ -26,22 +26,24 @@ public class CoordenadaGeografica {
 		this.longitud = longitud;
 	}
 
-	public boolean seEncuentraDentroDelRario(Area area) {
-		return distanciaSobreElArea(area) <= area.getRadio();
+	public boolean seEncuentraDentroDelRadio(AreaGeografica areaGeografica) {
+		// TODO Auto-generated method stub
+		return distanciaSobreElArea(areaGeografica) <= areaGeografica.getRadio();
 	}
 	
-	public double distanciaSobreElArea(Area area) {
+	public double distanciaSobreElArea(AreaGeografica area) {
 		int resultado = diferenciaYMultEntre(area.longitudDeCoordenada(), longitud)
 				+ diferenciaYMultEntre(area.latitudDeCoordenada(), latitud);
 
 		return Math.sqrt(resultado); //Raíz cuadrada
 	}
 
-	public int diferenciaYMultEntre(int longitud, int longitud2) {
-		int dif = longitud2 - longitud;
+	public int diferenciaYMultEntre(int unNumero, int otroNumero) {
+		int dif = unNumero - otroNumero;
 		int mult = dif * dif; 
 		return mult;
 	}
+
 	
 	
 }

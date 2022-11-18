@@ -23,9 +23,7 @@ public class FiltroCategoriaDeseada extends Filtro {
 	}
 
 	public boolean isDePreferencia(Proyecto p) {
-		List<Categoria> categoriasDeProyecto = p.getCategorias();
-
-		return categoriasDeProyecto.stream().anyMatch(c -> categoriasDeseadas.contains(c));
+		return p.isCategoriasDeseadas(categoriasDeseadas);
 
 	}
 

@@ -1,5 +1,6 @@
 package ar.edu.unq.po2.tp.Final.Filtros;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -12,14 +13,16 @@ public class FiltroNegacion extends FiltroCompuesto{
 		List<Proyecto> proyectosFiltrados = proyectos;
 		for(Filtro f : filtros) {
 			List<Proyecto> proyectosFiltro = f.filtrar(proyectosFiltrados);
-			proyectosFiltrados = this.filtrarProyectos(proyectosFiltrados, proyectosFiltro);
+			proyectosFiltrados.addAll(proyectosFiltro);
 		}
-		return proyectosFiltrados;
+		return filtrarProyectos(proyectosFiltrados, proyectos);
+
+		
 	}
 
-	public List<Proyecto> filtrarProyectos(List<Proyecto> proyectosFiltrados, List<Proyecto> proyectosFiltro) {
-		List<Proyecto> proyectos = proyectosFiltrados.stream().filter(p -> !p.isPerteneceA(proyectosFiltro)).collect(Collectors.toList()); 
-		return proyectos;
+	public List<Proyecto> filtrarProyectos(List<Proyecto> proyectosFiltrados, List<Proyecto> proyectos) {
+		List<Proyecto> proys = proyectos.stream().filter(p -> !p.isPerteneceA(proyectosFiltrados)).collect(Collectors.toList()); 
+		return proys;
 		
 	}
 

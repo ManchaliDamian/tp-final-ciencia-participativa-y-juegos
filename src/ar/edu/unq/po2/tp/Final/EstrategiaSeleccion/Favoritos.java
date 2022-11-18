@@ -3,6 +3,7 @@ package ar.edu.unq.po2.tp.Final.EstrategiaSeleccion;
 import java.util.List;
 
 import ar.edu.unq.po2.tp.Final.Usuario.Desafio;
+import ar.edu.unq.po2.tp.Final.Usuario.DesafioDeUsuario;
 import ar.edu.unq.po2.tp.Final.Usuario.Usuario;
 
 public class Favoritos extends EstrategiaDeSeleccion {
@@ -16,8 +17,8 @@ public class Favoritos extends EstrategiaDeSeleccion {
 	}
 
 	public Integer coincidenciaDeDesafioYUsuario(Desafio desafio, Usuario usuario) {
-		Desafio desafioConMayorPuntaje = usuario.desafioDeUsuarioConMayorPuntaje();
-		Integer similitud = desafio.coincidenciaPorFav(desafioConMayorPuntaje);
+		DesafioDeUsuario desafioConMayorPuntaje = usuario.desafioDeUsuarioConMayorPuntaje();
+		Integer similitud = desafio.coincidenciaPorFav(desafioConMayorPuntaje.getDesafio());
 		return similitud / 3;
 	}
 
