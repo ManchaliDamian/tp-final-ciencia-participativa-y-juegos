@@ -1,4 +1,6 @@
-package ar.edu.unq.po2.tp.Final.Muestra;
+
+
+import ar.edu.unq.po2.tp.Final.Muestra.CoordenadaGeografica;
 
 public class Area {
 	private CoordenadaGeografica coordenada;
@@ -34,7 +36,8 @@ public class Area {
 	}
 
 	public boolean esCoordenadaGeograficaValida(CoordenadaGeografica cordGeografica) {
-		return cordGeografica.seEncuentraDentroDelRadio(this);
+		//return calculoPitagoras(cordGeografica) <= radio;
+		return cordGeografica.seEncuentraDentroDelRario(this);
 	}
 
 	

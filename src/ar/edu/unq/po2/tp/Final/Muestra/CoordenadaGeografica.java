@@ -26,7 +26,7 @@ public class CoordenadaGeografica {
 		this.longitud = longitud;
 	}
 
-	public boolean seEncuentraDentroDelRario(Area area) {
+	public boolean seEncuentraDentroDelRadio(Area area) {
 		return distanciaSobreElArea(area) <= area.getRadio();
 	}
 	

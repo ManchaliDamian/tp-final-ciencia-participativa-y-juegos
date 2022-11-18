@@ -86,7 +86,7 @@ public class Desafio {
 	}
 
 	public boolean cumpleConRestriccion(Muestra muestra) {
-		return getRestriccionesTemp().isMuestraValida(muestra);
+		return restriccionesTemp.isMuestraValida(muestra);
 	}
 
 	public DesafioDeUsuario nuevoDesafioDeUsuario() {

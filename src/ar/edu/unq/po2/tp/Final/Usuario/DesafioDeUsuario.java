@@ -57,11 +57,11 @@ public class DesafioDeUsuario {
 	}
  
 	public int cantidadDeMuestrasRecolectadas() {
-		return getMuestrasObtenidas().size();
+		return  muestrasObtenidas.size();
 	}
 
 	public int cantMuestrasParaCumplirDesafio() {
-		return getDesafio().getCantMuestras();
+		return desafio.getCantMuestras();
 	}
 
 	public void agregarMuestra(Muestra muestra) { 
@@ -98,6 +98,10 @@ public class DesafioDeUsuario {
 
 	public boolean esDesafioCompleto() {
 		return estado.estaCompleto();
+	}
+	
+	public boolean esDesafioPendiente() {
+		return estado.esEstadoPendiente();
 	}
 	
 }

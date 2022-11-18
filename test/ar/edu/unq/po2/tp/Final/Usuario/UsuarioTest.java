@@ -3,16 +3,12 @@ package ar.edu.unq.po2.tp.Final.Usuario;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import ar.edu.unq.po2.tp.Final.Proyecto;
-import ar.edu.unq.po2.tp.Final.Estados.Estado;
-import ar.edu.unq.po2.tp.Final.Estados.EstadoCompleto;
 import ar.edu.unq.po2.tp.Final.Muestra.Muestra;
 
 class UsuarioTest {
@@ -25,11 +21,7 @@ class UsuarioTest {
 	DesafioDeUsuario desafioDeUsuario2;
 	Desafio desafio1;
 	Desafio desafio2;
-	Desafio desafio3;
-	Desafio desafio4; 
-	Desafio desafio5;
-	Desafio desafio6; 
-
+	
 	@BeforeEach
 	public void setUp() throws Exception {
 		preferencia = mock(Preferencia.class);
@@ -39,13 +31,9 @@ class UsuarioTest {
 		proyecto2 = mock(Proyecto.class);
 		desafioDeUsuario1 = mock(DesafioDeUsuario.class);
 		desafioDeUsuario2 = mock(DesafioDeUsuario.class);
-		
+
 		desafio1 = mock(Desafio.class);
 		desafio2 = mock(Desafio.class);
-		desafio3 = mock(Desafio.class);
-		desafio4 = mock(Desafio.class);
-		desafio5 = mock(Desafio.class);
-		desafio6 = mock(Desafio.class);
 
 		usuario.agregarDesafio(desafioDeUsuario1);
 		usuario.agregarDesafio(desafioDeUsuario2);
@@ -104,7 +92,7 @@ class UsuarioTest {
 
 		assertEquals(4, dif);
 	}
-	
+
 	@Test
 	void testUnUsuarioTieneUnaRecompensaPreferida() {
 		when(preferencia.getRecompensa()).thenReturn(10);
@@ -113,16 +101,37 @@ class UsuarioTest {
 
 		assertEquals(10, recom);
 	}
-	
+
 	@Test
 	void testUnUsuarioAgregaDesafioDeInteres() {
 		usuario.getDesafiosInteres().add(desafio1);
-		
+
 		usuario.agregarDesafiosDeIntereses();
-		
+
 		verify(desafio1, times(1)).nuevoDesafioDeUsuario();
 
+	}
+
+	@Test
+	void testUnUsuarioConoceSusDesafiosPendientes() {
+		when(desafioDeUsuario1.esDesafioPendiente()).thenReturn(true);
+		when(desafioDeUsuario2.esDesafioPendiente()).thenReturn(false);
 		
+		List<DesafioDeUsuario> desafios = usuario.desafiosPendientes();
+		
+		assertTrue(desafios.contains(desafioDeUsuario1));
+		assertFalse(desafios.contains(desafioDeUsuario2));
+	}
+	
+	@Test
+	void testUnUsuarioConoceSusDesafiosCompletos() {
+		when(desafioDeUsuario1.esDesafioCompleto()).thenReturn(true);
+		when(desafioDeUsuario2.esDesafioCompleto()).thenReturn(false);
+		
+		List<DesafioDeUsuario> desafios = usuario.desafiosCompletos();
+		
+		assertTrue(desafios.contains(desafioDeUsuario1));
+		assertFalse(desafios.contains(desafioDeUsuario2));
 	}
 
 }
