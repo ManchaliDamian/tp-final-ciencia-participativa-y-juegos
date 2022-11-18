@@ -1,19 +1,19 @@
 package ar.edu.unq.po2.tp.Final.Usuario;
 
-import ar.edu.unq.po2.tp.Final.Muestra.Area;
+import ar.edu.unq.po2.tp.Final.Muestra.AreaGeografica;
 import ar.edu.unq.po2.tp.Final.Muestra.Muestra;
 import ar.edu.unq.po2.tp.Final.Restricciones.RestriccionArea;
 import ar.edu.unq.po2.tp.Final.Restricciones.Restricciones;
 
 public class Desafio {
-	private Area area;
+	private AreaGeografica area;
 	private String nombre;
 	private Restricciones restriccionesTemp;
 	private int cantMuestras;
 	private int dificultad;
 	private int recompensa;
 
-	public Desafio(Area area, int cantMuestras, int dificultad, int recompesas, String nombre) {
+	public Desafio(AreaGeografica area, int cantMuestras, int dificultad, int recompesas, String nombre) {
 		setArea(area);
 		setNombre(nombre);
 		setCantMuestras(cantMuestras);
@@ -22,11 +22,11 @@ public class Desafio {
 		restriccionesTemp = new RestriccionArea(area);
 	}
 
-	public Area getArea() {
+	public AreaGeografica getArea() {
 		return area;
 	}
 
-	public void setArea(Area area) {
+	public void setArea(AreaGeografica area) {
 		this.area = area;
 	}
 

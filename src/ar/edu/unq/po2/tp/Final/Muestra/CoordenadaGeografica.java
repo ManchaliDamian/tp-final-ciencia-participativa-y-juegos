@@ -26,11 +26,12 @@ public class CoordenadaGeografica {
 		this.longitud = longitud;
 	}
 
-	public boolean seEncuentraDentroDelRadio(Area area) {
-		return distanciaSobreElArea(area) <= area.getRadio();
+	public boolean seEncuentraDentroDelRadio(AreaGeografica areaGeografica) {
+		// TODO Auto-generated method stub
+		return distanciaSobreElArea(areaGeografica) <= areaGeografica.getRadio();
 	}
 	
-	public double distanciaSobreElArea(Area area) {
+	public double distanciaSobreElArea(AreaGeografica area) {
 		int resultado = diferenciaYMultEntre(area.longitudDeCoordenada(), longitud)
 				+ diferenciaYMultEntre(area.latitudDeCoordenada(), latitud);
 
@@ -42,6 +43,7 @@ public class CoordenadaGeografica {
 		int mult = dif * dif; 
 		return mult;
 	}
+
 	
 	
 }

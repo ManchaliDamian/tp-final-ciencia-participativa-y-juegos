@@ -8,13 +8,15 @@ import java.awt.geom.Area;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import ar.edu.unq.po2.tp.Final.Muestra.AreaGeografica;
+
 class RestriccionAreaTest {
-	Area area; 
+	AreaGeografica area; 
 	Restricciones restriccionArea;
 
 	@BeforeEach
 	public void setUp() throws Exception {
-		area = mock(Area.class); 
+		area = mock(AreaGeografica.class); 
 		restriccionArea = new RestriccionArea(area);
 	}
 

@@ -6,19 +6,19 @@ import static org.mockito.Mockito.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import ar.edu.unq.po2.tp.Final.Muestra.Area;
+import ar.edu.unq.po2.tp.Final.Muestra.AreaGeografica;
 import ar.edu.unq.po2.tp.Final.Muestra.Muestra;
 
 class DesafioTest {
 	Desafio desafio; 
 	Desafio desafio2; 
 	Usuario usuario;
-	Area area;
+	AreaGeografica area;
 	Muestra muestra; 
 	
 	@BeforeEach
 	public void setUp() throws Exception{
-		area = mock(Area.class);
+		area = mock(AreaGeografica.class);
 		usuario = mock(Usuario.class);
 		muestra = mock(Muestra.class);
 		desafio =  new Desafio(area, 10,4, 10, "Desafio matematico");

@@ -1,21 +1,20 @@
 package ar.edu.unq.po2.tp.Final.Restricciones;
-
-import ar.edu.unq.po2.tp.Final.Muestra.Area;
+import ar.edu.unq.po2.tp.Final.Muestra.AreaGeografica;
 import ar.edu.unq.po2.tp.Final.Muestra.Muestra;
 
 public class RestriccionArea extends Restricciones {
 	
-	private Area area; 
+	private AreaGeografica area; 
 	
-	public RestriccionArea(Area unArea) {
+	public RestriccionArea(AreaGeografica unArea) {
 		this.area = unArea;
 	}
 
-	public Area getArea() {
+	public AreaGeografica getAreaGeografica() {
 		return area;
 	}
 
-	public void setArea(Area area) {
+	public void setAreaGeografica(AreaGeografica area) {
 		this.area = area;
 	}
 
