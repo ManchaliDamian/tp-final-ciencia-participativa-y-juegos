@@ -78,27 +78,16 @@ public class Usuario {
 	}
 
 	public List<DesafioDeUsuario> desafiosPendientes() {
-<<<<<<< HEAD
-		List<DesafioDeUsuario> desafiosPendientes = new ArrayList<DesafioDeUsuario>();
-		for (DesafioDeUsuario d : desafios) {
-			if (d.esDesafioAceptado()) {
-				desafiosPendientes.add(d);
-			}
-
-		}
-		return desafiosPendientes;
-	}
-=======
 		List<DesafioDeUsuario> desafiosPendientes = desafios.stream().filter(d -> d.esDesafioPendiente()).toList();
 		return desafiosPendientes;
 	}
 	
->>>>>>> b0c95c7ddf4b5dd5dc46cebff67cc9fdcb0e4932
 	public List<DesafioDeUsuario> desafiosCompletos() {
 		List<DesafioDeUsuario> desafiosCompletos = desafios.stream().filter(d -> d.esDesafioCompleto()).toList();
 		return desafiosCompletos;
 	}
-
+	
+	
 	public double getPorcentajeDeCompletitud(DesafioDeUsuario desafioDeUsuario1) {
 		return desafioDeUsuario1.getPorcentajeDeCompletitud();
 

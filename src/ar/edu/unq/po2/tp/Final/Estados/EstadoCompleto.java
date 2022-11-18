@@ -13,7 +13,7 @@ public class EstadoCompleto extends Estado {
 	@Override
 	public void actualizarEstado(DesafioDeUsuario desafioDeUsuario) {
 		
-	}
+	} 
 
 	public boolean estaCompleto() {
 		return true; 
@@ -33,7 +33,7 @@ public class EstadoCompleto extends Estado {
 	}
 
 	public void puntuarDesafio(int puntuacion, DesafioDeUsuario desafioDeUsuario) {
-		
+		desafioDeUsuario.setPuntuacion(puntuacion);
 	}
 
 }
