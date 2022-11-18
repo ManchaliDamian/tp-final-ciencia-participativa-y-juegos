@@ -7,7 +7,7 @@ public class RestriccionDiaHabiles extends Restricciones {
 
 	@Override
 	public boolean isMuestraValida(Muestra muestra) {
-		return muestra.valorDeDiaDeSemana() < 6; 
+		return muestra.valorDeDiaDeSemana() > 6; 
 	}
 
 }

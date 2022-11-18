@@ -20,7 +20,6 @@ class RestriccionAreaTest {
 		muestra = mock(Muestra.class);
 		restriccionArea = new RestriccionArea(area);
 		
-		//when(area.esCoordenadaGeograficaValida(muestra.getCordGeografica())).thenReturn(true);
 	}
 	
 	@Test

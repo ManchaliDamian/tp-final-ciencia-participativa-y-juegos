@@ -20,7 +20,7 @@ public class RestriccionCompuesta extends Restricciones {
 
 	@Override
 	public boolean isMuestraValida(Muestra muestra) {
-		return restricciones.stream().anyMatch(r -> r.isMuestraValida(muestra));
+		return restricciones.stream().allMatch(r -> r.isMuestraValida(muestra));
 		
 	}
 
