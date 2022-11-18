@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Optional;
 
 import ar.edu.unq.po2.tp.Final.Proyecto;
-import ar.edu.unq.po2.tp.Final.Estados.Estado;
 import ar.edu.unq.po2.tp.Final.EstrategiaSeleccion.EstrategiaDeSeleccion;
 import ar.edu.unq.po2.tp.Final.EstrategiaSeleccion.PreferenciasDeJuego;
 import ar.edu.unq.po2.tp.Final.Muestra.Muestra;
@@ -87,16 +86,12 @@ public class Usuario {
 		List<DesafioDeUsuario> desafiosPendientes = new ArrayList<DesafioDeUsuario>();
 		for (DesafioDeUsuario d : desafios) {
 			if (d.esDesafioAceptado()) {
-//<<Correcion>> Rompen encapsulamiento del desafio obteniendo su Estado. No delegan en la clase desafioDelUsuario.
 				desafiosPendientes.add(d);
 			}
 
 		}
 		return desafiosPendientes;
 	}
-	// <<Correcion>> Codigo repetido para el filtrado de de desafios pendientes y
-	// compeltos.
-
 	public List<DesafioDeUsuario> desafiosCompletos() {
 		List<DesafioDeUsuario> desafiosCompletos = new ArrayList<DesafioDeUsuario>();
 		for (DesafioDeUsuario d : desafios) {
@@ -150,17 +145,14 @@ public class Usuario {
 	}
 
 	public int cantMuestrasPref() {
-		// TODO Auto-generated method stub
 		return preferencia.getCantidadDeMuestras();
 	}
 
 	public int dificultadPref() {
-		// TODO Auto-generated method stub
 		return preferencia.getDificultad();
 	}
 
 	public int recompensaPref() {
-		// TODO Auto-generated method stub
 		return preferencia.getRecompensa();
 	}
 }
