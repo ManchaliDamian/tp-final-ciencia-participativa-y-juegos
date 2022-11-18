@@ -23,8 +23,6 @@ class FiltroNegacionTest {
 	Proyecto proyecto4;
 	Categoria categoria1;
 	Categoria categoria2;
-	List<Proyecto> proyectos; 
-	
 
 	@BeforeEach
 	public void setUp() throws Exception{
@@ -44,10 +42,9 @@ class FiltroNegacionTest {
 		
 	}
 
-	/*@Test
+	@Test
 	void testUnFiltroNegacionFiltraPorOperadorLogicoNegacion() {
 		List<Proyecto> proyectos = Arrays.asList(proyecto1, proyecto2, proyecto3, proyecto4);
-		
 		when(proyecto1.isPerteneceA(proyectos)).thenReturn(true);
 		when(proyecto2.isPerteneceA(proyectos)).thenReturn(false);
 		when(proyecto3.isPerteneceA(proyectos)).thenReturn(true);
@@ -57,6 +54,6 @@ class FiltroNegacionTest {
 		
 		assertTrue(proys.contains(proyecto4));
 		assertEquals(2, proys.size());
-	}*/
+	}
 
 }
