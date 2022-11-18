@@ -38,8 +38,8 @@ public class CoordenadaGeografica {
 		return Math.sqrt(resultado); //Raíz cuadrada
 	}
 
-	public int diferenciaYMultEntre(int longitud, int longitud2) {
-		int dif = longitud2 - longitud;
+	public int diferenciaYMultEntre(int unNumero, int otroNumero) {
+		int dif = unNumero - otroNumero;
 		int mult = dif * dif; 
 		return mult;
 	}

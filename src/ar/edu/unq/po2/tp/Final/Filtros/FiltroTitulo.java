@@ -21,7 +21,7 @@ public class FiltroTitulo extends Filtro {
 	}
 
 	public boolean esTituloDeseado(Proyecto p) {
-		return p.getNombre() == this.tituloDeseado;
+		return p.isTituloDeseado(tituloDeseado);
 	}
 
 }
