@@ -9,7 +9,7 @@ import ar.edu.unq.po2.tp.Final.Usuario.Usuario;
 
 public class Sistema {
 	private List<Proyecto> proyectos = new ArrayList<Proyecto>();
-	private List<Usuario> usuariosEnSistema = new ArrayList<Usuario>();
+	private List<Usuario> usuarios = new ArrayList<Usuario>();
 	private List<Desafio> desafios = new ArrayList<Desafio>(); 
 	private Filtro filtro;
 
@@ -25,8 +25,12 @@ public class Sistema {
 	public List<Desafio> getDesafios(){
 		return desafios;
 	}
+	
+	public List<Usuario> getUsuarios(){
+		return usuarios; 
+	}
 
-	public List<Proyecto> proyectosDePreferencia() {
+	public List<Proyecto> busquedaDeProyectos() {
 		List<Proyecto> proys = new ArrayList<Proyecto>();
 		proys.addAll(filtro.filtrar(proyectos));
 		
@@ -35,14 +39,14 @@ public class Sistema {
 	}
 
 	public void recomendarDesafios(List<Desafio> desafios) {
-		for (Usuario u : usuariosEnSistema) {
+		for (Usuario u : usuarios) {
 			u.buscarMathConDesafios(desafios);;
 		}
 	}
 	
 	public void asignarProyectos() {
-		for (Usuario u : usuariosEnSistema) {
-		     u.agregarProyectos(proyectosDePreferencia());
+		for (Usuario u : usuarios) {
+		     u.agregarProyectos(busquedaDeProyectos());
 		}
 	}
 

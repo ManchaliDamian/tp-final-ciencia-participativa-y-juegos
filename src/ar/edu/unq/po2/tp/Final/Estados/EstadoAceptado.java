@@ -29,17 +29,7 @@ public class EstadoAceptado extends Estado {
 	public void agregarSiCumpleRestriccion(Muestra muestra, DesafioDeUsuario desafioDeUsuario) {
 		desafioDeUsuario.agregarMuestra(muestra);
 	}
-
-	@Override
-	public boolean esEstadoPendiente() {
-		return false;
-	}
-
-	@Override
-	public boolean estaCompleto() {
-		return false;
-	}
-
+	
 	@Override
 	public void puntuarDesafio(int puntuacion, DesafioDeUsuario desafioDeUsuario) {
 		

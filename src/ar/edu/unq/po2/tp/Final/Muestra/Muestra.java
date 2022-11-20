@@ -10,36 +10,43 @@ public class Muestra {
 	private CoordenadaGeografica cordGeografica;
 	private Usuario usuario;
 	private LocalDate fecha;
-	private LocalTime hora; 
-	 
+	private LocalTime hora;
+
 	public Muestra(CoordenadaGeografica cord, Usuario unUsuario, LocalDate fecha, LocalTime hora) {
 		this.cordGeografica = cord;
 		this.usuario = unUsuario;
 		this.fecha = fecha;
-		this.hora = hora; 
+		this.hora = hora;
 	}
-	
+
 	public CoordenadaGeografica getCordGeografica() {
 		return cordGeografica;
 	}
+
 	public void setCordGeografica(CoordenadaGeografica cordGeografica) {
 		this.cordGeografica = cordGeografica;
 	}
+
 	public Usuario getUsuario() {
 		return usuario;
 	}
+
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
+
 	public LocalDate getFecha() {
 		return fecha;
 	}
+
 	public void setFecha(LocalDate fecha) {
 		this.fecha = fecha;
 	}
+
 	public LocalTime getHora() {
 		return hora;
 	}
+
 	public void setHora(LocalTime hora) {
 		this.hora = hora;
 	}
@@ -47,9 +54,9 @@ public class Muestra {
 	public boolean seEncuentraDentroDeLasFechasDeDesafio(LocalDate fechaInicio, LocalDate fechaFin) {
 		return fecha.isAfter(fechaInicio) && fecha.isBefore(fechaFin);
 	}
-	
+
 	public DayOfWeek diaDeLaSemana() {
-		return fecha.getDayOfWeek(); 
+		return fecha.getDayOfWeek();
 	}
 
 	public int valorDeDiaDeSemana() {

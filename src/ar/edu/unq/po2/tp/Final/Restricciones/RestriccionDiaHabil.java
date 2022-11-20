@@ -2,7 +2,7 @@ package ar.edu.unq.po2.tp.Final.Restricciones;
 
 import ar.edu.unq.po2.tp.Final.Muestra.Muestra;
 
-public class RestriccionDiaHabiles extends Restricciones {
+public class RestriccionDiaHabil extends Restricciones {
 
 
 	@Override

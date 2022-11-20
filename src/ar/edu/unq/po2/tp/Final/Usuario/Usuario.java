@@ -15,8 +15,6 @@ public class Usuario {
 
 	private Preferencia preferencia;
 	private EstrategiaDeSeleccion estrategia;
-	private List<Desafio> desafiosInteres = new ArrayList<Desafio>();
-
 	private List<DesafioDeUsuario> desafios = new ArrayList<DesafioDeUsuario>();
 	private List<Proyecto> proyectos = new ArrayList<Proyecto>();
 
@@ -58,11 +56,6 @@ public class Usuario {
 		this.proyectos.add(p);
 	}
 
-	public void eliminarProyecto(Proyecto proyecto) {
-		proyectos.remove(proyecto);
-
-	}
-
 	public void agregarMuestra(Muestra muestra, Proyecto proyecto) {
 		proyecto.agregarMuestra(muestra);
 		for (DesafioDeUsuario d : desafios) {
@@ -94,21 +87,12 @@ public class Usuario {
 	}
 
 	public void puntuarDesafio(DesafioDeUsuario desafio, int puntuacion) {
-		desafio.puntarSiEsDesafioAceptado(puntuacion);
+		desafio.puntuarDesafio(puntuacion);
 	}
 
 	public void buscarMathConDesafios(List<Desafio> desafios) {
-		this.desafiosInteres.addAll(estrategia.desafiosParaElUsuario(this, desafios));
-	}
-
-	public void agregarDesafiosDeIntereses() {
-		for (Desafio d : desafiosInteres) {
-			desafios.add(d.nuevoDesafioDeUsuario());
-		}
-	}
-
-	public List<Desafio> getDesafiosInteres() {
-		return desafiosInteres;
+		List<Desafio> desafiosDeInteres = estrategia.desafiosParaElUsuario(this, desafios);
+		desafiosDeInteres.stream().forEach(d -> desafios.add(d));
 	}
 
 	public int porcentajeDeCompletitudGral() {

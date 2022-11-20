@@ -12,11 +12,17 @@ public abstract class Estado {
 
 	public abstract void actualizarEstado(DesafioDeUsuario desafioDeUsuario);
 
-	public abstract boolean esEstadoPendiente();
+	public boolean esEstadoPendiente() {
+		return false;
+	}
 
-	public abstract boolean estaAceptado();
+	public boolean estaAceptado() {
+		return false; 
+	}
 
-	public abstract boolean estaCompleto();
+	public boolean estaCompleto() {
+		return false;
+	}
 
 	public void agregarSiCumpleRestriccion(Muestra muestra, DesafioDeUsuario desafioDeUsuario) {
 	}

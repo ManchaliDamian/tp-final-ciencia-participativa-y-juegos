@@ -15,7 +15,7 @@ class RestriccionDiaHabilTest {
 	
 	@BeforeEach
 	public void setUp() throws Exception{
-		restriccionDiaHabil = new RestriccionDiaHabiles();
+		restriccionDiaHabil = new RestriccionDiaHabil();
 		muestra = mock(Muestra.class);
 		
 	}

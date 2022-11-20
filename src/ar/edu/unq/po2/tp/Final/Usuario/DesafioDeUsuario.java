@@ -46,6 +46,14 @@ public class DesafioDeUsuario {
 	public void setEstado(Estado estado) {
 		this.estado = estado;
 	}
+	
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
 
 	public List<Muestra> getMuestrasObtenidas() {
 		return muestrasObtenidas;
@@ -80,15 +88,7 @@ public class DesafioDeUsuario {
 		return estado.porcentajeDeCompletitud(this);
 	}
 
-	public String getNombre() {
-		return nombre;
-	}
-
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-
-	public void puntarSiEsDesafioAceptado(int puntuacion) {
+	public void puntuarDesafio(int puntuacion) {
 		estado.puntuarDesafio(puntuacion, this); 
 	}
 

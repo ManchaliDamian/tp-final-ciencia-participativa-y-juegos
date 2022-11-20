@@ -3,6 +3,7 @@ package ar.edu.unq.po2.tp.Final.Usuario;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -21,6 +22,8 @@ class UsuarioTest {
 	DesafioDeUsuario desafioDeUsuario2;
 	Desafio desafio1;
 	Desafio desafio2;
+	Desafio desafio3;
+	Desafio desafio4;
 	
 	@BeforeEach
 	public void setUp() throws Exception {
@@ -34,6 +37,8 @@ class UsuarioTest {
 
 		desafio1 = mock(Desafio.class);
 		desafio2 = mock(Desafio.class);
+		desafio3 = mock(Desafio.class);
+		desafio4 = mock(Desafio.class);
 
 		usuario.agregarDesafio(desafioDeUsuario1);
 		usuario.agregarDesafio(desafioDeUsuario2);
@@ -102,15 +107,15 @@ class UsuarioTest {
 		assertEquals(10, recom);
 	}
 
-	@Test
-	void testUnUsuarioAgregaDesafioDeInteres() {
-		usuario.getDesafiosInteres().add(desafio1);
+	/*@Test
+	void testUnUsuarioBuscaMathConDesafios() {
+		List<Desafio> desafios = Arrays.asList(desafio3, desafio4);
 
-		usuario.agregarDesafiosDeIntereses();
+		usuario.buscarMathConDesafios(desafios);
 
 		verify(desafio1, times(1)).nuevoDesafioDeUsuario();
 
-	}
+	}*/
 
 	@Test
 	void testUnUsuarioConoceSusDesafiosPendientes() {

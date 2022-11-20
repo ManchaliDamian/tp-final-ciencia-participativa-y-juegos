@@ -8,7 +8,7 @@ import ar.edu.unq.po2.tp.Final.Restricciones.Restricciones;
 public class Desafio {
 	private AreaGeografica area;
 	private String nombre;
-	private Restricciones restriccionesTemp;
+	private Restricciones restriccionTemp;
 	private int cantMuestras;
 	private int dificultad;
 	private int recompensa;
@@ -19,7 +19,7 @@ public class Desafio {
 		setCantMuestras(cantMuestras);
 		setDificultad(dificultad);
 		setRecompensa(recompesas);
-		restriccionesTemp = new RestriccionArea(area);
+		restriccionTemp = new RestriccionArea(area);
 	}
 
 	public AreaGeografica getArea() {
@@ -29,9 +29,17 @@ public class Desafio {
 	public void setArea(AreaGeografica area) {
 		this.area = area;
 	}
+	
+	public String getNombre() {
+		return nombre;
+	}
 
-	public Restricciones getRestriccionesTemp() {
-		return restriccionesTemp;
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public Restricciones getRestriccionTemp() {
+		return restriccionTemp;
 	}
 
 	public int getCantMuestras() {
@@ -58,14 +66,6 @@ public class Desafio {
 		this.recompensa = recompensa;
 	}
 
-	public String getNombre() {
-		return nombre;
-	}
-
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-
 	public Integer coincidenciaPorPref(Usuario usuario) {
 		int coin = this.diferenciaEntre(cantMuestras, usuario.cantMuestrasPref())
 				+ diferenciaEntre(dificultad, usuario.dificultadPref())
@@ -86,7 +86,7 @@ public class Desafio {
 	}
 
 	public boolean cumpleConRestriccion(Muestra muestra) {
-		return restriccionesTemp.isMuestraValida(muestra);
+		return restriccionTemp.isMuestraValida(muestra);
 	}
 
 	public DesafioDeUsuario nuevoDesafioDeUsuario() {
