@@ -10,14 +10,14 @@ public abstract class EstrategiaDeSeleccion {
 	
 	public List<Desafio> filtrarDesafiosYaRecomendados(Usuario usuario, List<Desafio> desafios){
 		List<Desafio> desafiosFiltrados = desafios.stream().filter(d -> desafiosYaRecomendados(usuario).contains(d)).toList();
-		return desafiosFiltrados;
+		return desafiosFiltrados;  
 	}
 	
 	
 	public List<Desafio> desafiosYaRecomendados(Usuario usuario){
 		List<Desafio> desafiosYaRecomendados = new ArrayList<Desafio>();
 		desafiosYaRecomendados = usuario.getDesafios().stream().map(d -> d.getDesafio()).toList();
-		return desafiosYaRecomendados; 
+		return desafiosYaRecomendados;   
 	}
 
 	public List<Desafio> desafiosParaElUsuario(Usuario usuario, List<Desafio> desafios) {

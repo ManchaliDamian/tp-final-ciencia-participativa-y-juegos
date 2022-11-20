@@ -12,14 +12,14 @@ public class Favoritos extends EstrategiaDeSeleccion {
 		List<Desafio> desafiosPorCoincidencia = desafios.stream()
 				.sorted((desafio1, desafio2) -> coincidenciaDeDesafioYUsuario(desafio1, usuario)
 						.compareTo(coincidenciaDeDesafioYUsuario(desafio2, usuario)))
-				.limit(20).toList();
+				.limit(20).toList(); 
 		return desafiosPorCoincidencia;
 	}
 
 	public Integer coincidenciaDeDesafioYUsuario(Desafio desafio, Usuario usuario) {
 		DesafioDeUsuario desafioConMayorPuntaje = usuario.desafioDeUsuarioConMayorPuntaje();
 		Integer similitud = desafio.coincidenciaPorFav(desafioConMayorPuntaje.getDesafio());
-		return similitud / 3;
+		return similitud / 3; 
 	}
 
 }

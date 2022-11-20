@@ -115,7 +115,7 @@ class UsuarioTest {
 
 		verify(desafio1, times(1)).nuevoDesafioDeUsuario();
 
-	}*/
+	} */ 
 
 	@Test
 	void testUnUsuarioConoceSusDesafiosPendientes() {
@@ -127,7 +127,7 @@ class UsuarioTest {
 		assertTrue(desafios.contains(desafioDeUsuario1));
 		assertFalse(desafios.contains(desafioDeUsuario2));
 	}
-	
+	 
 	@Test
 	void testUnUsuarioConoceSusDesafiosCompletos() {
 		when(desafioDeUsuario1.esDesafioCompleto()).thenReturn(true);

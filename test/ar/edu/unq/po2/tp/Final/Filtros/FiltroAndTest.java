@@ -47,7 +47,7 @@ class FiltroAndTest {
 		when(proyecto1.isTituloDeseado("Java")).thenReturn(true);
 		when(proyecto2.isTituloDeseado("Java")).thenReturn(false);
 		when(proyecto3.isTituloDeseado("Java")).thenReturn(false);
-		when(proyecto4.isTituloDeseado("Java")).thenReturn(true);
+		when(proyecto4.isTituloDeseado("Java")).thenReturn(true); 
 	}
 
 	@Test

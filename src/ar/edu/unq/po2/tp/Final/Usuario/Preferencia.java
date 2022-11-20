@@ -10,7 +10,7 @@ public class Preferencia {
     	setDificultad(unaDificultad);
     	setRecompensa(unaRecompensa);
     }
-    
+     
 	public Integer getDificultad() {
 		return dificultad;
 	}

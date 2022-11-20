@@ -92,7 +92,7 @@ public class Usuario {
 
 	public void buscarMathConDesafios(List<Desafio> desafios) {
 		List<Desafio> desafiosDeInteres = estrategia.desafiosParaElUsuario(this, desafios);
-		desafiosDeInteres.stream().forEach(d -> desafios.add(d));
+		desafiosDeInteres.stream().forEach(d -> desafios.add(d)); 
 	}
 
 	public int porcentajeDeCompletitudGral() {

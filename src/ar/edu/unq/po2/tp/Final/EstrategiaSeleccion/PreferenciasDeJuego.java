@@ -11,7 +11,7 @@ public class PreferenciasDeJuego extends EstrategiaDeSeleccion {
 		List<Desafio> desafiosPorCoincidencia = desafios.stream().sorted(
 				(desafio1, desafio2) -> desafio1.coincidenciaPorPref(usuario).compareTo(desafio2.coincidenciaPorPref(usuario)))
 				.limit(5).toList();
-		return desafiosPorCoincidencia;
+		return desafiosPorCoincidencia;  
 	}
 
 }
