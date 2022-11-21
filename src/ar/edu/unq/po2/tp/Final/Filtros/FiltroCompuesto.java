@@ -12,7 +12,7 @@ public abstract class FiltroCompuesto extends Filtro {
 	}
 	
 	public List<Filtro> getFiltros() {
-		return filtros;
+		return filtros; 
 	}
 	
 	

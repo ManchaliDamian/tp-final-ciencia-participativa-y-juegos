@@ -5,9 +5,6 @@ import ar.edu.unq.po2.tp.Final.Usuario.DesafioDeUsuario;
 
 public abstract class Estado {
 
-	// <<Correcion>> Por comentarios en otras clases. Los Estados casi no tiene
-	// comportamiento, porque no delegaron en los estados.
-
 	public abstract int porcentajeDeCompletitud(DesafioDeUsuario desafioDeUsuario);
 
 	public abstract void actualizarEstado(DesafioDeUsuario desafioDeUsuario);

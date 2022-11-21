@@ -14,10 +14,10 @@ public class EstadoAceptado extends Estado {
 
 	@Override
 	public void actualizarEstado(DesafioDeUsuario desafioDeUsuario) {
-		if (porcentajeDeCompletitud(desafioDeUsuario) == 100.0) {
+		if (porcentajeDeCompletitud(desafioDeUsuario) == 100) {
 			desafioDeUsuario.setEstado(new EstadoCompleto());
    
-		} 
+		}  
 
 	} 
 

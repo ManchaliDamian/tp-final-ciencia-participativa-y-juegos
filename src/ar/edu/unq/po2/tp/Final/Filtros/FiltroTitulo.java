@@ -3,7 +3,7 @@ package ar.edu.unq.po2.tp.Final.Filtros;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import ar.edu.unq.po2.tp.Final.Proyecto;
+import ar.edu.unq.po2.tp.Finall.Proyecto;
 
 public class FiltroTitulo extends Filtro {
 	private String tituloDeseado;

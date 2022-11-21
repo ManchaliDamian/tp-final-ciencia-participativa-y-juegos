@@ -13,7 +13,7 @@ class CoordenadaGeograficaTest {
 	@BeforeEach
 	public void setUp() throws Exception{
 		coordenada = new CoordenadaGeografica(10, 6);
-		area = mock(AreaGeografica.class);
+		area = mock(AreaGeografica.class); 
 	}
 	
 	@Test

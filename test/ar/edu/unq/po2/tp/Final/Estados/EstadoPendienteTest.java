@@ -51,5 +51,7 @@ class EstadoPendienteTest {
 		assertEquals(0 , estado.porcentajeDeCompletitud(desafio)); 
 	}
 	
+	
+	
 
 }

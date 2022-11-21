@@ -53,5 +53,20 @@ class EstadoAceptadoTest {
 
 		verify(desafio, times(0)).setPuntuacion(0);
 	}
- 
+	
+/*
+	@Test
+	void testElEstadoAceptadoCambiaSuEstadoCuandoTienePorcentaje100() {
+	
+		when(desafio.getEstado()).thenReturn(estado);
+		when(desafio.cantidadDeMuestrasRecolectadas()).thenReturn(5);
+		when(desafio.cantMuestrasParaCumplirDesafio()).thenReturn(5);
+		
+		estado.actualizarEstado(desafio);
+
+       assertTrue(desafio.getEstado().equals(new EstadoCompleto())); 
+	}
+
+*/ 
+
 }

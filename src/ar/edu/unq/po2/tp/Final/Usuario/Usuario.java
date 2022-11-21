@@ -5,10 +5,10 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
-import ar.edu.unq.po2.tp.Final.Proyecto;
 import ar.edu.unq.po2.tp.Final.EstrategiaSeleccion.EstrategiaDeSeleccion;
 import ar.edu.unq.po2.tp.Final.EstrategiaSeleccion.PreferenciasDeJuego;
 import ar.edu.unq.po2.tp.Final.Muestra.Muestra;
+import ar.edu.unq.po2.tp.Finall.Proyecto;
 
 
 public class Usuario {
@@ -87,7 +87,7 @@ public class Usuario {
 	}
 
 	public void puntuarDesafio(DesafioDeUsuario desafio, int puntuacion) {
-		desafio.puntuarDesafio(puntuacion);
+		desafio.puntuarDesafio(puntuacion); 
 	}
 
 	public void buscarMathConDesafios(List<Desafio> desafiosParaUsuario) {
@@ -108,7 +108,7 @@ public class Usuario {
 
 	public void agregarProyectos(List<Proyecto> proyectosDePreferencia) {
 		for (Proyecto p : proyectosDePreferencia) {
-			this.agregarProyecto(p);
+			this.agregarProyecto(p); 
 		}
 
 	}

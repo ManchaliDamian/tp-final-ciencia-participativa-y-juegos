@@ -33,6 +33,10 @@ public class Desafio {
 	public String getNombre() {
 		return nombre;
 	}
+	
+	public void setRestriccion(Restricciones r) {
+		this.restriccionTemp = r; 
+	}
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
@@ -86,7 +90,7 @@ public class Desafio {
 	}
 
 	public boolean cumpleConRestriccion(Muestra muestra) {
-		return restriccionTemp.isMuestraValida(muestra);
+		return restriccionTemp.isMuestraValida(muestra); 
 	}
 
 	public DesafioDeUsuario nuevoDesafioDeUsuario() {

@@ -51,5 +51,12 @@ class EstadoCompletoTest {
 		assertEquals(100 , estado.porcentajeDeCompletitud(desafio)); 
 	}
 	
+	@Test 
+	void testElEstadoCompletoNoSeActualiza() {
+		estado.actualizarEstado(desafio);
+		
+		verify(desafio, times(0)).setEstado(estado);
+	}
+	
 
 }

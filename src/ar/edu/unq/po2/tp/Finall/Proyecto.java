@@ -1,4 +1,4 @@
-package ar.edu.unq.po2.tp.Final;
+package ar.edu.unq.po2.tp.Finall;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -62,11 +62,11 @@ public class Proyecto {
 	}
 
 	public boolean isPerteneceA(List<Proyecto> proyectosFiltro) {
-		return proyectosFiltro.contains(this);
+		return proyectosFiltro.contains(this);  
 	}
 
 	public boolean isTituloDeseado(String tituloDeseado) {
-		return nombre == tituloDeseado;
+		return nombre == tituloDeseado;  
 	}
 
 	public boolean isCategoriasDeseadas(List<Categoria> categoriasDeseadas) {
