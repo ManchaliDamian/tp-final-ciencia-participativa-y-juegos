@@ -9,10 +9,10 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import ar.edu.unq.po2.tp.Final.Proyecto;
 import ar.edu.unq.po2.tp.Final.EstrategiaSeleccion.EstrategiaDeSeleccion;
 import ar.edu.unq.po2.tp.Final.EstrategiaSeleccion.Favoritos;
 import ar.edu.unq.po2.tp.Final.Muestra.Muestra;
-import ar.edu.unq.po2.tp.Finall.Proyecto;
 
 class UsuarioTest {
 	Usuario usuario;

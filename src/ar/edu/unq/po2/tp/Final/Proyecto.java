@@ -1,4 +1,4 @@
-package ar.edu.unq.po2.tp.Finall;
+package ar.edu.unq.po2.tp.Final;
 
 import java.util.ArrayList;
 import java.util.List;

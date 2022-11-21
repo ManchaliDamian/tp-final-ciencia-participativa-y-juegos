@@ -5,10 +5,10 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
+import ar.edu.unq.po2.tp.Final.Proyecto;
 import ar.edu.unq.po2.tp.Final.EstrategiaSeleccion.EstrategiaDeSeleccion;
 import ar.edu.unq.po2.tp.Final.EstrategiaSeleccion.PreferenciasDeJuego;
 import ar.edu.unq.po2.tp.Final.Muestra.Muestra;
-import ar.edu.unq.po2.tp.Finall.Proyecto;
 
 
 public class Usuario {

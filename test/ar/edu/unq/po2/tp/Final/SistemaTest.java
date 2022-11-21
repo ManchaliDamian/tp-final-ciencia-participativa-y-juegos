@@ -1,4 +1,4 @@
-package ar.edu.unq.po2.tp.Finall;
+package ar.edu.unq.po2.tp.Final;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
@@ -11,6 +11,8 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import ar.edu.unq.po2.tp.Final.Proyecto;
+import ar.edu.unq.po2.tp.Final.Sistema;
 import ar.edu.unq.po2.tp.Final.Filtros.FiltroAnd;
 import ar.edu.unq.po2.tp.Final.Filtros.FiltroCategoriaDeseada;
 import ar.edu.unq.po2.tp.Final.Filtros.FiltroCategoriasNoDeseadas;
