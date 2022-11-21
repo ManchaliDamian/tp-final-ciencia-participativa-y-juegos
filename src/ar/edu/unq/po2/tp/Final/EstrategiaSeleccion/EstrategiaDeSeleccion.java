@@ -9,7 +9,7 @@ import ar.edu.unq.po2.tp.Final.Usuario.Usuario;
 public abstract class EstrategiaDeSeleccion {
 	
 	public List<Desafio> filtrarDesafiosYaRecomendados(Usuario usuario, List<Desafio> desafios){
-		List<Desafio> desafiosFiltrados = desafios.stream().filter(d -> desafiosYaRecomendados(usuario).contains(d)).toList();
+		List<Desafio> desafiosFiltrados = desafios.stream().filter(d -> !desafiosYaRecomendados(usuario).contains(d)).toList();
 		return desafiosFiltrados;  
 	}
 	

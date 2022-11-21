@@ -85,11 +85,8 @@ class PreferenciaDeJuegoTest {
 		
 		List<Desafio> desafiosParaElUsuario = preferencia.desafiosParaElUsuario(usuario, desafios);
 		
-		assertFalse(desafiosParaElUsuario.containsAll(desafios));
-		assertFalse(desafiosParaElUsuario.contains(desafio4)); 
-		
-		// REVISAR, en ves de sacar los repetidos, saca los que no estan en usuario, osea hace al reves el filtro 
-		// desafiosParaElUsuario devuelve desafio1, y 2, deberia devoler desafio3, y 4
+		assertTrue(desafiosParaElUsuario.contains(desafio4));
+		assertEquals(2, desafiosParaElUsuario.size());
 		
 	}
 	
