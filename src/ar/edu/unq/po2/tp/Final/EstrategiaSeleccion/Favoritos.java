@@ -12,7 +12,7 @@ public class Favoritos extends EstrategiaDeSeleccion {
 		List<Desafio> desafiosPorCoincidencia = desafios.stream()
 				.sorted((desafio1, desafio2) -> coincidenciaDeDesafioYUsuario(desafio1, usuario)
 						.compareTo(coincidenciaDeDesafioYUsuario(desafio2, usuario)))
-				.limit(20).toList(); 
+				.limit(5).toList(); 
 		return desafiosPorCoincidencia;
 	}
 
