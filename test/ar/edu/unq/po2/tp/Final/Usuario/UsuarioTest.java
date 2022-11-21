@@ -3,6 +3,7 @@ package ar.edu.unq.po2.tp.Final.Usuario;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -46,6 +47,10 @@ class UsuarioTest {
 		desafio6 = mock(Desafio.class);
 		desafio7 = mock(Desafio.class);
 		desafio8 = mock(Desafio.class);
+		
+		when(preferencia.getCantidadDeMuestras()).thenReturn(4);
+		when(preferencia.getDificultad()).thenReturn(2);
+		when(preferencia.getRecompensa()).thenReturn(10);
 
 		usuario.agregarDesafio(desafioDeUsuario1);
 		usuario.agregarDesafio(desafioDeUsuario2);
@@ -134,6 +139,40 @@ class UsuarioTest {
 		
 		assertTrue(desafios.contains(desafioDeUsuario1));
 		assertFalse(desafios.contains(desafioDeUsuario2));
+	}
+	
+	@Test
+	void testUnUsuarioHaceMathConDesafiosConEstrategiaDePreferenciaDeJuego() {
+		List<Desafio> desafios = Arrays.asList(desafio3, desafio4, desafio5, desafio6, desafio7, desafio8);
+		
+		when(desafio3.getCantMuestras()).thenReturn(12);
+		when(desafio3.getDificultad()).thenReturn(4);
+		when(desafio3.getRecompensa()).thenReturn(10);
+		
+		when(desafio4.getCantMuestras()).thenReturn(10);
+		when(desafio4.getDificultad()).thenReturn(2);
+		when(desafio4.getRecompensa()).thenReturn(10);
+		
+		when(desafio5.getCantMuestras()).thenReturn(12);
+		when(desafio5.getDificultad()).thenReturn(2);
+		when(desafio5.getRecompensa()).thenReturn(12);
+		
+		when(desafio6.getCantMuestras()).thenReturn(6);
+		when(desafio6.getDificultad()).thenReturn(4);
+		when(desafio6.getRecompensa()).thenReturn(10);
+		
+		when(desafio7.getCantMuestras()).thenReturn(12);
+		when(desafio7.getDificultad()).thenReturn(4);
+		when(desafio7.getRecompensa()).thenReturn(10);
+		
+		when(desafio8.getCantMuestras()).thenReturn(20);
+		when(desafio8.getDificultad()).thenReturn(5);
+		when(desafio8.getRecompensa()).thenReturn(20);
+		
+		usuario.buscarMathConDesafios(desafios);
+		
+		verify(desafio8, never()).nuevoDesafioDeUsuario();
+		verify(desafio4, times(1)).nuevoDesafioDeUsuario();
 	}
 
 }
