@@ -1,9 +1,6 @@
 package ar.edu.unq.po2.tp.Final;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.*;
 
 import java.util.Arrays;
 import java.util.List;
@@ -11,26 +8,15 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import ar.edu.unq.po2.tp.Final.Proyecto;
-import ar.edu.unq.po2.tp.Final.Sistema;
 import ar.edu.unq.po2.tp.Final.Filtros.FiltroAnd;
-import ar.edu.unq.po2.tp.Final.Filtros.FiltroCategoriaDeseada;
-import ar.edu.unq.po2.tp.Final.Filtros.FiltroCategoriasNoDeseadas;
-import ar.edu.unq.po2.tp.Final.Filtros.FiltroNegacion;
-import ar.edu.unq.po2.tp.Final.Filtros.FiltroOr;
-import ar.edu.unq.po2.tp.Final.Filtros.FiltroTitulo;
+import ar.edu.unq.po2.tp.Final.Filtros.FiltroCompuesto;
 import ar.edu.unq.po2.tp.Final.Usuario.Desafio;
 import ar.edu.unq.po2.tp.Final.Usuario.Usuario;
 
 class SistemaTest {
 	Sistema sistema;
-	FiltroAnd filtroAnd;
-	FiltroCategoriaDeseada filtroCategoria;
-	FiltroCategoriasNoDeseadas filtroCategoriaNoDeseada;
-	FiltroNegacion filtroNegacion;
-	FiltroTitulo filtroTitulo;
-	FiltroOr filtroOr;
-
+	FiltroCompuesto filtroAnd;
+	
 	Proyecto proyecto1;
 	Proyecto proyecto2;
 	Proyecto proyecto3;
@@ -55,8 +41,6 @@ class SistemaTest {
 		desafio4 = mock(Desafio.class);
 		
 		filtroAnd = mock(FiltroAnd.class);
-		filtroCategoria = mock(FiltroCategoriaDeseada.class);
-		filtroTitulo = mock(FiltroTitulo.class);
 		
 		usuario1 = mock(Usuario.class);
 		
