@@ -39,21 +39,12 @@ public class DesafioDeUsuario {
 		return desafio;
 	}
 
-	public Estado getEstado() {
-		return estado;
-	}
 
 	public void setEstado(Estado estado) {
 		this.estado = estado;
 	}
 	
-	public String getNombre() {
-		return nombre;
-	}
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
 
 	public List<Muestra> getMuestrasObtenidas() {
 		return muestrasObtenidas;

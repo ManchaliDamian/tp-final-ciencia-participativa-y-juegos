@@ -69,5 +69,13 @@ class DesafioDeUsuarioTest {
 		assertEquals(5, desafioDeUsuario.getPuntuacion());
 
 	}
+	
+	@Test
+	void testcantMuestrasParaCumplirDesafio() {
+		when(desafio.getCantMuestras()).thenReturn(5);
+		
+		assertEquals(desafioDeUsuario.cantMuestrasParaCumplirDesafio(), 5);
+	}
+	
 
 }

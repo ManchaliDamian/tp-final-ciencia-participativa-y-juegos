@@ -37,9 +37,6 @@ public class Proyecto {
 		return muestras;
 	}
 
-	public List<Categoria> getCategorias() {
-		return categorias;
-	}
 
 	public List<Usuario> getParticipantesActivos() {
 		return participantesActivos;
@@ -49,17 +46,6 @@ public class Proyecto {
 		return nombre;
 	}
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-
-	public String getDescripción() {
-		return descripción;
-	}
-
-	public void setDescripción(String descripción) {
-		this.descripción = descripción;
-	}
 
 	public boolean isPerteneceA(List<Proyecto> proyectosFiltro) {
 		return proyectosFiltro.contains(this);  

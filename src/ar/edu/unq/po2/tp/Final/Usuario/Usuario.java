@@ -24,21 +24,7 @@ public class Usuario {
 
 	}
 
-	public Preferencia getPreferencia() {
-		return preferencia;
-	}
-
-	public void setPreferencia(Preferencia preferencia) {
-		this.preferencia = preferencia;
-	}
-
-	public EstrategiaDeSeleccion getEstrategia() {
-		return estrategia;
-	}
-
-	public void setEstrategia(EstrategiaDeSeleccion estrategia) {
-		this.estrategia = estrategia;
-	}
+	
 
 	public void agregarDesafio(DesafioDeUsuario desafio) {
 		this.desafios.add(desafio);

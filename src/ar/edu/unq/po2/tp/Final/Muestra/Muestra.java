@@ -52,7 +52,7 @@ public class Muestra {
 	}
 
 	public boolean seEncuentraDentroDeLasFechasDeDesafio(LocalDate fechaInicio, LocalDate fechaFin) {
-		return fecha.isAfter(fechaInicio) && fecha.isBefore(fechaFin); 
+		return fecha.isAfter(fechaInicio) && fecha.isBefore(fechaFin);
 	}
 
 	public DayOfWeek diaDeLaSemana() {

@@ -9,10 +9,6 @@ public class AreaGeografica {
 		setRadio(unRadio);
 	}
 
-	public CoordenadaGeografica getCoordenada() {
-		return coordenada;
-	}
-
 	public void setCoordenada(CoordenadaGeografica coordenada) {
 		this.coordenada = coordenada;
 	}

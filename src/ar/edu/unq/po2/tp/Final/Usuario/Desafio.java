@@ -22,9 +22,6 @@ public class Desafio {
 		restriccionTemp = new RestriccionArea(area);
 	}
 
-	public AreaGeografica getArea() {
-		return area;
-	}
 
 	public void setArea(AreaGeografica area) {
 		this.area = area;
