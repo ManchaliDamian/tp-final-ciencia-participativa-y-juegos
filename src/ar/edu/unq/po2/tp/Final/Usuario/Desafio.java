@@ -14,19 +14,14 @@ public class Desafio {
 	private int recompensa;
 
 	public Desafio(AreaGeografica area, int cantMuestras, int dificultad, int recompesas, String nombre) {
-		setArea(area);
-		setNombre(nombre);
-		setCantMuestras(cantMuestras);
-		setDificultad(dificultad);
-		setRecompensa(recompesas);
+		this.area = area;
+		this.nombre = nombre;
+		this.cantMuestras = cantMuestras;
+		this.dificultad = dificultad;
+		this.recompensa = recompesas;
 		restriccionTemp = new RestriccionArea(area);
 	}
 
-
-	public void setArea(AreaGeografica area) {
-		this.area = area;
-	}
-	
 	public String getNombre() {
 		return nombre;
 	}
@@ -35,9 +30,6 @@ public class Desafio {
 		this.restriccionTemp = r; 
 	}
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
 
 	public Restricciones getRestriccionTemp() {
 		return restriccionTemp;
@@ -47,24 +39,13 @@ public class Desafio {
 		return cantMuestras;
 	}
 
-	public void setCantMuestras(int cantMuestras) {
-		this.cantMuestras = cantMuestras;
-	}
 
 	public int getDificultad() {
 		return dificultad;
 	}
 
-	public void setDificultad(int dificultad) {
-		this.dificultad = dificultad;
-	}
-
 	public int getRecompensa() {
 		return recompensa;
-	}
-
-	public void setRecompensa(int recompensa) {
-		this.recompensa = recompensa;
 	}
 
 	public Integer coincidenciaPorPref(Usuario usuario) {
